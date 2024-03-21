@@ -1,0 +1,17 @@
+{
+  "name": "afcon2023-visualizations",
+  "version": "1.0.0",
+  "description": "Data visualizations for AFCON 2023 teams and players.",
+  "main": "index.html",
+  "scripts": {
+    "build": "parcel build index.html",
+    "start": "parcel index.html --log-level=2 --port=8080"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "d3": "^7.6.1"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}

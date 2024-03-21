@@ -1,0 +1,39 @@
+# Dependency directories
+node_modules/
+
+# Parcel build output
+dist/
+.cache/
+output/
+
+# Environment variables
+.env
+
+# Operating System generated files
+.DS_Store # macOS
+Thumbs.db # Windows
+Desktop.ini # Windows
+
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Other files and folders to ignore
+# Debug log from npm
+*.log.*
+# Coverage directory used by tools like istanbul
+coverage/
+# nyc test coverage
+.nyc_output
+
+# Optional: If you have a build or temp directory, you might want to ignore that too
+/build/
+/temp/
