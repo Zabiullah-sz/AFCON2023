@@ -30,4 +30,31 @@ export function updateXScale (scale, data, width) {
    */
   export function drawBars (x, y, players, tip) {
     d3.select('#graph-g')
+    .selectAll('.bar')
+    .data(players)
+    .enter()
+    .append('rect')
+    .attr('class', 'bar')
+    .attr('x', 0)
+    .attr('y', (player) => y(player.Player))
+    .attr('width', (player) => x(player.Goals))
+    .attr('height', y.bandwidth())
+    .attr('fill', 'blue')
+    .on('mouseover', function (event, d) {
+      tip.show(d, this)
+    })
+    .on('mouseout', tip.hide)
+
+  d3.select('#graph-g')
+    .selectAll('.goal-label')
+    .data(players)
+    .enter()
+    .append('text')
+    .attr('class', 'goal-label')
+    .attr('x', (player) => x(player.Goals))
+    .attr('y', (player) => y(player.Player) + y.bandwidth() / 2)
+    .attr('dx', -20)
+    .attr('dy', '0.35em')
+    .style('fill', 'white')
+    .text((player) => player.Goals)
   }

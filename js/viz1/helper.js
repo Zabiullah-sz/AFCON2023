@@ -44,7 +44,7 @@ export function generateG (margin) {
     g.append('text')
       .text('Joueur')
       .attr('class', 'y axis-text')
-      .attr('transform', 'rotate(-90)')
+      .attr('transform', 'rotate(-90) translate(0, -80)')
       .attr('font-size', 12)
   }
   
