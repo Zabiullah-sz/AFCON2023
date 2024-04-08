@@ -56,7 +56,6 @@ export function createScatterPlot(data, width, height) {
           .style('left', (d3.event.clientX ) + 'px')
           .style('top', (d3.event.clientY ) + 'px')
           .style('visibility', 'visible');
-          console.log(d)
       })
       .on('mouseout', () => {
         d3.select('.tooltip').style('visibility', 'hidden');

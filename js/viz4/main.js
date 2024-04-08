@@ -1,5 +1,5 @@
 
-import playerData from '../../assets/data/players_defense_team.csv'
+import playerData from '../../assets/data/defense_team.csv'
 import * as d3 from 'd3';
 import { createScatterPlot } from './viz.js';
 

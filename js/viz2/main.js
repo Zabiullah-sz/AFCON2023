@@ -16,7 +16,6 @@ export function initializeVisualization2() {
     console.log("jello")
     d3.csv(playersData).then(function(data) {
         // Preprocess data if necessary.
-        console.log("loadeddd", data)
         // Create SVG canvas.
         const svg = d3.select('#viz-container')
             .append('svg')
