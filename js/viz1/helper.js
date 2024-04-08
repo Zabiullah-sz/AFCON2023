@@ -3,14 +3,17 @@ import * as d3 from 'd3'
 /**
  * Generates the SVG element g which will contain the data visualization.
  *
+ * @param {number} width The width of the graph
+ * @param {number} height The height of the graph
  * @param {object} margin The desired margins around the graph
  * @returns {*} The d3 Selection for the created g element
  */
-export function generateG (margin) {
-    return d3.select('.graph')
-      .select('svg')
+export function generateG (width, height, margin) {
+    return d3.select('#viz1')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
       .append('g')
-      .attr('id', 'graph-g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`)
   }
   
@@ -36,17 +39,15 @@ export function generateG (margin) {
     g.append('text')
       .text('Meilleurs buteurs du tournoi (minimum 2 buts)')
       .attr('class', 'title')
+      .attr('font-size', 20)
   
     g.append('text')
       .text('Buts')
       .attr('class', 'x axis-text')
-      .attr('font-size', 12)
   
     g.append('text')
       .text('Joueur')
       .attr('class', 'y axis-text')
-      .attr('transform', 'rotate(-90) translate(0, -80)')
-      .attr('font-size', 12)
   }
   
   /**
@@ -66,19 +67,21 @@ export function generateG (margin) {
    *
    * @param {number} width The width of the graph
    * @param {number} height The height of the graph
+   * @param {object} margin The desired margins around the graph
    */
-  export function positionLabels (width, height) {
+  export function positionLabels (width, height, margin) {
     d3.select('.title')
-      .attr('x', width / 2)
-      .attr('y', -35)
+      .attr('x', margin.left)
+      .attr('y', -20)
   
     d3.select('.x.axis-text')
       .attr('x', width / 2)
-      .attr('y', height + 50)
+      .attr('y', height + margin.bottom)
   
     d3.select('.y.axis-text')
-      .attr('x', -50)
-      .attr('y', height / 2)
+      .attr('transform', 'rotate(-90)')
+      .attr('x', -margin.left - 120)
+      .attr('y', -margin.left + 20)
   }
   
   /**

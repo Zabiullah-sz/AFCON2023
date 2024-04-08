@@ -25,38 +25,36 @@ export function updateXScale (scale, data, width) {
   /**
    * Draws the bars inside the groups
    *
+   * @param {*} g The d3 Selection of the graph's g SVG element
    * @param {*} x The graph's x scale
    * @param {*} y The graph's y scale
    * @param {string[]} players The names of the players, each corresponding to a bar
    * @param {*} tip The tooltip to show when each bar is hovered and hide when it's not
    */
-  export function drawBars (x, y, players, tip) {
-    d3.select('#graph-g')
-    .selectAll('.bar')
+  export function drawBars (g, x, y, players) {
+    g.selectAll('.bar')
     .data(players)
-    .enter()
-    .append('rect')
+    .join('rect')
     .attr('class', 'bar')
     .attr('x', 0)
-    .attr('y', (player) => y(player.Player))
-    .attr('width', (player) => x(player.Goals))
+    .attr('y', d => y(d.Player))
+    .attr('width', d => x(d.Goals))
     .attr('height', y.bandwidth())
     .attr('fill', 'blue')
-    .on('mouseover', function (event, d) {
-      tip.show(d, this)
-    })
-    .on('mouseout', tip.hide)
+    // .on('mouseover', function (event, d) {
+    //   tip.show(d, this)
+    // })
+    // .on('mouseout', tip.hide)
 
-  d3.select('#graph-g')
-    .selectAll('.goal-label')
+    g.selectAll('.goal-label')
     .data(players)
     .enter()
     .append('text')
     .attr('class', 'goal-label')
-    .attr('x', (player) => x(player.Goals))
-    .attr('y', (player) => y(player.Player) + y.bandwidth() / 2)
+    .attr('x', d => x(d.Goals))
+    .attr('y', d => y(d.Player) + y.bandwidth() / 2)
     .attr('dx', -20)
     .attr('dy', '0.35em')
     .style('fill', 'white')
-    .text((player) => player.Goals)
+    .text(d => d.Goals)
   }
