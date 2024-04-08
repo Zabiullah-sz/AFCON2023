@@ -1,3 +1,4 @@
+import * as d3 from 'd3'
 
 /**
  * Generates the SVG element g which will contain the data visualization.
