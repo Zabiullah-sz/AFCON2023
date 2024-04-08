@@ -1,0 +1,511 @@
+Player,Age,GamesPlayed,Goals,Assists,GoalsAndAssists,Shots,PlusMinus,Minutes,MinutesPerGame,Fouls,YellowCards,RedCards,Country
+Aubrey Modiba,27,7,0,0,0,4,4,690,99,6,1,0,Afrique du Sud
+Ronwen Williams,31,7,0,0,0,0,4,690,99,0,0,0,Afrique du Sud
+Teboho Mokoena,26,7,2,1,3,19,4,689,98,15,0,0,Afrique du Sud
+Sphephelo Sithole,23,7,0,0,0,5,2,665,95,16,1,0,Afrique du Sud
+Khuliso Mudau,27,7,0,0,0,2,4,627,90,1,0,0,Afrique du Sud
+Evidence Makgopa,22,7,1,1,2,12,3,584,83,10,0,0,Afrique du Sud
+Themba Zwane,33,7,2,1,3,3,1,511,73,8,0,0,Afrique du Sud
+Mothobi Mvala,28,6,0,0,0,0,4,600,100,7,2,0,Afrique du Sud
+Percy Tau,28,6,1,0,1,12,4,564,94,11,0,0,Afrique du Sud
+Grant Kekana,30,5,0,0,0,0,6,504,101,4,1,1,Afrique du Sud
+Thapelo Morena,29,6,0,1,1,5,6,372,62,1,0,0,Afrique du Sud
+Siyanda Xulu,31,3,0,0,0,1,-3,255,85,1,1,0,Afrique du Sud
+Thapelo Maseko,19,5,1,0,1,2,0,203,41,2,0,0,Afrique du Sud
+Mihlali Mayambela,26,5,0,0,0,7,1,198,40,2,0,0,Afrique du Sud
+Nkosinathi Sibisi,27,2,0,0,0,0,0,94,47,3,0,0,Afrique du Sud
+Zakhele Lepasa,25,7,0,0,0,1,2,116,17,4,0,0,Afrique du Sud
+Thabang Monare,33,4,0,0,0,0,2,69,17,1,0,0,Afrique du Sud
+Nyiko Mobbie,28,2,0,0,0,2,0,63,32,0,0,0,Afrique du Sud
+Oswin Appollis,21,1,0,0,0,0,0,33,33,0,0,0,Afrique du Sud
+Jayden Adams,21,2,0,0,0,1,0,31,16,1,0,0,Afrique du Sud
+Terrence Mashego,26,2,0,0,0,0,0,26,13,0,0,0,Afrique du Sud
+Rayan Aït Nouri,21,3,0,0,0,3,-1,270,90,7,0,0,Algérie
+Aïssa Mandi,31,3,0,0,0,3,-1,270,90,1,0,0,Algérie
+Anthony Mandrea,26,3,0,0,0,0,-1,270,90,0,0,0,Algérie
+Youcef Atal,26,3,0,0,0,3,-1,250,83,3,1,0,Algérie
+Baghdad Bounedjah,31,3,3,0,3,9,0,246,82,4,1,0,Algérie
+Riyad Mahrez,31,3,0,0,0,1,-1,208,69,2,0,0,Algérie
+Ramiz Zerrouki,24,3,0,0,0,0,-1,199,66,7,0,0,Algérie
+Ramy Bensebaini,27,2,0,0,0,0,0,180,90,3,2,0,Algérie
+Nabil Bentaleb,28,3,0,0,0,1,-1,180,60,2,1,0,Algérie
+Youcef Belaïli,30,3,0,1,1,10,0,168,56,2,1,0,Algérie
+Mohamed El Amine Amoura,22,2,0,0,0,2,0,113,57,2,1,0,Algérie
+Fares Chaïbi,20,2,0,0,0,3,1,107,54,0,0,0,Algérie
+Adam Ounas,26,3,0,1,1,2,-1,102,34,0,0,0,Algérie
+Mohamed Amine Tougai,23,1,0,0,0,0,-1,90,90,2,0,0,Algérie
+Ismaël Bennacer,25,1,0,0,0,1,0,79,79,1,1,0,Algérie
+Hicham Boudaoui,23,1,0,0,0,3,-1,61,61,0,0,0,Algérie
+Houssem Aouar,24,2,0,0,0,1,-1,56,28,1,0,0,Algérie
+Sofiane Feghouli,33,1,0,0,0,1,-1,45,45,1,0,0,Algérie
+Islam Slimani,34,3,0,0,0,2,0,56,19,1,1,0,Algérie
+Kévin Van Den Kerkhof,26,2,0,0,0,2,0,20,10,0,0,0,Algérie
+Gaspar,25,5,0,0,0,2,5,450,90,3,1,0,Angola
+Gelson,26,5,4,1,5,8,4,397,79,8,1,0,Angola
+Fredy,32,5,0,3,3,4,4,382,76,7,0,0,Angola
+Mabululu,33,5,3,0,3,13,5,389,78,3,2,0,Angola
+Show,23,5,0,0,0,2,4,387,77,14,0,0,Angola
+Jonathan Buatu Mananga,29,4,0,0,0,3,3,360,90,7,0,0,Angola
+Eddie,28,5,0,0,0,0,5,360,72,3,1,0,Angola
+Neblú,29,4,0,0,0,0,3,286,72,2,0,1,Angola
+Gilberto,21,4,1,0,1,6,4,268,67,3,0,0,Angola
+Tó Carneiro,27,3,0,0,0,0,4,270,90,2,0,0,Angola
+Estrela,27,4,0,0,0,1,1,159,40,5,0,0,Angola
+Kinito,24,3,0,0,0,0,2,185,62,2,0,0,Angola
+Núrio Fortuna,27,2,0,0,0,1,1,180,90,5,2,0,Angola
+Bruno Paz,24,3,0,0,0,0,0,128,43,1,0,0,Angola
+Dominique,28,2,0,0,0,0,2,161,81,0,0,0,Angola
+Zito Luvumbo,20,5,0,0,0,3,1,155,31,3,0,0,Angola
+Zine,20,5,0,0,0,8,2,143,29,5,0,0,Angola
+Loide Augusto,22,1,1,0,1,1,0,77,77,2,0,0,Angola
+Keliano,20,3,0,0,0,0,0,54,18,2,0,0,Angola
+Jérémie Bela,29,3,0,0,0,1,1,53,18,1,0,0,Angola
+Milson,23,3,0,0,0,0,1,32,11,1,1,0,Angola
+Issoufou Dayo,31,4,0,0,0,2,-2,360,90,3,0,0,Burkina Faso
+Issa Kaboré,21,4,0,0,0,1,-2,360,90,4,0,0,Burkina Faso
+Hervé Koffi,26,4,0,0,0,0,-2,360,90,0,0,0,Burkina Faso
+Edmond Tapsoba,23,4,0,0,0,4,-2,360,90,4,1,0,Burkina Faso
+Blati Touré,28,3,0,0,0,1,0,270,90,6,2,0,Burkina Faso
+Gustavo Sangaré,26,3,0,0,0,1,-2,259,86,6,1,0,Burkina Faso
+Steeve Yago,30,4,0,0,0,0,-1,240,60,5,0,0,Burkina Faso
+Mohamed Konaté,25,3,1,0,1,7,-1,237,79,12,2,0,Burkina Faso
+Ismahila Ouédraogo,23,3,0,0,0,0,-2,207,69,4,1,0,Burkina Faso
+Bertrand Traoré,27,4,3,0,3,11,-1,196,49,2,0,0,Burkina Faso
+Abdoul-Fessal Tapsoba,21,4,0,1,1,1,0,188,47,6,2,0,Burkina Faso
+Stephane Aziz Ki,26,3,0,0,0,8,-1,176,59,4,0,0,Burkina Faso
+Cédric Badolo,24,4,0,0,0,1,-2,169,42,3,1,0,Burkina Faso
+Adama Guira,34,2,0,0,0,1,1,128,64,3,0,0,Burkina Faso
+Adamo Nagalo,20,2,0,0,0,0,1,128,64,2,1,0,Burkina Faso
+Dango Ouattara,20,2,0,0,0,4,-2,104,52,1,0,0,Burkina Faso
+Abdoul Guiebre,25,1,0,0,0,2,-1,75,75,1,0,0,Burkina Faso
+Mamady Bangré,21,1,0,0,0,0,0,45,45,0,0,0,Burkina Faso
+Djibril Cheick Ouattara,23,2,0,0,0,1,0,51,26,0,0,0,Burkina Faso
+Sacha Banse,21,2,0,0,0,0,-1,25,13,0,0,0,Burkina Faso
+Hassane Bandé,24,2,0,0,0,0,0,8,4,0,0,0,Burkina Faso
+Nasser Djiga,20,1,0,0,0,0,-1,7,7,1,1,0,Burkina Faso
+Dramane Salou,24,1,0,0,0,0,-1,7,7,0,0,0,Burkina Faso
+Jean-Charles Castelletto,28,4,1,0,1,2,-3,360,90,4,1,0,Cameroun
+Andre-Frank Zambo Anguissa,27,4,0,0,0,1,-3,360,90,9,0,0,Cameroun
+Georges-Kévin N'Koudou,27,4,0,3,3,7,-4,359,90,2,1,0,Cameroun
+Christopher Wooh,21,4,1,0,1,2,-3,344,86,9,1,0,Cameroun
+Frank Magri,23,4,1,0,1,6,-4,325,81,10,1,0,Cameroun
+Olivier Ntcham,26,4,0,1,1,5,-1,282,71,1,0,0,Cameroun
+Fabrice Ondoa,27,3,0,0,0,0,-1,270,90,0,0,0,Cameroun
+Nouhou Tolo,25,3,0,0,0,3,-3,270,90,2,0,0,Cameroun
+Karl Toko Ekambi,30,3,1,0,1,6,-1,269,90,0,0,0,Cameroun
+Olivier Kemen,26,3,0,0,0,3,-1,185,62,4,1,0,Cameroun
+Enzo Tchato,20,3,0,0,0,0,-1,184,61,4,0,0,Cameroun
+Darlin Yongwa,22,2,0,0,0,1,0,169,85,4,0,0,Cameroun
+Moumi Ngamaleu,28,2,0,0,0,2,-3,158,79,1,0,0,Cameroun
+Oumar Gonzalez,24,2,0,0,0,0,-1,92,46,1,0,0,Cameroun
+Harold Moukoudi,25,2,0,0,0,0,0,91,46,2,1,0,Cameroun
+André Onana,26,1,0,0,0,0,-2,90,90,0,0,0,Cameroun
+Yvan Neyou,26,1,0,0,0,0,-2,78,78,1,1,0,Cameroun
+Faris Pemi Moumbagna,22,4,0,0,0,0,1,43,11,2,0,0,Cameroun
+Junior Tchamadeu,19,2,0,0,0,0,-1,17,9,0,0,0,Cameroun
+Vincent Aboubakar,31,1,0,0,0,0,-1,14,14,0,0,0,Cameroun
+Logan Costa,21,5,0,0,0,0,5,480,96,2,0,0,Cap-Vert
+Vozinha,36,5,0,0,0,0,5,480,96,0,0,0,Cap-Vert
+Kevin Pina,25,5,1,0,1,5,5,408,82,13,2,0,Cap-Vert
+Ryan Mendes,33,5,2,1,3,6,4,374,75,12,1,0,Cap-Vert
+João Paulo,24,5,0,0,0,4,5,411,82,4,0,0,Cap-Vert
+Steven Moreira,28,5,0,0,0,1,5,400,80,4,0,0,Cap-Vert
+Pico,30,4,0,0,0,1,5,390,98,2,0,0,Cap-Vert
+Jamiro Monteiro,29,5,1,0,1,3,4,364,73,5,0,0,Cap-Vert
+Jovane Cabral,24,4,0,0,0,9,3,327,82,8,1,0,Cap-Vert
+Bebé,32,4,1,0,1,16,2,250,63,4,0,0,Cap-Vert
+Deroy Duarte,23,3,0,1,1,5,3,216,72,4,1,0,Cap-Vert
+Kenny Rocha Santos,23,5,0,0,0,4,2,262,52,3,1,0,Cap-Vert
+Garry Rodrigues,32,5,1,0,1,9,2,193,39,2,1,0,Cap-Vert
+Willy Semedo,28,5,0,0,0,4,2,196,39,3,0,0,Cap-Vert
+Patrick Andrade,29,2,0,0,0,0,0,125,63,2,0,0,Cap-Vert
+Gilson Benchimol,21,5,1,1,2,6,2,125,25,5,0,0,Cap-Vert
+Diney,28,1,0,0,0,0,0,90,90,0,0,0,Cap-Vert
+Dylan Tavares,26,1,0,0,0,0,0,90,90,2,0,0,Cap-Vert
+Laros Duarte,25,2,0,0,0,0,1,42,21,2,0,0,Cap-Vert
+Bryan Teixeira,22,2,1,0,1,2,0,30,15,0,0,0,Cap-Vert
+Cuca,32,2,0,0,0,0,0,27,14,0,0,0,Cap-Vert
+Yahia Fofana,22,7,0,0,0,0,0,690,99,0,1,0,Côte d'Ivoire
+Obite N'Dicka,23,7,0,0,0,7,0,690,99,10,2,0,Côte d'Ivoire
+Ghislain Konan,27,7,0,0,0,1,3,652,93,8,0,0,Côte d'Ivoire
+Seko Fofana,27,7,1,1,2,17,-2,615,88,7,1,0,Côte d'Ivoire
+Franck Kessié,26,7,2,1,3,10,1,618,88,11,0,0,Côte d'Ivoire
+Ibrahim Sangaré,25,6,0,0,0,5,-3,374,62,9,1,0,Côte d'Ivoire
+Jean Seri,31,4,0,0,0,2,0,354,89,5,1,0,Côte d'Ivoire
+Serge Aurier,30,5,0,0,0,1,0,345,69,7,3,0,Côte d'Ivoire
+Max Gradel,35,5,0,1,1,6,-2,300,60,9,0,0,Côte d'Ivoire
+Wilfried Singo,22,7,0,0,0,5,0,351,50,1,0,0,Côte d'Ivoire
+Odilon Kossonou,22,3,0,0,0,2,1,247,82,5,2,1,Côte d'Ivoire
+Jean-Philippe Krasso,25,6,1,0,1,7,-3,247,41,6,0,0,Côte d'Ivoire
+Christian Kouamé,25,4,0,0,0,4,-1,217,54,4,3,0,Côte d'Ivoire
+Sébastien Haller,28,4,2,0,2,10,4,299,75,5,0,0,Côte d'Ivoire
+Simon Adingra,21,5,1,2,3,6,4,268,54,4,0,0,Côte d'Ivoire
+Willy Boly,31,4,0,0,0,1,-1,262,66,6,1,0,Côte d'Ivoire
+Oumar Diakité,19,5,1,0,1,3,-2,226,45,14,2,1,Côte d'Ivoire
+Nicolas Pépé,27,5,0,0,0,4,0,218,44,3,0,0,Côte d'Ivoire
+Jeremie Boga,26,4,0,0,0,1,-2,183,46,0,0,0,Côte d'Ivoire
+Ousmane Diomande,19,2,0,0,0,1,1,166,83,2,0,0,Côte d'Ivoire
+Jonathan Bamba,26,3,0,0,0,0,2,95,32,0,0,0,Côte d'Ivoire
+Karim Konaté,18,3,0,0,0,3,-3,62,21,3,0,0,Côte d'Ivoire
+Jean Thierry Lazare,24,2,0,0,0,1,1,31,16,0,0,0,Côte d'Ivoire
+Idrissa Doumbia,24,1,0,0,0,0,0,1,1,0,0,0,Côte d'Ivoire
+Chancel Mbemba,28,7,1,0,1,5,1,660,94,1,2,0,Congo
+Samuel Moutoussamy,26,7,0,0,0,6,1,660,94,13,0,0,Congo
+Gedeon Kalulu,25,6,0,0,0,1,1,570,95,18,1,0,Congo
+Arthur Masuaku,29,6,1,0,1,6,1,570,95,5,1,0,Congo
+Lionel Mpasi,28,6,0,0,0,0,1,570,95,0,0,0,Congo
+Yoane Wissa,26,7,2,0,2,19,1,531,76,8,0,0,Congo
+Charles Pickel,25,6,0,0,0,3,1,482,80,8,1,0,Congo
+Theo Bongonda,27,6,0,0,0,10,0,421,70,6,1,0,Congo
+Cédric Bakambu,31,7,0,1,1,8,-1,370,53,13,0,0,Congo
+Baka Inonga,28,5,0,0,0,1,0,371,74,0,0,0,Congo
+Gaël Kakuta,31,4,0,0,0,6,-1,264,66,4,0,0,Congo
+Meschak Elia,25,7,1,1,2,6,0,394,56,4,0,0,Congo
+Dylan Batubinsika,26,4,0,0,0,1,1,289,72,2,1,0,Congo
+Silas Katompa,24,7,1,0,1,4,3,236,34,5,0,0,Congo
+Simon Banza,26,5,0,0,0,5,1,184,37,3,0,0,Congo
+Aaron Tshibola,28,6,0,0,0,0,0,140,23,6,1,0,Congo
+Fiston Mayele,28,4,0,0,0,5,1,139,35,1,0,0,Congo
+Joris Kayembe,28,2,0,0,0,0,0,97,49,2,0,0,Congo
+Brian Bayeye,22,1,0,0,0,0,0,90,90,0,0,0,Congo
+Dimitry Bertaud,24,1,0,0,0,0,0,90,90,0,0,0,Congo
+Grady Diangana,24,2,0,0,0,2,0,83,42,3,0,0,Congo
+Omenuke Mfulu,28,2,0,0,0,0,0,49,25,1,0,0,Congo
+Mohamed Abdelmoneim,23,4,0,0,0,4,0,390,98,2,1,0,Égypte
+Ahmed Hegazi,32,4,0,1,1,2,0,390,98,3,1,0,Égypte
+Mostafa Mohamed,25,4,4,0,4,14,0,390,98,4,0,0,Égypte
+Hamdy Fathy,28,4,0,0,0,7,-1,324,81,11,1,0,Égypte
+Mohamed Hany,27,3,0,0,0,1,-1,275,92,3,0,0,Égypte
+Mohamed El-Shenawy,34,3,0,0,0,0,0,269,90,0,0,0,Égypte
+Mohamed Elneny,30,3,0,0,0,1,-2,255,85,1,0,0,Égypte
+Ahmed Sayed,27,3,0,0,0,9,-1,245,82,2,0,0,Égypte
+Mohamed Hamdy,27,4,0,0,0,0,1,276,69,5,2,1,Égypte
+Omar Marmoush,23,4,1,0,1,8,1,234,59,4,1,0,Égypte
+Trézéguet,28,4,1,2,3,6,1,215,54,3,0,0,Égypte
+Emam Ashour,24,3,0,0,0,7,1,193,64,3,0,0,Égypte
+Marwan Attia,24,3,0,0,0,2,0,173,58,4,1,0,Égypte
+Mohamed Salah,30,2,1,1,2,4,0,134,67,1,0,0,Égypte
+Ahmed Aboul-Fotouh,24,2,0,0,0,3,-1,90,45,2,0,0,Égypte
+Omar Kamal,29,3,0,0,0,0,1,136,45,2,0,0,Égypte
+Gabaski,34,2,0,0,0,0,0,121,61,0,0,0,Égypte
+Mostafa Fathi,27,3,0,0,0,1,0,85,28,1,0,0,Égypte
+Mahmoud Hamada,28,1,0,0,0,0,0,38,38,1,0,0,Égypte
+Kahraba,28,1,0,0,0,0,0,17,17,0,0,0,Égypte
+Mohanad Lasheen,26,1,0,0,0,0,0,9,9,0,0,0,Égypte
+Koka,29,1,0,0,0,0,1,7,7,0,0,0,Égypte
+Musa Barrow,24,3,0,0,0,7,-5,270,90,3,1,0,Gambie
+Baboucarr Gaye,24,3,0,0,0,0,-5,270,90,0,0,0,Gambie
+James Gomez,21,3,0,0,0,1,-5,270,90,1,0,0,Gambie
+Omar Colley,30,3,0,0,0,2,-5,248,83,3,0,0,Gambie
+Yankuba Minteh,18,3,0,0,0,1,-4,201,67,3,0,0,Gambie
+Saidy Janko,27,2,0,0,0,0,-4,180,90,2,0,0,Gambie
+Jacob Mendy,26,2,0,0,0,1,-2,180,90,3,0,0,Gambie
+Ablie Jallow,24,2,1,0,1,5,-1,173,87,3,1,0,Gambie
+Alasana Manneh,24,2,0,0,0,2,-3,155,78,2,0,0,Gambie
+Ali Sowe,28,3,0,0,0,4,-2,147,49,1,1,0,Gambie
+Ebrima Darboe,21,2,0,0,0,1,-2,143,72,4,0,0,Gambie
+Alieu Fadera,21,3,0,1,1,3,-1,99,33,5,1,0,Gambie
+Muhammed Sanneh,22,1,0,0,0,0,-1,90,90,3,1,0,Gambie
+Noah Sonko Sundberg,26,1,0,0,0,0,-1,80,80,1,0,0,Gambie
+Ebrima Colley,22,2,1,0,1,1,-2,78,39,0,0,0,Gambie
+Ibou Touray,28,1,0,0,0,0,-2,74,74,0,0,0,Gambie
+Yusupha Bobb,26,1,0,0,0,0,-1,68,68,0,0,0,Gambie
+Ebou Adams,27,1,0,0,0,0,-1,44,44,0,0,1,Gambie
+Hamza Barry,28,2,0,0,0,0,-2,54,27,1,0,0,Gambie
+Muhammed Badamosi,24,2,0,0,0,3,-1,44,22,2,0,0,Gambie
+Assan Ceesay,28,2,0,1,1,1,-2,26,13,2,0,0,Gambie
+Bubacarr Sanneh,28,1,0,0,0,0,0,22,22,0,0,0,Gambie
+Bamba Sanyang,23,1,0,0,0,0,-1,8,8,1,0,0,Gambie
+Alexander Djiku,28,3,1,0,1,1,-1,270,90,2,2,0,Ghana
+Gideon Mensah,24,3,0,0,0,0,-1,270,90,6,0,0,Ghana
+Richard Ofori,29,3,0,0,0,0,-1,270,90,0,0,0,Ghana
+Mohammed Salisu,23,3,0,0,0,1,-1,270,90,2,0,0,Ghana
+Jordan Ayew,31,3,2,1,3,3,0,269,90,9,1,0,Ghana
+Denis Odoi,34,3,0,1,1,0,1,251,84,6,0,0,Ghana
+Antoine Semenyo,23,3,0,0,0,2,2,222,74,11,0,0,Ghana
+Majeed Ashimeru,25,3,0,0,0,0,2,183,61,2,1,0,Ghana
+Salis Abdul Samed,22,3,0,1,1,0,-1,182,61,5,1,0,Ghana
+Kudus Mohammed,22,2,2,0,2,9,2,178,89,3,0,0,Ghana
+Joseph Paintsil,24,3,0,0,0,1,1,108,36,5,1,0,Ghana
+Iddrisu Baba,27,3,0,0,0,2,-3,173,58,8,2,0,Ghana
+Iñaki Williams,28,3,0,0,0,1,-2,103,34,2,0,0,Ghana
+Ransford Königsdörffer,21,1,0,0,0,3,0,61,61,2,0,0,Ghana
+André Ayew,33,2,0,0,0,0,-2,74,37,3,1,0,Ghana
+Ernest Nuamah,19,1,0,0,0,2,-1,29,29,1,0,0,Ghana
+Daniel Amartey,28,1,0,0,0,0,-2,19,19,2,0,0,Ghana
+Alidu Seidu,22,1,0,0,0,0,-2,19,19,0,0,0,Ghana
+Osman Bukari,24,2,0,0,0,0,-1,17,9,0,0,0,Ghana
+Elisha Owusu,25,1,0,0,0,0,0,2,2,0,0,0,Ghana
+Aguibou Camara,21,5,1,0,1,5,-2,450,90,14,0,0,Guinée
+Ibrahim Koné,33,5,0,0,0,0,-2,450,90,0,0,0,Guinée
+Mohamed Lamine Bayo,24,5,3,0,3,9,-1,380,76,3,0,0,Guinée
+Issiaga Sylla,29,5,0,0,0,1,-2,361,72,6,0,0,Guinée
+Mouctar Diakhaby,26,4,0,0,0,3,0,360,90,6,1,0,Guinée
+Julian Jeanvier,30,4,0,0,0,4,0,360,90,5,2,0,Guinée
+Sékou Oumar Sylla,24,4,0,0,0,4,1,302,76,5,0,0,Guinée
+Morgan Guilavogui,24,5,0,1,1,6,0,276,55,5,0,0,Guinée
+Ibrahim Diakité,19,5,0,1,1,1,-1,325,65,4,1,0,Guinée
+Amadou Diawara,25,4,0,0,0,0,-2,252,63,3,1,0,Guinée
+Ilaix Moriba,20,3,0,0,0,3,0,248,83,5,0,0,Guinée
+Naby Keïta,27,4,0,0,0,1,-2,178,45,2,0,0,Guinée
+Mory Konaté,29,2,0,0,0,0,0,167,84,3,0,0,Guinée
+Antoine Conte,29,4,0,0,0,0,-1,125,31,7,1,0,Guinée
+Facinet Conte,17,4,0,0,0,2,-3,158,40,4,2,0,Guinée
+Abdoulaye Touré,28,2,0,0,0,0,-1,122,61,2,0,0,Guinée
+Serhou Guirassy,26,3,0,0,0,4,-1,115,38,1,0,0,Guinée
+Mohamed Aly Camara,25,1,0,0,0,0,-2,90,90,0,0,0,Guinée
+Saidou Sow,20,1,0,0,0,0,-2,90,90,1,0,0,Guinée
+François Kamano,26,3,0,0,0,0,2,57,19,1,0,1,Guinée
+Seydouba Cissé,21,1,0,0,0,0,-1,18,18,0,0,0,Guinée
+Karim Cissé,18,1,0,0,0,0,-1,13,13,0,0,0,Guinée
+José Kanté,32,2,0,0,0,0,0,7,4,0,0,0,Guinée
+Janio Bikel,27,3,0,0,0,0,-5,270,90,3,0,0,Guinée-Bissau
+Fali Candé,25,3,0,0,0,4,-4,191,64,3,0,0,Guinée-Bissau
+Marcelo Djaló,29,2,0,0,0,1,-4,180,90,0,0,0,Guinée-Bissau
+Ouparine Djoco,24,2,0,0,0,0,-4,180,90,0,0,0,Guinée-Bissau
+Jefferson Encada,24,2,0,0,0,2,-4,180,90,2,0,0,Guinée-Bissau
+Opa Sanganté,31,2,0,0,0,1,-3,180,90,2,0,0,Guinée-Bissau
+Alfa Semedo,25,3,0,0,0,3,-5,178,59,3,0,0,Guinée-Bissau
+Mauro Rodrigues,21,2,0,0,0,2,-5,150,75,1,0,0,Guinée-Bissau
+Mama Samba Baldé,27,2,0,0,0,3,-5,146,73,2,0,0,Guinée-Bissau
+Moreto Cassamã,24,2,0,0,0,1,-5,129,65,2,1,0,Guinée-Bissau
+Franculino Djú,18,3,0,0,0,2,-3,145,48,2,0,0,Guinée-Bissau
+Dálcio,26,3,0,1,1,3,0,107,36,1,0,0,Guinée-Bissau
+Carlos Mendes Gomes,24,3,0,0,0,0,0,96,32,0,0,0,Guinée-Bissau
+Nito Gomes,20,1,0,0,0,2,-1,90,90,1,0,0,Guinée-Bissau
+Edgar Ié,28,1,0,0,0,0,-1,90,90,0,0,0,Guinée-Bissau
+Sori Mané,26,1,0,0,0,0,-2,90,90,1,0,0,Guinée-Bissau
+Houboulang Mendes,24,1,0,0,0,0,-1,90,90,1,0,0,Guinée-Bissau
+Jonas Mendes,33,1,0,0,0,0,-1,90,90,0,0,0,Guinée-Bissau
+Eulânio Ângelo Chipela Gomes,28,1,0,0,0,0,-1,79,79,0,0,0,Guinée-Bissau
+Carlos Mané,28,2,0,0,0,0,-1,71,36,2,0,0,Guinée-Bissau
+Famana Quizera,20,1,0,0,0,4,-1,67,67,3,0,0,Guinée-Bissau
+Zinho Gano,29,1,0,0,0,1,-1,45,45,1,0,0,Guinée-Bissau
+Marciano Tchami,18,2,0,0,0,2,1,73,37,1,0,0,Guinée-Bissau
+Zé Turbo,26,3,1,0,1,4,1,53,18,3,0,0,Guinée-Bissau
+Saúl Coco,23,4,0,0,0,3,5,360,90,1,0,0,Guinée Équatoriale
+Esteban,24,4,0,0,0,0,5,360,90,1,0,0,Guinée Équatoriale
+Basilio Owono,24,4,0,1,1,1,5,360,90,7,0,0,Guinée Équatoriale
+Jesús Owono,21,4,0,1,1,0,5,360,90,0,1,0,Guinée Équatoriale
+Carlos Akapo,29,4,0,1,1,0,6,349,87,5,0,0,Guinée Équatoriale
+Pepín,26,4,0,3,3,2,4,349,87,3,0,0,Guinée Équatoriale
+Emilio Nsue,33,4,5,0,5,9,5,340,85,6,0,0,Guinée Équatoriale
+Iván Salvador,27,4,1,0,1,2,5,335,84,8,0,0,Guinée Équatoriale
+Federico Bikoro,26,4,0,0,0,1,6,324,81,6,1,1,Guinée Équatoriale
+Pablo Ganet,28,4,1,1,2,4,5,320,80,8,0,0,Guinée Équatoriale
+Jannick,24,4,1,0,1,1,2,203,51,3,1,0,Guinée Équatoriale
+José Antonio Miranda,24,2,1,0,1,3,4,134,67,4,1,0,Guinée Équatoriale
+Nlavo,21,4,0,0,0,3,-1,32,8,2,1,0,Guinée Équatoriale
+Benzema,22,3,0,0,0,0,0,29,10,1,1,0,Guinée Équatoriale
+Alex Balboa,21,2,0,0,0,0,1,22,11,1,1,0,Guinée Équatoriale
+José Nabil,17,1,0,0,0,0,0,16,16,1,0,0,Guinée Équatoriale
+Óscar Siafa,25,1,0,0,0,1,1,13,13,1,0,0,Guinée Équatoriale
+Marvin,25,1,0,0,0,0,-1,11,11,0,0,0,Guinée Équatoriale
+Noé Ela,19,1,0,0,0,0,-1,7,7,2,0,0,Guinée Équatoriale
+Djigui Diarra,27,5,0,0,0,0,2,480,96,0,0,0,Mali
+Boubakar Kouyaté,25,5,0,0,0,2,2,480,96,6,1,0,Mali
+Sikou Niakaté,23,5,0,0,0,0,2,480,96,3,1,0,Mali
+Hamari Traoré,31,5,1,1,2,3,3,479,96,6,0,1,Mali
+Lassine Sinayoko,23,5,3,0,3,9,4,395,79,10,1,0,Mali
+Falaye Sacko,27,4,0,0,0,0,2,390,98,4,0,0,Mali
+Kamory Doumbia,19,5,0,2,2,9,3,389,78,10,0,0,Mali
+Amadou Haidara,25,4,0,0,0,9,3,288,72,7,1,0,Mali
+Lassana Coulibaly,26,4,0,0,0,1,4,284,71,15,2,0,Mali
+Diadie Samassékou,27,3,0,1,1,0,0,202,67,4,0,0,Mali
+Yves Bissouma,26,4,0,0,0,6,-1,185,46,2,0,0,Mali
+Sekou Koita,23,3,0,0,0,6,2,172,57,1,0,0,Mali
+Adama Traoré,27,3,0,0,0,6,1,145,48,1,1,0,Mali
+Aliou Dieng,25,2,0,0,0,2,2,144,72,4,0,0,Mali
+Fousseni Diabaté,27,5,0,0,0,2,-1,190,38,6,0,0,Mali
+Nene Dorgeles,20,4,1,0,1,2,-1,173,43,4,0,0,Mali
+Mohamed Camara,23,2,0,0,0,2,1,112,56,3,0,0,Mali
+Moussa Diarra,22,1,0,0,0,0,0,67,67,3,0,0,Mali
+Youssouf Niakaté,30,2,0,0,0,0,0,60,30,0,0,0,Mali
+Ibrahim Sissoko,27,4,0,0,0,1,-1,71,18,0,0,0,Mali
+Boubacar Traoré,21,3,0,0,0,2,-2,37,12,2,0,0,Mali
+Mamadou Fofana,25,2,0,0,0,0,-2,33,17,1,0,0,Mali
+Amadou Dante,22,1,0,0,0,1,0,23,23,0,0,0,Mali
+Nayef Aguerd,26,4,0,0,0,1,2,360,90,2,0,0,Maroc
+Yassine Bounou,31,4,0,0,0,0,2,360,90,0,0,0,Maroc
+Achraf Hakimi,24,4,1,1,2,5,2,360,90,6,1,0,Maroc
+Sofyan Amrabat,26,4,0,0,0,0,3,359,90,8,1,1,Maroc
+Azzedine Ounahi,22,4,1,0,1,7,2,332,83,0,0,0,Maroc
+Romain Saïss,32,3,1,0,1,1,1,270,90,7,1,0,Maroc
+Youssef En-Nesyri,25,3,1,0,1,8,1,249,83,3,0,0,Maroc
+Hakim Ziyech,29,3,1,1,2,7,5,197,66,2,1,0,Maroc
+Selim Amallah,26,3,0,0,0,1,1,193,64,7,1,0,Maroc
+Abdessamad Ezzalzouli,21,4,0,0,0,4,-1,188,47,3,0,0,Maroc
+Mohamed Chibi,30,2,0,0,0,0,3,180,90,1,1,0,Maroc
+Sofiane Boufal,29,3,0,0,0,4,2,140,47,4,0,0,Maroc
+Amine Adli,22,4,0,1,1,5,0,142,36,4,1,0,Maroc
+Ayoub El Kaabi,29,4,0,0,0,6,0,115,29,3,0,0,Maroc
+Yahya Attiat Allah,27,2,0,0,0,0,0,105,53,0,0,0,Maroc
+Ismael Saibari,22,2,0,0,0,1,0,98,49,1,0,0,Maroc
+Yunis Abdelhamid,35,1,0,0,0,0,1,90,90,1,0,0,Maroc
+Noussair Mazraoui,25,1,0,0,0,0,-1,75,75,1,0,0,Maroc
+Bilal El Khannouss,18,3,0,0,0,2,1,53,18,3,0,0,Maroc
+Amine Harit,25,3,0,0,0,1,-1,52,17,0,0,0,Maroc
+Amir Richardson,21,1,0,0,0,1,0,23,23,2,0,0,Maroc
+Tarik Tissoudali,29,1,0,0,0,3,0,18,18,0,0,0,Maroc
+Babacar Niasse,26,4,0,0,0,0,-2,360,90,1,1,0,Mauritanie
+Aboubakary Koita,24,4,1,0,1,13,-2,351,88,4,1,0,Mauritanie
+Ibrahima Keita,21,4,0,0,0,0,-1,349,87,4,1,0,Mauritanie
+Lamine Ba,25,4,0,0,0,0,-1,336,84,2,1,0,Mauritanie
+Omare Gassama,27,4,0,0,0,2,-1,304,76,8,1,0,Mauritanie
+Mouhsine Bodda,25,3,0,0,0,4,-1,270,90,7,1,0,Mauritanie
+Sidi Bouna Amar,24,4,1,0,1,7,-1,260,65,0,0,0,Mauritanie
+Khadim Diaw,24,3,0,1,1,1,-1,225,75,2,0,0,Mauritanie
+Souleymane Anne,25,3,0,0,0,4,0,212,71,7,0,0,Mauritanie
+Guessouma Fofana,30,4,0,1,1,1,-2,200,50,3,0,0,Mauritanie
+Nouh Mohamed El Abd,22,2,0,0,0,1,-2,180,90,3,1,0,Mauritanie
+Idrissa Thiam,22,2,0,0,0,4,1,138,69,5,0,0,Mauritanie
+Aly Abeid,25,2,0,0,0,1,-1,135,68,3,1,0,Mauritanie
+Hemeya Tanji,24,3,0,0,0,4,0,130,43,1,0,0,Mauritanie
+El Hassen Houeibib,29,2,0,0,0,0,-1,113,57,0,0,0,Mauritanie
+Aboubakar Kamara,27,4,0,0,0,2,-1,93,23,1,0,0,Mauritanie
+Pape Ibnou Bâ,30,3,0,0,0,3,-2,92,31,1,0,0,Mauritanie
+Mohamed Dellah Yaly,25,2,1,0,1,2,0,91,46,1,0,0,Mauritanie
+El-Hadji Ba,29,2,0,0,0,1,-2,44,22,1,0,0,Mauritanie
+Souleymane Doukara,31,1,0,0,0,0,0,32,32,0,0,0,Mauritanie
+Oumar Ngom,18,1,0,0,0,0,-1,24,24,1,0,0,Mauritanie
+Yassin Cheikh Elwely,24,1,0,0,0,0,-1,11,11,0,0,0,Mauritanie
+Bakari Camara,29,1,0,0,0,1,0,10,10,0,0,0,Mauritanie
+Reinildo Mandava,29,3,1,0,1,2,-3,270,90,8,2,0,Mozambique
+Mexer,34,3,0,0,0,1,-3,270,90,2,1,0,Mozambique
+Ricardo Guimarães,27,3,0,1,1,1,-4,264,88,2,1,0,Mozambique
+Alfonso,23,3,0,0,0,2,-4,228,76,2,0,0,Mozambique
+Witi,26,3,1,0,1,4,-1,185,62,2,0,0,Mozambique
+Bruno Langa,25,3,0,0,0,4,-2,212,71,2,0,0,Mozambique
+Geny Catamo,22,2,1,1,2,3,-3,180,90,2,1,0,Mozambique
+Ernani,24,2,0,0,0,0,-3,180,90,0,0,0,Mozambique
+Edmilson Gabriel Dove,28,2,0,0,0,0,-3,180,90,0,0,0,Mozambique
+Macandza,24,2,0,1,1,2,-3,167,84,4,0,0,Mozambique
+Stanley Ratifo,28,3,0,0,0,0,2,128,43,1,0,0,Mozambique
+Lau King,27,3,0,0,0,3,-5,156,52,3,1,0,Mozambique
+Domingues,39,3,0,0,0,0,-1,108,36,1,0,0,Mozambique
+Nanani,26,2,0,0,0,1,0,103,52,3,1,0,Mozambique
+Ivane,25,1,0,0,0,0,0,90,90,0,0,0,Mozambique
+Gildo Vilanculos,28,3,0,0,0,3,0,88,29,0,0,0,Mozambique
+Nené,26,2,0,0,0,0,-3,74,37,0,0,0,Mozambique
+Clésio Baúque,28,1,1,0,1,1,1,45,45,0,0,0,Mozambique
+Shaquille,25,2,0,0,0,0,1,28,14,1,0,0,Mozambique
+Amadú,26,1,0,0,0,0,-1,10,10,1,0,0,Mozambique
+João Bonde,26,1,0,0,0,0,2,4,4,0,0,0,Mozambique
+Riaan Hanamub,27,4,0,0,0,2,-6,360,90,3,0,0,Namibie
+Deon Hotto,32,4,1,0,1,4,-6,360,90,4,1,0,Namibie
+Loydt Kazapua,33,4,0,0,0,0,-6,360,90,0,0,0,Namibie
+Aprocius Petrus,23,4,0,0,0,2,-6,360,90,10,0,0,Namibie
+Peter Shalulile,30,4,0,0,0,10,-6,359,90,8,0,0,Namibie
+Kennedy Amutenya,27,4,0,0,0,6,-5,329,82,4,0,0,Namibie
+Lubeni Haukongo,22,4,0,0,0,0,-4,309,77,4,2,1,Namibie
+Prins Tjiueza,20,4,0,0,0,2,-3,245,61,7,0,0,Namibie
+Ngero Katua,21,4,0,0,0,3,-2,221,55,6,0,0,Namibie
+Absalom Iimbondi,31,4,0,0,0,1,-5,219,55,3,1,0,Namibie
+Bethuel Muzeu,22,4,0,1,1,2,-3,205,51,2,0,0,Namibie
+Ivan Kamberipa,28,2,0,0,0,0,-3,180,90,2,0,0,Namibie
+Ryan Nyambe,25,2,0,0,0,0,-2,162,81,2,0,0,Namibie
+Petrus Shitembi,30,3,0,0,0,1,-4,137,46,4,0,0,Namibie
+Ananias Gebhardt,34,1,0,0,0,0,-1,31,31,0,0,0,Namibie
+Uetuuru Kambato,25,1,0,0,0,0,0,21,21,1,0,0,Namibie
+Joslin Kamatuka,31,1,0,0,0,0,-1,18,18,1,0,0,Namibie
+Wendell Rudath,27,1,0,0,0,0,-1,18,18,0,0,0,Namibie
+Marcell Papama,26,1,0,0,0,0,0,12,12,0,0,0,Namibie
+Charles Hambira,32,1,0,0,0,0,0,2,2,0,0,0,Namibie
+Denzil Haoseb,31,1,0,0,0,0,0,1,1,0,0,0,Namibie
+Semi Ajayi,29,7,0,0,0,2,4,660,94,7,1,0,Nigeria
+Ola Aina,26,7,0,0,0,3,4,651,93,7,2,0,Nigeria
+Stanley Nwabili,26,7,0,0,0,0,3,649,93,0,2,0,Nigeria
+Victor Osimhen,24,7,1,1,2,24,4,644,92,20,0,0,Nigeria
+Frank Onyeka,25,7,0,0,0,5,4,604,86,18,2,0,Nigeria
+Calvin Bassey,23,7,0,1,1,2,4,578,83,7,2,0,Nigeria
+William Troost-Ekong,29,6,3,0,3,5,3,570,95,7,1,0,Nigeria
+Ademola Lookman,25,7,3,1,4,8,4,537,77,21,0,0,Nigeria
+Alex Iwobi,26,7,0,0,0,7,4,516,74,1,0,0,Nigeria
+Moses Simon,27,7,0,1,1,5,2,453,65,3,1,0,Nigeria
+Zaidu Sanusi,25,6,0,0,0,6,2,426,71,13,1,0,Nigeria
+Samuel Chukwueze,23,5,0,0,0,4,3,285,57,3,0,0,Nigeria
+Bright Osayi-Samuel,25,5,0,0,0,2,1,219,44,2,0,0,Nigeria
+Alhassan Yusuf,22,4,0,0,0,3,-1,149,37,10,0,0,Nigeria
+Kenneth Omeruo,29,5,0,0,0,0,2,114,23,2,0,0,Nigeria
+Joe Aribo,26,5,0,0,0,1,1,112,22,0,0,0,Nigeria
+Kelechi Iheanacho,26,2,0,0,0,3,-1,31,16,0,0,0,Nigeria
+Raphael Onyedika,21,1,0,0,0,0,0,28,28,3,0,0,Nigeria
+Terem Moffi,23,2,0,0,0,0,0,16,8,1,0,0,Nigeria
+Francis Uzoho,24,1,0,0,0,0,1,11,11,0,0,0,Nigeria
+Paul Onuachu,28,4,0,0,0,1,0,6,2,4,0,0,Nigeria
+Chidozie Awaziem,26,1,0,0,0,0,0,1,1,0,0,0,Nigeria
+Krépin Diatta,23,4,0,1,1,2,7,390,98,5,1,0,Sénégal
+Kalidou Koulibaly,31,4,0,0,0,2,7,390,98,5,0,0,Sénégal
+Sadio Mané,30,4,1,3,4,6,7,390,98,6,1,0,Sénégal
+Edouard Mendy,30,4,0,0,0,0,7,390,98,1,1,0,Sénégal
+Ismail Jakobs,23,4,0,0,0,2,6,387,97,7,1,0,Sénégal
+Ismaila Sarr,24,4,1,2,3,5,5,324,81,3,0,0,Sénégal
+Habib Diallo,27,4,2,0,2,5,6,290,73,5,1,0,Sénégal
+Lamine Camara,19,3,2,0,2,3,4,265,88,9,2,0,Sénégal
+Abdou Diallo,26,3,0,0,0,2,4,264,88,6,2,0,Sénégal
+Pape Matar Sarr,20,3,0,1,1,1,3,263,88,4,0,0,Sénégal
+Pape Gueye,24,3,1,0,1,2,5,238,79,2,0,0,Sénégal
+Moussa Niakhate,26,2,0,0,0,0,2,200,100,1,0,0,Sénégal
+Nampalys Mendy,30,2,0,0,0,3,3,102,51,4,0,0,Sénégal
+Abdoulaye Seck,30,2,1,0,1,5,3,100,50,1,0,0,Sénégal
+Nicolas Jackson,21,4,0,0,0,1,1,100,25,4,0,0,Sénégal
+Idrissa Gana Gueye,33,3,0,1,1,1,1,71,24,1,0,0,Sénégal
+Iliman Ndiaye,22,4,1,1,2,1,2,66,17,2,0,0,Sénégal
+Pathé Ciss,28,2,0,0,0,0,2,34,17,1,0,0,Sénégal
+Cheikhou Kouyaté,33,1,0,0,0,0,1,20,20,0,0,0,Sénégal
+Fodé Ballo-Touré,26,1,0,0,0,0,1,3,3,0,0,0,Sénégal
+Bamba Dieng,22,1,0,0,0,0,0,3,3,0,0,0,Sénégal
+Ibrahim Bacca,25,3,0,0,0,1,-3,270,90,1,0,0,Tanzanie
+Mohamed Husseini,26,3,0,0,0,1,-3,270,90,2,1,0,Tanzanie
+Aishi Manula,27,3,0,0,0,0,-3,270,90,0,0,0,Tanzanie
+Bakari Mwamnyeto,27,3,0,0,0,0,-3,270,90,1,0,0,Tanzanie
+Mbwana Samatta,30,3,0,1,1,2,-1,243,81,3,0,0,Tanzanie
+Himid Mao,30,3,0,0,0,0,-2,229,76,4,1,0,Tanzanie
+Haji Mnoga,20,3,0,0,0,0,-2,225,75,3,0,0,Tanzanie
+Saimon Msuva,29,3,1,0,1,4,-2,228,76,4,0,0,Tanzanie
+Novatus Dismas,20,2,0,0,0,1,-1,159,80,2,2,1,Tanzanie
+Feisal Salum,25,3,0,0,0,1,-1,158,53,1,0,0,Tanzanie
+Lusajo Mwaikenda,22,2,0,0,0,0,-1,135,68,0,0,0,Tanzanie
+Charles M'Mombwa,24,3,0,0,0,0,-4,117,39,0,1,0,Tanzanie
+Mzamiru Yassini,27,2,0,0,0,0,0,110,55,2,0,0,Tanzanie
+Kibu Denisi,24,2,0,0,0,1,1,80,40,0,0,0,Tanzanie
+Mudathiri Yahya,27,2,0,0,0,0,-2,66,33,3,0,0,Tanzanie
+Tarryn Allarakhia,25,1,0,0,0,0,-1,37,37,0,0,0,Tanzanie
+Morice Abraham,19,3,0,0,0,1,-3,82,27,1,0,0,Tanzanie
+Bechir Ben Said,30,3,0,0,0,0,-1,270,90,0,0,0,Tunisie
+Wajdi Kechrida,27,3,0,0,0,1,-1,270,90,2,0,0,Tunisie
+Yassine Meriah,29,3,0,0,0,2,-1,270,90,2,0,0,Tunisie
+Montassar Talbi,24,3,0,0,0,1,-1,270,90,3,0,0,Tunisie
+Ellyes Skhiri,27,3,0,0,0,2,-1,263,88,1,0,0,Tunisie
+Elias Achouri,23,3,0,0,0,2,-1,227,76,5,0,0,Tunisie
+Anis Ben Slimane,21,3,0,0,0,3,0,227,76,5,0,0,Tunisie
+Aïssa Laïdouni,26,3,0,0,0,1,-1,225,75,3,1,0,Tunisie
+Youssef Msakni,32,3,0,0,0,6,-1,209,70,1,0,0,Tunisie
+Ali Abdi,29,2,0,1,1,1,0,180,90,1,0,0,Tunisie
+Hamza Rafia,23,2,1,0,1,1,0,146,73,3,0,0,Tunisie
+Ali Maâloul,33,1,0,0,0,0,-1,90,90,1,0,0,Tunisie
+Seifeddine Jaziri,29,2,0,0,0,0,0,72,36,2,1,0,Tunisie
+Mohamed Ali Ben Romdhane,23,3,0,0,0,0,0,55,18,1,0,0,Tunisie
+Taha Yassine Khenissi,31,1,0,0,0,1,0,14,14,1,0,0,Tunisie
+Haythem Jouini,29,2,0,0,0,3,-1,97,49,1,0,0,Tunisie
+Sayfallah Ltaief,22,3,0,0,0,1,-1,50,17,1,0,0,Tunisie
+Naïm Sliti,30,1,0,0,0,1,0,21,21,1,0,0,Tunisie
+Bassem Srarfi,25,2,0,0,0,0,0,14,7,0,0,0,Tunisie
+Emmanuel Banda,25,3,0,0,0,4,-1,270,90,2,1,0,Zambie
+Patson Daka,24,3,1,1,2,4,-1,270,90,7,0,0,Zambie
+Lawrence Mulenga,26,3,0,0,0,0,-1,270,90,0,0,0,Zambie
+Frankie Musonda,25,3,0,0,0,0,-1,270,90,1,0,0,Zambie
+Stoppila Sunzu,33,3,0,0,0,0,-1,270,90,3,0,0,Zambie
+Lubambo Musonda,27,3,0,0,0,1,0,210,70,4,0,0,Zambie
+Lameck Banda,22,3,0,0,0,5,-2,191,64,5,1,0,Zambie
+Fashion Sakala,25,3,0,0,0,2,-1,185,62,6,0,0,Zambie
+Kings Kangwa,23,3,1,0,1,3,-1,184,61,2,0,0,Zambie
+Tandi Mwape,26,2,0,0,0,0,-1,172,86,0,0,0,Zambie
+Kelvin Kapumbu,26,2,0,0,0,0,-1,135,68,0,0,0,Zambie
+Rodrick Kabwe,30,2,0,0,0,0,-1,133,67,2,2,1,Zambie
+Miguel Chaiwa,18,2,0,0,0,2,0,94,47,1,0,0,Zambie
+Benedict Chepeshi,26,1,0,0,0,0,-1,86,86,1,0,0,Zambie
+Kennedy Musonda,28,2,0,0,0,2,0,85,43,1,0,0,Zambie
+Edward Chilufya,23,2,0,0,0,1,0,74,37,4,0,0,Zambie
+Clatous Chama,31,2,0,1,1,1,1,23,12,0,0,0,Zambie
+Larry Bwalya,27,1,0,0,0,0,0,1,1,0,0,0,Zambie
