@@ -35,7 +35,7 @@ export function generateG (width, height, margin) {
    *
    * @param {*} g The d3 Selection of the graph's g SVG element
    */
-  export function appendGraphLabels (g) {
+  export function appendGraphLabelsGoals (g) {
     g.append('text')
       .text('Meilleurs buteurs du tournoi (minimum 2 buts)')
       .attr('class', 'title')
@@ -49,18 +49,46 @@ export function generateG (width, height, margin) {
       .text('Joueur')
       .attr('class', 'y axis-text')
   }
-  
+
   /**
-   * Sets the size of the SVG canvas containing the graph.
+   * Appends the labels for the title of the graph, the x axis and the y axis.
    *
-   * @param {number} width The desired width
-   * @param {number} height The desired height
+   * @param {*} g The d3 Selection of the graph's g SVG element
    */
-  export function setCanvasSize (width, height) {
-    d3.select('#bar-chart').select('svg')
-      .attr('width', width)
-      .attr('height', height)
-  }
+    export function appendGraphLabelsAssists (g) {
+      g.append('text')
+        .text('Meilleurs passeurs du tournoi (minimum 2 aides)')
+        .attr('class', 'title')
+        .attr('font-size', 20)
+    
+      g.append('text')
+        .text('Aides')
+        .attr('class', 'x axis-text')
+    
+      g.append('text')
+        .text('Joueur')
+        .attr('class', 'y axis-text')
+    }
+
+  /**
+   * Appends the labels for the title of the graph, the x axis and the y axis.
+   *
+   * @param {*} g The d3 Selection of the graph's g SVG element
+   */
+        export function appendGraphLabelsGoalsAndAssists (g) {
+          g.append('text')
+            .text('Meilleurs marqueurs du tournoi (minimum 3 buts + aides)')
+            .attr('class', 'title')
+            .attr('font-size', 20)
+        
+          g.append('text')
+            .text('Buts + Aides')
+            .attr('class', 'x axis-text')
+        
+          g.append('text')
+            .text('Joueur')
+            .attr('class', 'y axis-text')
+        }
   
   /**
    * Positions the title label, x axis label and y axis label on the graph.
@@ -90,11 +118,23 @@ export function generateG (width, height, margin) {
    * @param {*} xScale The scale to use for the x axis
    * @param {number} height The height of the graph
    */
-  export function drawXAxis (xScale, height) {
+  export function drawXAxisGoals (xScale, height) {
     d3.select('.x.axis')
       .attr('transform', `translate(0, ${height})`)
       .call(d3.axisBottom(xScale).ticks(5))
   }
+
+  /**
+   * Draws the x axis at the bottom of the plot.
+   *
+   * @param {*} xScale The scale to use for the x axis
+   * @param {number} height The height of the graph
+   */
+    export function drawXAxisAssists (xScale, height) {
+      d3.select('.x.axis')
+        .attr('transform', `translate(0, ${height})`)
+        .call(d3.axisBottom(xScale).ticks(3))
+    }
   
   /**
    * Draws the y axis at the left of the plot.

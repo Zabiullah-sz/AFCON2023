@@ -21,7 +21,7 @@ export function initializeVisualization1() {
         // Create SVG canvas.
         const svg = helper.generateG(width + margin.left + margin.right, height + margin.top + margin.bottom, margin);
         helper.appendAxes(svg);
-        helper.appendGraphLabels(svg);
+        helper.appendGraphLabelsGoals(svg);
 
         // Filter to get players with most goals
         const topPlayersGoals = preproc.getTopPlayersGoals(data);
@@ -31,10 +31,10 @@ export function initializeVisualization1() {
         const yScale = d3.scaleBand().padding([0.15]);
 
         helper.positionLabels(width, height, margin);
-        viz.updateXScale(xScale, data, width);
+        viz.updateXScaleGoals(xScale, data, width);
         viz.updateYScale(yScale, data, height);
-        helper.drawXAxis(xScale, height);
+        helper.drawXAxisGoals(xScale, height);
         helper.drawYAxis(yScale);
-        viz.drawBars(svg, xScale, yScale, topPlayersGoals);
+        viz.drawBarsGoals(svg, xScale, yScale, topPlayersGoals);
       });
     }
