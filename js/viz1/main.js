@@ -1,46 +1,40 @@
 'use strict';
 
 import * as d3 from 'd3';
+import d3Tip from 'd3-tip';
 
 // Import other necessary modules here.
+import playersData from '../../assets/data/players.csv';
+import * as preproc from '../common/preprocessing.js';
+import * as viz from '../viz1/viz.js';
+import * as helper from '../viz1/helper.js';
+import * as tooltip from '../viz1/tooltip.js';
 
 export function initializeVisualization1() {
-    // Define margins, sizes, and scales.
-    const margin = { top: 35, right: 35, bottom: 35, left: 35 };
-    const width = 800 - margin.left - margin.right;
-    const height = 600 - margin.top - margin.bottom;
+      // Define margins, sizes, and scales.
+      const margin = { top: 35, right: 35, bottom: 50, left: 150 };
+      const width = 800 - margin.left - margin.right;
+      const height = 600 - margin.top - margin.bottom;
 
-    // Load your data.
-    console.log("jello")
-    d3.csv('path_to_your_data.csv', d3.autoType).then(function(data) {
-        // Preprocess data if necessary.
-
+      // Load your data.
+      d3.csv(playersData, d3.autoType).then(function(data) {
         // Create SVG canvas.
-        const svg = d3.select('#viz-container')
-            .append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+        const svg = helper.generateG(width + margin.left + margin.right, height + margin.top + margin.bottom, margin);
+        helper.appendAxes(svg);
+        helper.appendGraphLabels(svg);
 
-        // Create and draw the visualization.
-        // Example:
-        svg.selectAll('circle')
-            .data(data)
-            .enter()
-            .append('circle')
-            .attr('cx', d => d.x)
-            .attr('cy', d => d.y)
-            .attr('r', d => d.radius)
-            .attr('fill', 'steelblue');
+        // Filter to get players with most goals
+        const topPlayersGoals = preproc.getTopPlayersGoals(data);
+        data = topPlayersGoals;
 
-        // Add axes, labels, legends, etc. if necessary.
+        const xScale = d3.scaleLinear();
+        const yScale = d3.scaleBand().padding([0.15]);
 
-        // Handle window resize.
-        window.addEventListener('resize', () => {
-            // Code to handle resizing.
-        });
-    }).catch(function(error) {
-        console.error('Error loading data:', error);
-    });
-}
+        helper.positionLabels(width, height, margin);
+        viz.updateXScale(xScale, data, width);
+        viz.updateYScale(yScale, data, height);
+        helper.drawXAxis(xScale, height);
+        helper.drawYAxis(yScale);
+        viz.drawBars(svg, xScale, yScale, topPlayersGoals);
+      });
+    }

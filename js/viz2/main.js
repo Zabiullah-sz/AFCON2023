@@ -2,6 +2,8 @@
 
 import * as d3 from 'd3';
 
+import playersData from '../../assets/data/players.csv';
+
 // Import other necessary modules here.
 
 export function initializeVisualization2() {
@@ -12,9 +14,9 @@ export function initializeVisualization2() {
 
     // Load your data.
     console.log("jello")
-    d3.csv('path_to_your_data.csv', d3.autoType).then(function(data) {
+    d3.csv(playersData).then(function(data) {
         // Preprocess data if necessary.
-
+        console.log("loadeddd", data)
         // Create SVG canvas.
         const svg = d3.select('#viz-container')
             .append('svg')
