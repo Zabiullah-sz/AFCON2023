@@ -43,8 +43,12 @@ import * as d3 from 'd3'
       .attr('fill', 'blue')
       .on('mouseover', function (event, d) {
         tip.show(d, this)
+        selectTicks(d.Player)
       })
-      .on('mouseout', tip.hide)
+      .on('mouseout', function () {
+        tip.hide()
+        unselectTicks()
+      })
   
       g.selectAll('.assist-label')
       .data(players)
@@ -58,3 +62,22 @@ import * as d3 from 'd3'
       .style('fill', 'white')
       .text(d => d.GoalsAndAssists)
     }
+
+/**
+ * Makes the font weight of the ticks texts with the given name and year bold.
+ *
+ * @param {string} name The name of the player associated with the tick text to make bold
+ */
+export function selectTicks (name) {
+  d3.select('.y.axis.goals-assists')
+    .selectAll('.tick text')
+    .style('font-weight', d => d === name ? 'bold' : null)
+}
+
+/**
+ * Returns the font weight of all ticks to normal.
+ */
+export function unselectTicks () {
+  d3.selectAll('.axis .tick text')
+    .style('font-weight', null)
+}

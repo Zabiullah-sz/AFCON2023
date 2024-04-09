@@ -31,30 +31,53 @@ import * as d3 from 'd3'
    * @param {string[]} players The names of the players, each corresponding to a bar
    * @param {*} tip The tooltip to show when each bar is hovered and hide when it's not
    */
-    export function drawBars (g, x, y, players, tip) {
-      g.selectAll('.bar')
-      .data(players)
-      .join('rect')
-      .attr('class', 'bar')
-      .attr('x', 0)
-      .attr('y', d => y(d.Player))
-      .attr('width', d => x(d.Assists))
-      .attr('height', y.bandwidth())
-      .attr('fill', 'blue')
-      .on('mouseover', function (event, d) {
-        tip.show(d, this)
-      })
-      .on('mouseout', tip.hide)
-  
-      g.selectAll('.assist-label')
-      .data(players)
-      .enter()
-      .append('text')
-      .attr('class', 'assist-label')
-      .attr('x', d => x(d.Assists))
-      .attr('y', d => y(d.Player) + y.bandwidth() / 2)
-      .attr('dx', -20)
-      .attr('dy', '0.35em')
-      .style('fill', 'white')
-      .text(d => d.Assists)
-    }
+  export function drawBars (g, x, y, players, tip) {
+    g.selectAll('.bar')
+    .data(players)
+    .join('rect')
+    .attr('class', 'bar')
+    .attr('x', 0)
+    .attr('y', d => y(d.Player))
+    .attr('width', d => x(d.Assists))
+    .attr('height', y.bandwidth())
+    .attr('fill', 'blue')
+    .on('mouseover', function (event, d) {
+      tip.show(d, this)
+      selectTicks(d.Player)
+    })
+    .on('mouseout', function () {
+      tip.hide()
+      unselectTicks()
+    })
+
+    g.selectAll('.assist-label')
+    .data(players)
+    .enter()
+    .append('text')
+    .attr('class', 'assist-label')
+    .attr('x', d => x(d.Assists))
+    .attr('y', d => y(d.Player) + y.bandwidth() / 2)
+    .attr('dx', -20)
+    .attr('dy', '0.35em')
+    .style('fill', 'white')
+    .text(d => d.Assists)
+  }
+
+/**
+ * Makes the font weight of the ticks texts with the given name and year bold.
+ *
+ * @param {string} name The name of the player associated with the tick text to make bold
+ */
+export function selectTicks (name) {
+  d3.select('.y.axis.assists')
+    .selectAll('.tick text')
+    .style('font-weight', d => d === name ? 'bold' : null)
+}
+
+/**
+ * Returns the font weight of all ticks to normal.
+ */
+export function unselectTicks () {
+  d3.selectAll('.axis .tick text')
+    .style('font-weight', null)
+}
