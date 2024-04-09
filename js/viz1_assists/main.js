@@ -11,7 +11,7 @@ import * as tooltip from '../common/tooltip.js';
 
 export function initializeVisualization1Assists() {
       // Define margins, sizes, and scales.
-      const margin = { top: 35, right: 35, bottom: 50, left: 150 };
+      const margin = { top: 70, right: 35, bottom: 50, left: 150 };
       const width = 800 - margin.left - margin.right;
       const height = 600 - margin.top - margin.bottom;
 

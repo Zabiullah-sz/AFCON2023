@@ -15,11 +15,12 @@ section h2 {
   }
   
   /* Center the content inside the sections */
-  section {
+  /* TODO: This code messes up the formatting in viz1 *\
+  /* section {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+  } */
   
   /* Center the SVG inside the div container */
   #viz3 {

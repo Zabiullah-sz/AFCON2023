@@ -59,7 +59,7 @@ export function generateG (width, height, margin) {
    */
   export function positionLabels (width, height, margin) {
     d3.select('.assists.title')
-      .attr('x', margin.left)
+      .attr('x', margin.left - 40)
       .attr('y', -20)
   
     d3.select('.x.axis-text.assists')
