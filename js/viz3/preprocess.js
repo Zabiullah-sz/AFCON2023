@@ -16,7 +16,7 @@ export function summarizeData(data) {
         if (item.Minutes < 90) {
             foulsPer90 = item.Fouls.toString();
         } else {
-            foulsPer90 = (item.Fouls / (item.Minutes / 90)).toPrecision(4);
+            foulsPer90 = (item.Fouls / (item.Minutes / 90)).toPrecision(2);
         }
         return { player: item.Player,
             country: item.Country,
