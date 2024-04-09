@@ -50,17 +50,20 @@ export function createScatterPlot(data, width, height) {
       .attr('r', 5)
       .style('fill', d => colorScale(d['Ronde'])) // Set color based on ronde value
       .style('opacity', 0.7)
-      .on('mouseover', (event, d) => {
-        d3.select('.tooltip')
-          .html(`<strong>${data[d].Pays}</strong><br>Shots Received: ${data[d].Tirs_reçus}<br>Goals Allowed: ${data[d].Buts_alloues}`)
-          .style('left', (d3.event.clientX ) + 'px')
-          .style('top', (d3.event.clientY ) + 'px')
-          .style('visibility', 'visible');
-          console.log(d)
+      .style('stroke', 'black') // Add black contour
+      .style('stroke-width', 1) 
+      .on('mouseover', function(d) {
+        tooltip.style('visibility', 'visible')
+          .html(`<strong>${d.Pays}</strong><br>Tirs reçus: ${d['Tirs_reçus']}<br>Buts alloués: ${d['Buts_alloues']}`)
+
+          .style('left', `${d3.event.pageX}px`)
+          .style('top', `${d3.event.pageY - 10}px`); // Adjust top position to be above the circle
       })
-      .on('mouseout', () => {
-        d3.select('.tooltip').style('visibility', 'hidden');
+      .on('mouseout', function() {
+        tooltip.style('visibility', 'hidden');
       });
+
+
 
   // Append axes
   svg.append('g')
@@ -70,9 +73,72 @@ export function createScatterPlot(data, width, height) {
   svg.append('g')
     .attr('transform', `translate(${margin.left}, 0)`)
     .call(d3.axisLeft(yScale));
+  
+  // Average
+  const avgTirs = d3.mean(data, d => +d['Tirs_reçus']);
+  const avgButs = d3.mean(data, d => +d['Buts_alloues']);
 
-  // Tooltip setup
-  const tooltip = d3.select('#example-graph').append('div')
+  svg.append('line')
+    .attr('x1', xScale(0))
+    .attr('y1', yScale(0))
+    .attr('x2', xScale(d3.max(data, d => +d['Tirs_reçus'])))
+    .attr('y2', yScale(d3.max(data, d => +d['Buts_alloues'])))
+    .style("stroke-dasharray", ("10,5"))
+    .style('stroke', 'red')
+    .style('stroke-width', 3);
+
+  // Legend
+  const legend = svg.append('g')
+    .attr('class', 'legend')
+    .attr('transform', `translate(${margin.left}, ${height - margin.bottom + 35})`);
+
+  const legendData = ['Carré d\'as', 'Quart de finales', 'Huitièmes de finales', 'Phase de groupes'];
+
+  const legendItem = legend.selectAll('.legend-item')
+    .data(legendData)
+    .enter().append('g')
+    .attr('class', 'legend-item')
+    .attr('transform', (d, i) => `translate(${i * 150}, 0)`);
+
+  legendItem.append('rect')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', 10)
+    .attr('height', 10)
+    .style('fill', d => colorScale(d));
+
+  legendItem.append('text')
+    .attr('x', 15)
+    .attr('y', 10)
+    .text(d => d)
+    .style('font-size', '12px');
+  
+  // Title
+  svg.append('text')
+    .attr('x', width / 2)
+    .attr('y', margin.top / 2)
+    .attr('text-anchor', 'middle')
+    .style('font-size', '24px')
+    .text('Buts alloués et tirs reçus par équipe dans le tournoi');
+  
+  // Axis titles
+  svg.append('text')
+    .attr('x', width / 2)
+    .attr('y', height - margin.bottom / 2+5)
+    .attr('text-anchor', 'middle')
+    .style('font-size', '14px')
+    .text('Tirs reçus');
+  svg.append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -height / 2)
+    .attr('y', margin.left / 2)
+    .attr('text-anchor', 'middle')
+    .style('font-size', '14px')
+    .text('Buts alloués');
+
+
+  // Create tooltip element
+  const tooltip = d3.select('#viz4').append('div')
     .attr('class', 'tooltip')
     .style('position', 'absolute')
     .style('visibility', 'hidden')
