@@ -50,4 +50,8 @@ const flagUrls = {
   "Zambie": zambieFlag,
 };
 
+export function getFlagUrl(countryName) {
+    return flagUrls[countryName];
+  }
+
 export default flagUrls;

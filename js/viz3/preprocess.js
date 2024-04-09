@@ -27,8 +27,8 @@ export function summarizeData(data) {
 }
 
 
-export function getTop7(data){
+export function getTop(data){
     return data
     .sort((playerA, playerB) => playerB.foulsPer90 - playerA.foulsPer90)
-    .slice(0, 10);
+    .slice(0, 20);
 }
