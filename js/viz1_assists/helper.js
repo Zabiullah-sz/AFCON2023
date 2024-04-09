@@ -82,6 +82,7 @@ export function drawXAxis (xScale, height) {
   d3.select('.x.axis.assists')
     .attr('transform', `translate(0, ${height})`)
     .call(d3.axisBottom(xScale).ticks(3))
+    .style('font-size', 12)
 }
   
 /**
@@ -92,5 +93,6 @@ export function drawXAxis (xScale, height) {
 export function drawYAxis (yScale) {
   d3.select('.y.axis.assists')
     .call(d3.axisLeft(yScale))
+    .style('font-size', 12)
 }
   
