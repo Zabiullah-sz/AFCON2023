@@ -1,46 +1,112 @@
 'use strict';
 
 import * as d3 from 'd3';
+import playersData from '../../assets/data/players.csv';
+import { summarizeData, getTop7 } from './preprocess.js';
+import d3Tip from 'd3-tip';
+import flagUrls from '../common/flags.js';
 
-// Import other necessary modules here.
+
+
+// Function to retrieve the flag URL
+function getFlagUrl(countryName) {
+    return flagUrls[countryName] || '../../assets/flags/default.png'; // Provide a default if no match is found
+  }
 
 export function initializeVisualization3() {
-    // Define margins, sizes, and scales.
-    const margin = { top: 35, right: 35, bottom: 35, left: 35 };
-    const width = 800 - margin.left - margin.right;
-    const height = 600 - margin.top - margin.bottom;
+    const width = 460;
+    const height = 460;
 
-    // Load your data.
-    console.log("jello")
-    d3.csv('path_to_your_data.csv', d3.autoType).then(function(data) {
-        // Preprocess data if necessary.
+    const svg = d3.select('#viz3')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height);
 
-        // Create SVG canvas.
-        const svg = d3.select('#viz-container')
-            .append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+    d3.csv(playersData, d3.autoType).then(function(fullData) {
+        const data = getTop7(summarizeData(fullData));
+        console.log(data)
 
-        // Create and draw the visualization.
-        // Example:
-        svg.selectAll('circle')
+        const color = d3.scaleOrdinal(d3.schemeSet1);
+
+        const size = d3.scaleLinear()
+            .domain([0, d3.max(data, d => +d.foulsPer90)])
+            .range([7, 55]);
+
+        const tip = d3Tip()
+            .attr('class', 'd3-tip')
+            .html(d => `${d.Player}: ${d.foulsPer90} fouls per 90 minutes`);
+
+        svg.call(tip);
+
+        const defs = svg.append('defs');
+
+        data.forEach(d => {
+            defs.append('pattern')
+                .attr('id', `flag-${d.country.replace(/\s+/g, '-')}`)
+                .attr('width', '100%')
+                .attr('height', '100%')
+                .attr('patternContentUnits', 'objectBoundingBox')
+                .append('image')
+                .attr('href', getFlagUrl(d.country))
+                .attr('width', 1)
+                .attr('height', 1)
+                .attr('preserveAspectRatio', 'xMidYMid slice');
+        });
+
+        let node = svg.selectAll('circle')
             .data(data)
             .enter()
             .append('circle')
-            .attr('cx', d => d.x)
-            .attr('cy', d => d.y)
-            .attr('r', d => d.radius)
-            .attr('fill', 'steelblue');
+            .attr('class', 'node')
+            .attr('r', d => size(d.foulsPer90))
+            .attr('cx', width / 2)
+            .attr('cy', height / 2)
+            .style('fill', d => color(d.country))
+            .style('fill-opacity', 0.8)
+            .attr('stroke', 'black')
+            .style('stroke-width', 1)
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide)
+            .style('fill', d => `url(#flag-${d.country.replace(/\s+/g, '-')})`);
 
-        // Add axes, labels, legends, etc. if necessary.
+        const drag = d3.drag()
+            .on('start', dragstarted)
+            .on('drag', dragged)
+            .on('end', dragended);
 
-        // Handle window resize.
-        window.addEventListener('resize', () => {
-            // Code to handle resizing.
-        });
-    }).catch(function(error) {
-        console.error('Error loading data:', error);
+        node.call(drag);
+
+        let simulation = d3.forceSimulation()
+            .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('charge', d3.forceManyBody().strength(0.1))
+            .force('collide', d3.forceCollide().strength(0.2).radius(d => size(d.foulsPer90) + 3).iterations(1));
+
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+            // Activate the custom force to pull nodes back to the center
+            simulation.force('x', d3.forceX(width / 2).strength(0.02))
+                      .force('y', d3.forceY(height / 2).strength(0.02));
+        }
+
+        simulation
+            .nodes(data)
+            .on('tick', () => {
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+            });
     });
 }
