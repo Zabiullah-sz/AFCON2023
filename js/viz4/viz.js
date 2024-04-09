@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
+import d3Tip from 'd3-tip';
 
-export function createScatterPlot(data, width, height) {
+export function createScatterPlot(data, playerData, width, height) {
   const svg = d3.select('#viz4').append('svg')
     .attr('width', width)
     .attr('height', height);
@@ -41,29 +42,55 @@ export function createScatterPlot(data, width, height) {
     .selectAll('line')
     .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
 
+    const tip = d3Tip()
+    .attr('class', 'd3-tip-viz4')
+    .html(d => {
+      const country = d.Pays;
+      const goalkeepers = playerData.filter(player => player.Pays === country);
+  
+      let tooltipContent = `<strong>${d.Pays}</strong><br>Shots Received: ${d.Tirs_reçus}<br>Goals Allowed: ${d.Buts_alloues}<br>`;
+  
+      if (goalkeepers.length > 0) {
+        const goalieLabel = goalkeepers.length > 1 ? 'Gardiens de but' : 'Gardien de but';
+        tooltipContent += `<strong>${goalieLabel}:</strong><br>`;
+        goalkeepers.forEach(goalie => {
+          tooltipContent += `- ${goalie.Gardien_de_but}<br>% Arrêts: ${goalie['%_Arrêts']}<br>Jeux Blancs: ${goalie.Jeux_blancs}<br>`;
+        });
+      }
+  
+      return tooltipContent;
+    })
+    .style('position', 'absolute')
+    .style('background-color', 'rgba(255, 255, 255, 0.9)')
+    .style('padding', '10px')
+    .style('border-radius', '5px')
+    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
+    .style('font-family', 'Arial, sans-serif')
+    .style('font-size', '12px');
+    svg.call(tip);
+
+
   // Append circles for data points
   svg.selectAll('circle')
     .data(data)
     .enter().append('circle')
       .attr('cx', d => xScale(+d['Tirs_reçus']))
       .attr('cy', d => yScale(+d['Buts_alloues']))
-      .attr('r', 5)
-      .style('fill', d => colorScale(d['Ronde'])) // Set color based on ronde value
+      .attr('r', 12)
+      .style('fill', d => colorScale(d['Ronde']))
       .style('opacity', 0.7)
-      .style('stroke', 'black') // Add black contour
+      .style('stroke', 'black')
       .style('stroke-width', 1) 
-      .on('mouseover', function(d) {
-        tooltip.style('visibility', 'visible')
-          .html(`<strong>${d.Pays}</strong><br>Tirs reçus: ${d['Tirs_reçus']}<br>Buts alloués: ${d['Buts_alloues']}`)
+      .on('mouseover', (event, d) => {
+        const samePositionPoints = data.filter(point => +point['Tirs_reçus'] === +d['Tirs_reçus'] && +point['Buts_alloues'] === +d['Buts_alloues']);
 
-          .style('left', `${d3.event.pageX}px`)
-          .style('top', `${d3.event.pageY - 10}px`); // Adjust top position to be above the circle
+        // Show tooltip for each data point at the same position
+        samePositionPoints.forEach(point => {
+          console.log('duplicate')
+          tip.show(point, event.currentTarget);
+        });
       })
-      .on('mouseout', function() {
-        tooltip.style('visibility', 'hidden');
-      });
-
-
+      .on('mouseout', tip.hide);
 
   // Append axes
   svg.append('g')
@@ -73,8 +100,8 @@ export function createScatterPlot(data, width, height) {
   svg.append('g')
     .attr('transform', `translate(${margin.left}, 0)`)
     .call(d3.axisLeft(yScale));
-  
-  // Average
+
+      // Average
   const avgTirs = d3.mean(data, d => +d['Tirs_reçus']);
   const avgButs = d3.mean(data, d => +d['Buts_alloues']);
 
@@ -137,15 +164,4 @@ export function createScatterPlot(data, width, height) {
     .text('Buts alloués');
 
 
-  // Create tooltip element
-  const tooltip = d3.select('#viz4').append('div')
-    .attr('class', 'tooltip')
-    .style('position', 'absolute')
-    .style('visibility', 'hidden')
-    .style('background-color', 'rgba(255, 255, 255, 0.9)')
-    .style('padding', '10px')
-    .style('border-radius', '5px')
-    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
-    .style('font-family', 'Arial, sans-serif')
-    .style('font-size', '12px');
 }

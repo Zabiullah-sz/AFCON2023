@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
+import d3Tip from 'd3-tip';
 
 export function createScatterPlot(data, width, height) {
-    console.log(data)
   const svg = d3.select('#viz5').append('svg')
     .attr('width', width)
     .attr('height', height);
@@ -42,27 +42,47 @@ export function createScatterPlot(data, width, height) {
     .selectAll('line')
     .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
 
+
+    const tip = d3Tip()
+    .attr('class', 'd3-tip-viz5')
+    .html(d => {
+  
+      let tooltipContent = `<strong>${d.Pays}</strong><br>Tirs effectués: ${d.Tirs}<br>Buts marqués: ${d.Buts}<br>% D'efficacité: ${d.Ratio}<br>`;
+  
+      return tooltipContent;
+    })
+
+    .style('position', 'absolute')
+    .style('background-color', 'rgba(255, 255, 255, 0.9)')
+    .style('padding', '10px')
+    .style('border-radius', '5px')
+    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
+    .style('font-family', 'Arial, sans-serif')
+    .style('font-size', '12px');
+    svg.call(tip);
+
+
   // Append circles for data points
   svg.selectAll('circle')
     .data(data)
     .enter().append('circle')
       .attr('cx', d => xScale(+d['Tirs']))
       .attr('cy', d => yScale(+d['Buts']))
-      .attr('r', 5)
+      .attr('r', 12)
       .style('fill', d => colorScale(d['Ronde'])) // Set color based on ronde value
       .style('opacity', 0.7)
       .style('stroke', 'black') // Add black contour
       .style('stroke-width', 1) 
       .on('mouseover', (event, d) => {
-        d3.select('.tooltip')
-          .html(`<strong>${data[d].Pays}</strong><br>Shots Received: ${data[d].Tirs}<br>Goals Allowed: ${data[d].Buts}`)
-          .style('left', (d3.event.clientX ) + 'px')
-          .style('top', (d3.event.clientY ) + 'px')
-          .style('visibility', 'visible');
+        const samePositionPoints = data.filter(point => +point['Tirs'] === +d['Tirs'] && +point['Buts'] === +d['Buts']);
+
+        // Show tooltip for each data point at the same position
+        samePositionPoints.forEach(point => {
+          console.log('duplicate')
+          tip.show(point, event.currentTarget);
+        });
       })
-      .on('mouseout', () => {
-        d3.select('.tooltip').style('visibility', 'hidden');
-      });
+      .on('mouseout', tip.hide);
 
   // Append axes
   svg.append('g')
@@ -136,16 +156,4 @@ export function createScatterPlot(data, width, height) {
     .attr('text-anchor', 'middle')
     .style('font-size', '14px')
     .text('Buts marqués');
-
-  // Tooltip setup
-  const tooltip = d3.select('#viz5').append('div')
-    .attr('class', 'tooltip')
-    .style('position', 'absolute')
-    .style('visibility', 'hidden')
-    .style('background-color', 'rgba(255, 255, 255, 0.9)')
-    .style('padding', '10px')
-    .style('border-radius', '5px')
-    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
-    .style('font-family', 'Arial, sans-serif')
-    .style('font-size', '12px');
 }
