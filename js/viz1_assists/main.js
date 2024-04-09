@@ -8,7 +8,7 @@ import playersData from '../../assets/data/players.csv';
 import * as preproc from '../common/preprocessing.js';
 import * as viz from './viz.js';
 import * as helper from './helper.js';
-import * as tooltip from './tooltip.js';
+import * as tooltip from '../common/tooltip.js';
 
 export function initializeVisualization1Assists() {
       // Define margins, sizes, and scales.
