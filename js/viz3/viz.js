@@ -5,14 +5,12 @@ import { applyDrag } from './drag.js';
 import { getFlagUrl } from '../common/flags.js';
 import { createSimulation } from './simulation.js';
 
-// This function contains the main drawing logic for the visualization
 export function drawVisualization(svg, data, width, height) {
   const sizeScale = createSizeScale(data);
   const tip = createTooltip();
 
   svg.call(tip);
 
-  // Define patterns for flags
   const defs = svg.append('defs');
   data.forEach(d => {
     const patternId = d.country === "Côte d'Ivoire" ? 'cote-divoire-flag' : `flag-${d.country.replace(/\s+/g, '-')}`;
@@ -28,7 +26,6 @@ export function drawVisualization(svg, data, width, height) {
       .attr('preserveAspectRatio', 'xMidYMid slice');
   });
 
-  // Create circle nodes for the data points
   let node = svg.selectAll('.circle')
     .data(data)
     .enter()
@@ -49,7 +46,6 @@ export function drawVisualization(svg, data, width, height) {
   const simulation = createSimulation(width, height, sizeScale);
   node.call(applyDrag(simulation));
 
-  // Update the positions after each simulation 'tick'
   simulation.nodes(data).on('tick', () => {
     node.attr('cx', d => d.x)
       .attr('cy', d => d.y);
