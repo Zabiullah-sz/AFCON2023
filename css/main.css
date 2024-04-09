@@ -1,9 +1,66 @@
+/* Add this to your main.css file */
 #viz1-container {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 .viz {
-    float: left;
-    box-sizing: border-box;
+  float: left;
+  box-sizing: border-box;
+}
+
+/* Center the section titles */
+section h2 {
+    text-align: center;
   }
+  
+  /* Center the content inside the sections */
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Center the SVG inside the div container */
+  #viz3 {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* This makes sure that the SVG is not wider than its parent */
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+.d3-tip-viz3 {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 2px;
+  pointer-events: none; /* Ignore mouse events */
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip-viz3:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Style northward tooltips differently */
+.d3-tip-viz3.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
