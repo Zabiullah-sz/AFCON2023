@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import d3Tip from 'd3-tip';
 
 export function createScatterPlot(data, width, height) {
     console.log(data)
@@ -42,6 +43,20 @@ export function createScatterPlot(data, width, height) {
     .selectAll('line')
     .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
 
+    const tip = d3Tip()
+    .attr('class', 'd3-tip-viz4')
+    .html(d => `<strong>${d.Pays}</strong><br>Shots Received: ${d.Tirs}<br>Goals Allowed: ${d.Buts}`)
+    .style('position', 'absolute')
+    .style('background-color', 'rgba(255, 255, 255, 0.9)')
+    .style('padding', '10px')
+    .style('border-radius', '5px')
+    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
+    .style('font-family', 'Arial, sans-serif')
+    .style('font-size', '12px');
+;
+
+    svg.call(tip);
+
   // Append circles for data points
   svg.selectAll('circle')
     .data(data)
@@ -54,15 +69,9 @@ export function createScatterPlot(data, width, height) {
       .style('stroke', 'black') // Add black contour
       .style('stroke-width', 1) 
       .on('mouseover', (event, d) => {
-        d3.select('.tooltip')
-          .html(`<strong>${data[d].Pays}</strong><br>Shots Received: ${data[d].Tirs}<br>Goals Allowed: ${data[d].Buts}`)
-          .style('left', (d3.event.clientX ) + 'px')
-          .style('top', (d3.event.clientY ) + 'px')
-          .style('visibility', 'visible');
+        tip.show(d, event.currentTarget);
       })
-      .on('mouseout', () => {
-        d3.select('.tooltip').style('visibility', 'hidden');
-      });
+      .on('mouseout', tip.hide);
 
   // Append axes
   svg.append('g')
@@ -136,16 +145,4 @@ export function createScatterPlot(data, width, height) {
     .attr('text-anchor', 'middle')
     .style('font-size', '14px')
     .text('Buts marqués');
-
-  // Tooltip setup
-  const tooltip = d3.select('#viz5').append('div')
-    .attr('class', 'tooltip')
-    .style('position', 'absolute')
-    .style('visibility', 'hidden')
-    .style('background-color', 'rgba(255, 255, 255, 0.9)')
-    .style('padding', '10px')
-    .style('border-radius', '5px')
-    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
-    .style('font-family', 'Arial, sans-serif')
-    .style('font-size', '12px');
 }
