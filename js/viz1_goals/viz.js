@@ -60,6 +60,7 @@ export function drawBars (g, x, y, players, tip) {
   .attr('dx', -20)
   .attr('dy', '0.35em')
   .style('fill', 'white')
+  .text(d => d.Goals)
 }
 
   /**
