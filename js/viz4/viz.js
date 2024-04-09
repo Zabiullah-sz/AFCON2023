@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import d3Tip from 'd3-tip';
 
-export function createScatterPlot(data, width, height) {
+export function createScatterPlot(data, playerData, width, height) {
   const svg = d3.select('#viz4').append('svg')
     .attr('width', width)
     .attr('height', height);
@@ -44,7 +44,22 @@ export function createScatterPlot(data, width, height) {
 
     const tip = d3Tip()
     .attr('class', 'd3-tip-viz4')
-    .html(d => `<strong>${d.Pays}</strong><br>Shots Received: ${d.Tirs_reçus}<br>Goals Allowed: ${d.Buts_alloues}`)
+    .html(d => {
+      const country = d.Pays;
+      const goalkeepers = playerData.filter(player => player.Pays === country);
+  
+      let tooltipContent = `<strong>${d.Pays}</strong><br>Shots Received: ${d.Tirs_reçus}<br>Goals Allowed: ${d.Buts_alloues}<br>`;
+  
+      if (goalkeepers.length > 0) {
+        const goalieLabel = goalkeepers.length > 1 ? 'Gardiens de but' : 'Gardien de but';
+        tooltipContent += `<strong>${goalieLabel}:</strong><br>`;
+        goalkeepers.forEach(goalie => {
+          tooltipContent += `- ${goalie.Gardien_de_but}<br>% Arrêts: ${goalie['%_Arrêts']}<br>Jeux Blancs: ${goalie.Jeux_blancs}<br>`;
+        });
+      }
+  
+      return tooltipContent;
+    })
     .style('position', 'absolute')
     .style('background-color', 'rgba(255, 255, 255, 0.9)')
     .style('padding', '10px')
@@ -52,8 +67,6 @@ export function createScatterPlot(data, width, height) {
     .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
     .style('font-family', 'Arial, sans-serif')
     .style('font-size', '12px');
-;
-
     svg.call(tip);
 
 
@@ -64,12 +77,18 @@ export function createScatterPlot(data, width, height) {
       .attr('cx', d => xScale(+d['Tirs_reçus']))
       .attr('cy', d => yScale(+d['Buts_alloues']))
       .attr('r', 5)
-      .style('fill', d => colorScale(d['Ronde'])) // Set color based on ronde value
+      .style('fill', d => colorScale(d['Ronde']))
       .style('opacity', 0.7)
-      .style('stroke', 'black') // Add black contour
+      .style('stroke', 'black')
       .style('stroke-width', 1) 
       .on('mouseover', (event, d) => {
-        tip.show(d, event.currentTarget);
+        const samePositionPoints = data.filter(point => +point['Tirs_reçus'] === +d['Tirs_reçus'] && +point['Buts_alloues'] === +d['Buts_alloues']);
+
+        // Show tooltip for each data point at the same position
+        samePositionPoints.forEach(point => {
+          console.log('duplicate')
+          tip.show(point, event.currentTarget);
+        });
       })
       .on('mouseout', tip.hide);
 
