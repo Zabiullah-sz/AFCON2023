@@ -1,0 +1,9 @@
+#viz1-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.viz {
+    float: left;
+    box-sizing: border-box;
+  }

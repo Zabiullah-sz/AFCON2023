@@ -9,7 +9,7 @@ import * as d3 from 'd3'
  * @returns {*} The d3 Selection for the created g element
  */
 export function generateG (width, height, margin) {
-    return d3.select('#viz1')
+    return d3.select('#viz1_assists')
       .append('svg')
       .attr('width', width)
       .attr('height', height)
@@ -24,30 +24,10 @@ export function generateG (width, height, margin) {
    */
   export function appendAxes (g) {
     g.append('g')
-      .attr('class', 'x axis')
+      .attr('class', 'x axis assists')
   
     g.append('g')
-      .attr('class', 'y axis')
-  }
-  
-  /**
-   * Appends the labels for the title of the graph, the x axis and the y axis.
-   *
-   * @param {*} g The d3 Selection of the graph's g SVG element
-   */
-  export function appendGraphLabelsGoals (g) {
-    g.append('text')
-      .text('Meilleurs buteurs du tournoi (minimum 2 buts)')
-      .attr('class', 'title')
-      .attr('font-size', 20)
-  
-    g.append('text')
-      .text('Buts')
-      .attr('class', 'x axis-text')
-  
-    g.append('text')
-      .text('Joueur')
-      .attr('class', 'y axis-text')
+      .attr('class', 'y axis assists')
   }
 
   /**
@@ -55,40 +35,20 @@ export function generateG (width, height, margin) {
    *
    * @param {*} g The d3 Selection of the graph's g SVG element
    */
-    export function appendGraphLabelsAssists (g) {
+    export function appendGraphLabels (g) {
       g.append('text')
         .text('Meilleurs passeurs du tournoi (minimum 2 aides)')
-        .attr('class', 'title')
+        .attr('class', 'assists title')
         .attr('font-size', 20)
     
       g.append('text')
         .text('Aides')
-        .attr('class', 'x axis-text')
+        .attr('class', 'x axis-text assists')
     
       g.append('text')
         .text('Joueur')
-        .attr('class', 'y axis-text')
+        .attr('class', 'y axis-text assists')
     }
-
-  /**
-   * Appends the labels for the title of the graph, the x axis and the y axis.
-   *
-   * @param {*} g The d3 Selection of the graph's g SVG element
-   */
-        export function appendGraphLabelsGoalsAndAssists (g) {
-          g.append('text')
-            .text('Meilleurs marqueurs du tournoi (minimum 3 buts + aides)')
-            .attr('class', 'title')
-            .attr('font-size', 20)
-        
-          g.append('text')
-            .text('Buts + Aides')
-            .attr('class', 'x axis-text')
-        
-          g.append('text')
-            .text('Joueur')
-            .attr('class', 'y axis-text')
-        }
   
   /**
    * Positions the title label, x axis label and y axis label on the graph.
@@ -98,30 +58,18 @@ export function generateG (width, height, margin) {
    * @param {object} margin The desired margins around the graph
    */
   export function positionLabels (width, height, margin) {
-    d3.select('.title')
+    d3.select('.assists.title')
       .attr('x', margin.left)
       .attr('y', -20)
   
-    d3.select('.x.axis-text')
+    d3.select('.x.axis-text.assists')
       .attr('x', width / 2)
       .attr('y', height + margin.bottom)
   
-    d3.select('.y.axis-text')
+    d3.select('.y.axis-text.assists')
       .attr('transform', 'rotate(-90)')
       .attr('x', -margin.left - 120)
       .attr('y', -margin.left + 20)
-  }
-  
-  /**
-   * Draws the x axis at the bottom of the plot.
-   *
-   * @param {*} xScale The scale to use for the x axis
-   * @param {number} height The height of the graph
-   */
-  export function drawXAxisGoals (xScale, height) {
-    d3.select('.x.axis')
-      .attr('transform', `translate(0, ${height})`)
-      .call(d3.axisBottom(xScale).ticks(5))
   }
 
   /**
@@ -130,8 +78,8 @@ export function generateG (width, height, margin) {
    * @param {*} xScale The scale to use for the x axis
    * @param {number} height The height of the graph
    */
-    export function drawXAxisAssists (xScale, height) {
-      d3.select('.x.axis')
+    export function drawXAxis (xScale, height) {
+      d3.select('.x.axis.assists')
         .attr('transform', `translate(0, ${height})`)
         .call(d3.axisBottom(xScale).ticks(3))
     }
@@ -142,7 +90,7 @@ export function generateG (width, height, margin) {
    * @param {*} yScale The scale to use for the y axis
    */
   export function drawYAxis (yScale) {
-    d3.select('.y.axis')
+    d3.select('.y.axis.assists')
       .call(d3.axisLeft(yScale))
   }
   
