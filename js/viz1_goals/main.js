@@ -1,18 +1,17 @@
 'use strict';
 
 import * as d3 from 'd3';
-import d3Tip from 'd3-tip';
 
 // Import other necessary modules here.
 import playersData from '../../assets/data/players.csv';
 import * as preproc from '../common/preprocessing.js';
-import * as viz from '../viz1/viz.js';
-import * as helper from '../viz1/helper.js';
-import * as tooltip from '../viz1/tooltip.js';
+import * as viz from './viz.js';
+import * as helper from './helper.js';
+import * as tooltip from '../common/tooltip.js';
 
-export function initializeVisualization1() {
+export function initializeVisualization1Goals() {
       // Define margins, sizes, and scales.
-      const margin = { top: 35, right: 35, bottom: 50, left: 150 };
+      const margin = { top: 70, right: 35, bottom: 50, left: 150 };
       const width = 800 - margin.left - margin.right;
       const height = 600 - margin.top - margin.bottom;
 
@@ -35,6 +34,10 @@ export function initializeVisualization1() {
         viz.updateYScale(yScale, data, height);
         helper.drawXAxis(xScale, height);
         helper.drawYAxis(yScale);
-        viz.drawBars(svg, xScale, yScale, topPlayersGoals);
+
+        const tip = tooltip.getContents();
+        svg.call(tip);
+
+        viz.drawBars(svg, xScale, yScale, topPlayersGoals, tip);
       });
     }
