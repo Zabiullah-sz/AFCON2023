@@ -31,7 +31,7 @@ export function updateXScale (scale, data, width) {
    * @param {string[]} players The names of the players, each corresponding to a bar
    * @param {*} tip The tooltip to show when each bar is hovered and hide when it's not
    */
-  export function drawBars (g, x, y, players) {
+  export function drawBars (g, x, y, players, tip) {
     g.selectAll('.bar')
     .data(players)
     .join('rect')
@@ -41,10 +41,10 @@ export function updateXScale (scale, data, width) {
     .attr('width', d => x(d.Goals))
     .attr('height', y.bandwidth())
     .attr('fill', 'blue')
-    // .on('mouseover', function (event, d) {
-    //   tip.show(d, this)
-    // })
-    // .on('mouseout', tip.hide)
+    .on('mouseover', function (event, d) {
+      tip.show(d, this)
+    })
+    .on('mouseout', tip.hide)
 
     g.selectAll('.goal-label')
     .data(players)

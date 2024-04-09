@@ -1,7 +1,6 @@
 'use strict';
 
 import * as d3 from 'd3';
-import d3Tip from 'd3-tip';
 
 // Import other necessary modules here.
 import playersData from '../../assets/data/players.csv';
@@ -35,6 +34,10 @@ export function initializeVisualization1Assists() {
         viz.updateYScale(yScale, data, height);
         helper.drawXAxis(xScale, height);
         helper.drawYAxis(yScale);
-        viz.drawBars(svg, xScale, yScale, topPlayersAssists);
+
+        const tip = tooltip.getContents();
+        svg.call(tip);
+        
+        viz.drawBars(svg, xScale, yScale, topPlayersAssists, tip);
       });
     }

@@ -1,14 +1,19 @@
+import d3Tip from 'd3-tip'
+
 /**
  * Defines the contents of the tooltip.
  *
- * @param {object} d The data associated to the hovered element
  * @returns {string} The tooltip contents
  */
-export function getContents (d) {
-    return `
-      <div style="font-weight: normal;">
-        <div><strong>Joueur: </strong>${d.Player}</div>
-        <div><strong>Pays: </strong>${d.Country}</div>
-      </div>
-    `
-  }
+export function getContents () {
+  return d3Tip()
+    .attr('class', 'd3-tip-viz3')
+    .html(d => {
+      return `
+        <div style="font-weight: normal;">
+          <div><strong>Joueur: </strong>${d.Player}</div>
+          <div><strong>Pays: </strong>${d.Country}</div>
+        </div>
+      `
+    })  
+}
