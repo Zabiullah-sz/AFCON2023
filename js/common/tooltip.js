@@ -25,7 +25,7 @@ export function getContents () {
  */
 export function getContentsViz2 () {
   return d3Tip()
-    .attr('class', 'd3-tip-viz3')
+    .attr('class', 'd3-tip-viz3 d3-tip')
     .html(d => {
       return `
         <div style="font-weight: normal;">
