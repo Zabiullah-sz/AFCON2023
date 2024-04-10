@@ -9,9 +9,9 @@ import * as legend from '../viz2/legend.js'
 import * as tooltip from '../common/tooltip.js'
 
 export function initializeVisualization2() {
-    const margin = { top: 150, right: 75, bottom: 35, left: 230 };
-    const width = 1500 - margin.left - margin.right;
-    const height = 1000 - margin.top - margin.bottom;
+    const margin = { top: 100, right: 75, bottom: 35, left: 230 };
+    const width = 900 - margin.left - margin.right;
+    const height = 830 - margin.top - margin.bottom;
 
     d3.select('#viz').select('svg').remove();
     d3.select('.d3-tip').remove();

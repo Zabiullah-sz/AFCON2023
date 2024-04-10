@@ -1,14 +1,34 @@
 import * as d3 from 'd3';
 import d3Tip from 'd3-tip';
+import { initializeVisualization5 } from '../viz5/main.js';
+import { initializeVisualization4 } from '../viz4/main.js';
 
 export function createScatterPlot(data, playerData, width, height) {
 
-  d3.select('#viz').select('svg').remove();
+    const button = d3.select('#viz').append('button')
+      .text('Statistiques offensives')
+      .style('position', 'absolute')
+      .style('top', '50px')
+      .style('left', '50px')
+      .style('background-color', 'lightgreen')
+      .on('click', initializeVisualization5);
+      
+
+      const button2 = d3.select('#viz').append('button')
+      .text('Statistiques défensives')
+      .style('position', 'absolute')
+      .style('top', '26px')
+      .style('left', '50px')
+      .style('background-color', 'lightblue')
+      .on('click', initializeVisualization4);
+  
+    d3.select('#viz').select('svg').remove();
   d3.select('.d3-tip').remove();
 
   const svg = d3.select('#viz').append('svg')
     .attr('width', width)
-    .attr('height', height);
+    .attr('height', height)
+    .attr('transform', 'translate(0, 100)');
 
   const margin = { top: 50, right: 50, bottom: 50, left: 50 };
   const graphWidth = width - margin.left - margin.right;

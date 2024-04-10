@@ -26,7 +26,7 @@ let elements = [];
 stickyBits(elements, { stickyBitStickyOffset: 0 });
 console.log("jello")
 // Initializes the scroller and the visualizations.
-initializeVisualization2('#viz2');
+
 scroller([[
   () => initializeVisualization1Goals(),
   () => initializeVisualization1Assists(),
