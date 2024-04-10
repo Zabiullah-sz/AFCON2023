@@ -9,7 +9,7 @@ export function initializeVisualization5() {
   Promise.all([
     d3.csv(playerData)
   ]).then(function(data) {
-    const playerData = data[0]; // Data from defense_team.csv
+    const playerData = data[0]; //Data from defense_team.csv
     // Convert string numbers to numeric values
     // Specify dimensions for the scatter plot
     const width = 750;
