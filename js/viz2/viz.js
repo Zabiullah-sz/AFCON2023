@@ -71,16 +71,17 @@ export function updateYScale (scale, data, height) {
     })
 
     // Add labels
-    g.selectAll(".label")
+    g.selectAll('.label')
     .data(teams)
-    .enter().append("text")
-    .attr("class", "label")
-    .attr("x", d => 0 - 20)
-    .attr("y", d => y(d.Pays) + y.bandwidth() / 2)
+    .enter()
+    .append('text')
+    .attr('class', 'label')
+    .attr('x', d => 0 - 20)
+    .attr('y', d => y(d.Pays) + y.bandwidth() / 2)
     .attr('font-size', 24)
     .style('text-anchor', 'end')
     .text(d => d.Pays)
-    .attr("dy", "0.35em");
+    .attr('dy', '0.35em')
 
     g.selectAll('.goal-allowed')
     .data(teams)

@@ -46,11 +46,8 @@ export function appendGraphLabels (g) {
 /**
  * Positions the title label, x axis label and y axis label on the graph.
  *
- * @param {number} width The width of the graph
- * @param {number} height The height of the graph
- * @param {object} margin The desired margins around the graph
  */
-export function positionLabels (width, height, margin) {
+export function positionLabels () {
     d3.select('.title')
       .attr('x', 500)
       .attr('y', -125)
