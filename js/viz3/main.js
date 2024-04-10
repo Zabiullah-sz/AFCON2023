@@ -4,7 +4,7 @@ import { drawVisualization } from './viz.js';
 import { summarizeData, getTop } from './preprocess.js';
 import playersData from '../../assets/data/players.csv';
 
-function initializeVisualization3() {
+export function initializeVisualization3() {
   const width = 900;
   const height = 600;
 
@@ -19,4 +19,3 @@ function initializeVisualization3() {
   });
 }
 
-initializeVisualization3();
