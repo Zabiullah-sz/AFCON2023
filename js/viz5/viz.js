@@ -91,12 +91,14 @@ export function createScatterPlot(data, width, height) {
   // Append axes
   svg.append('g')
     .attr('transform', `translate(0, ${height - margin.bottom})`)
-    .call(d3.axisBottom(xScale));
+    .call(d3.axisBottom(xScale))
+    .style('font-size', 12);
 
   // Title
   svg.append('g')
     .attr('transform', `translate(${margin.left}, 0)`)
-    .call(d3.axisLeft(yScale));
+    .call(d3.axisLeft(yScale))
+    .style('font-size', 12);
 
   svg.append('text')
     .attr('x', width / 2)

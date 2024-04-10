@@ -35,8 +35,8 @@ export function updateYScale (scale, data, height) {
    * @param {string[]} players The names of the players, each corresponding to a bar
    * @param {*} tip The tooltip to show when each bar is hovered and hide when it's not
    */
- export function drawBars (g, x, y, teams, width) {
-    // Buts marqués
+ export function drawBars (g, x, y, teams, tip) {
+    // Goals scored
     g.selectAll('.bar')
     .data(teams)
     .join('rect')
@@ -46,8 +46,14 @@ export function updateYScale (scale, data, height) {
     .attr('width', d => Math.abs(x(d.Buts_marques) - x(0)))
     .attr('height', y.bandwidth())
     .attr('fill', 'green')
+    .on('mouseover', function (event, d) {
+      tip.show(d, this)
+    })
+    .on('mouseout', function () {
+      tip.hide()
+    })
     
-    // Buts alloués
+    // Goals allowed
     g.selectAll('.neg')
     .data(teams)
     .join('rect')
@@ -57,23 +63,25 @@ export function updateYScale (scale, data, height) {
     .attr('width', d => Math.abs(x(-d.Buts_alloues) - x(0)))
     .attr('height', y.bandwidth())
     .attr('fill', 'red')
-
-    // .on('mouseover', function (event, d) {
-    //   tip.show(d, this)
-    // })
-    // .on('mouseout', tip.hide)
+    .on('mouseover', function (event, d) {
+      tip.show(d, this)
+    })
+    .on('mouseout', function () {
+      tip.hide()
+    })
 
     // Add labels
-    g.selectAll(".label")
+    g.selectAll('.label')
     .data(teams)
-    .enter().append("text")
-    .attr("class", "label")
-    .attr("x", d => 0 - 20)
-    .attr("y", d => y(d.Pays) + y.bandwidth() / 2)
+    .enter()
+    .append('text')
+    .attr('class', 'label')
+    .attr('x', d => 0 - 20)
+    .attr('y', d => y(d.Pays) + y.bandwidth() / 2)
     .attr('font-size', 24)
     .style('text-anchor', 'end')
     .text(d => d.Pays)
-    .attr("dy", "0.35em");
+    .attr('dy', '0.35em')
 
     g.selectAll('.goal-allowed')
     .data(teams)
