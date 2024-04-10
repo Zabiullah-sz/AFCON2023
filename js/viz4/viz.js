@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import d3Tip from 'd3-tip';
+import * as helper from './helper.js'
 
 export function createScatterPlot(data, playerData, width, height) {
 
@@ -107,10 +108,6 @@ export function createScatterPlot(data, playerData, width, height) {
     .call(d3.axisLeft(yScale))
     .style('font-size', 12);
 
-      // Average
-  const avgTirs = d3.mean(data, d => +d['Tirs_reçus']);
-  const avgButs = d3.mean(data, d => +d['Buts_alloues']);
-
   svg.append('line')
     .attr('x1', xScale(0))
     .attr('y1', yScale(0))
@@ -146,28 +143,7 @@ export function createScatterPlot(data, playerData, width, height) {
     .text(d => d)
     .style('font-size', '12px');
   
-  // Title
-  svg.append('text')
-    .attr('x', width / 2)
-    .attr('y', margin.top / 2)
-    .attr('text-anchor', 'middle')
-    .style('font-size', '24px')
-    .text('Buts alloués et tirs reçus par équipe dans le tournoi');
-  
-  // Axis titles
-  svg.append('text')
-    .attr('x', width / 2)
-    .attr('y', height - margin.bottom / 2+5)
-    .attr('text-anchor', 'middle')
-    .style('font-size', '14px')
-    .text('Tirs reçus');
-  svg.append('text')
-    .attr('transform', 'rotate(-90)')
-    .attr('x', -height / 2)
-    .attr('y', margin.left / 2)
-    .attr('text-anchor', 'middle')
-    .style('font-size', '14px')
-    .text('Buts alloués');
-
-
+  helper.appendAxes(svg);
+  helper.appendGraphLabels(svg);
+  helper.positionLabels(width, height, margin);
 }
