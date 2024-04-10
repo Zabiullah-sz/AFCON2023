@@ -29,7 +29,7 @@ export function getContentsViz2 () {
     .html(d => {
       return `
         <div style="font-weight: normal;">
-          <div><strong>Pays: </strong>${d.Country}</div>
+          <div><strong>Pays: </strong>${d.Pays}</div>
           <div><strong>Différentiel: </strong>${d.Buts_marques - d.Buts_alloues}</div>
         </div>
       `

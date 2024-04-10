@@ -49,7 +49,7 @@ export function initializeVisualization2() {
         d3.selectAll("path").remove(); // Remove x,y axis paths
 
         // Draw viz
-        const tip = tooltip.getContents();
+        const tip = tooltip.getContentsViz2();
         svg.call(tip);
         viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
         
