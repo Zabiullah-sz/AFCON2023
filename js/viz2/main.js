@@ -16,13 +16,14 @@ export function initializeVisualization2() {
     const width = 1500 - margin.left - margin.right;
     const height = 1000 - margin.top - margin.bottom;
 
+    d3.select('#viz').select('svg').remove();
     // Load your data.
     d3.csv(teamsData).then(function(data) {
         // Preprocess data if necessary.
         const sortedTeams = preprocess.sortByGoalsScored(data)
 
         // Create SVG canvas.
-        const svg = d3.select('#viz2')
+        const svg = d3.select('#viz')
             .append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + 200)

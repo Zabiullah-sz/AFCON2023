@@ -5,17 +5,28 @@ import { summarizeData, getTop } from './preprocess.js';
 import playersData from '../../assets/data/players.csv';
 
 export function initializeVisualization3() {
-  const width = 900;
-  const height = 600;
+  const config = {
+    height: 500,
+    margin: {
+      bottom: 0,
+      left: 100,
+      right: 100,
+      top: 0
+    },
+    width: 500
+  }
+  const fullWidth = config.margin.left + config.width + config.margin.right;
+  const fullHeight = config.margin.top + config.height + config.margin.bottom;
 
-  const svg = d3.select('#viz3')
+  d3.select('#viz').select('svg').remove();
+
+  const svg = d3.select('#viz')
     .append('svg')
-    .attr('width', width)
-    .attr('height', height);
+    .attr('viewBox', `0 0 ${fullWidth} ${fullHeight}`)
 
   d3.csv(playersData, d3.autoType).then(function (fullData) {
     const data = getTop(summarizeData(fullData));
-    drawVisualization(svg, data, width, height);
+    drawVisualization(svg, data, config.width, config.height);
   });
 }
 

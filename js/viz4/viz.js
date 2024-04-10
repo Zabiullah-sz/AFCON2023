@@ -2,7 +2,10 @@ import * as d3 from 'd3';
 import d3Tip from 'd3-tip';
 
 export function createScatterPlot(data, playerData, width, height) {
-  const svg = d3.select('#viz4').append('svg')
+
+  d3.select('#viz').select('svg').remove();
+
+  const svg = d3.select('#viz').append('svg')
     .attr('width', width)
     .attr('height', height);
 

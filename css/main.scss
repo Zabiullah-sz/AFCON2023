@@ -1,0 +1,227 @@
+
+@import 'constants';
+@import '../node_modules/normalize.css';
+
+// ***** General Style *****
+* {
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  font-family: $font-family;
+}
+
+body {
+  min-height: 100%;
+  // sass-lint:disable no-important
+  overflow-x: hidden !important;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.6em;
+  color: $text-color;
+}
+
+.steps {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+
+  section {
+    max-width: $step-max-width;
+    margin: auto auto 100vh;
+
+    &:first-child {
+      margin-top: 0;
+      transform: translateY(-50%);
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+      transform: translateY(50%);
+    }
+
+    h1 {
+      font-size: $step-heading-font-size * 1.25;
+      line-height: 1.3em;
+    }
+
+    h2 {
+      font-size: $step-heading-font-size;
+    }
+  }
+}
+
+// ***** Main *****
+main {
+  position: relative;
+}
+
+.text-section {
+  max-width: $text-max-width;
+  padding: $main-padding;
+  margin: 5em auto;
+  box-sizing: content-box;
+
+  &.intro h1 {
+    font-size: 3.2em;
+  }
+
+  p {
+    margin-bottom: 0.8em;
+  }
+}
+
+.viz-section {
+  position: relative;
+  display: flex;
+  padding: $main-padding;
+
+  > .steps {
+    padding-top: 50vh;
+    padding-bottom: 50vh;
+    flex-basis: 100% - $vis-width;
+
+    section p {
+      color: $step-text-color;
+    }
+  }
+
+  > .viz {
+    // sass-lint:disable no-vendor-prefixes
+    position: -webkit-sticky;
+    // sass-lint:disable no-duplicate-properties
+    position: sticky;
+    top: 0;
+    width: $vis-width;
+    height: $vis-height;
+    min-height: $vis-height;
+    flex-basis: $vis-width;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+// ***** Mobile *****
+@media screen and (max-width: $large-screen) {
+  html {
+    font-size: 11pt;
+  }
+
+  p {
+    line-height: 1.5em;
+  }
+
+  .steps section {
+    padding: $step-padding;
+  }
+
+  .viz-section {
+    position: relative;
+    padding: 0;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+
+    > .steps {
+      padding: 0 $main-padding-left-right 100vh;
+      flex-basis: 100%;
+
+      section {
+        background-color: $step-background-color;
+        border: 1px solid $step-border-color;
+        backdrop-filter: blur(3px);
+      }
+
+      section:first-child,
+      section:last-child {
+        transform: translateY(0%);
+      }
+    }
+
+    > .viz {
+      z-index: -1;
+      width: 100%;
+      flex-basis: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: $small-screen) {
+  html {
+    font-size: $small-screen-base-font-size;
+  }
+}
+
+/* Add this to your main.css file */
+#viz1-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.viz {
+  float: left;
+  box-sizing: border-box;
+}
+
+/* Center the section titles */
+section h2 {
+    text-align: center;
+  }
+  
+  /* Center the content inside the sections */
+  /* TODO: This code messes up the formatting in viz1 *\
+  /* section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } */
+  
+  /* Center the SVG inside the div container */
+  #viz3 {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* This makes sure that the SVG is not wider than its parent */
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+.d3-tip-viz3 {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 2px;
+  pointer-events: none; /* Ignore mouse events */
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip-viz3:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Style northward tooltips differently */
+.d3-tip-viz3.n:after {
+  content: "\25BC";
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+  text-align: center;
+}
