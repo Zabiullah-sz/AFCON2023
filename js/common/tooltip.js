@@ -7,7 +7,7 @@ import d3Tip from 'd3-tip'
  */
 export function getContents () {
   return d3Tip()
-    .attr('class', 'd3-tip-viz3')
+    .attr('class', 'd3-tip-viz3 d3-tip')
     .html(d => {
       return `
         <div style="font-weight: normal;">

@@ -10,6 +10,7 @@ import * as d3 from 'd3'
  */
 export function generateG (width, height, margin) {
   d3.select('#viz').select('svg').remove();
+  d3.select('.d3-tip').remove();
   return d3.select('#viz')
     .append('svg')
     .attr('width', width)

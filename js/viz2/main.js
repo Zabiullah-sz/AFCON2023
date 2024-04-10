@@ -17,6 +17,7 @@ export function initializeVisualization2() {
     const height = 1000 - margin.top - margin.bottom;
 
     d3.select('#viz').select('svg').remove();
+    d3.select('.d3-tip').remove();
     // Load your data.
     d3.csv(teamsData).then(function(data) {
         // Preprocess data if necessary.

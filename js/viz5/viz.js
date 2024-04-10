@@ -4,6 +4,7 @@ import d3Tip from 'd3-tip';
 export function createScatterPlot(data, width, height) {
 
   d3.select('#viz').select('svg').remove();
+  d3.select('.d3-tip').remove();
 
   const svg = d3.select('#viz').append('svg')
     .attr('width', width)
@@ -47,7 +48,7 @@ export function createScatterPlot(data, width, height) {
 
 
     const tip = d3Tip()
-    .attr('class', 'd3-tip-viz5')
+    .attr('class', 'd3-tip-viz5 d3-tip')
     .html(d => {
   
       let tooltipContent = `<strong>${d.Pays}</strong><br>Tirs effectués: ${d.Tirs}<br>Buts marqués: ${d.Buts}<br>% D'efficacité: ${d.Ratio}<br>`;

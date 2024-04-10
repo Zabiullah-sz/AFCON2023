@@ -3,14 +3,16 @@ import d3Tip from 'd3-tip';
 
 export function createTooltip() {
   return d3Tip()
-    .attr('class', 'd3-tip-viz3')
+    .attr('class', 'd3-tip-viz3 d3-tip')
     .html(d => {
       return `
-        <div><strong>Nom:</strong> <span style='color:#fff'>${d.player}</span></div>
-        <div><strong>Pays:</strong> <span style='color:#fff'>${d.country}</span></div>
-        <div><strong>Fautes / 90 min:</strong> <span style='color:#fff'>${d.foulsPer90}</span></div>
-        <div><strong>Carton rouge:</strong> <span style='color:#fff'>${d.redCard}</span></div>
-        <div><strong>Carton jaune:</strong> <span style='color:#fff'>${d.yellowCard}</span></div>
+      <div style="font-weight: normal;">
+        <div><strong>Nom:</strong> ${d.player}</div>
+        <div><strong>Pays:</strong> ${d.country}</div>
+        <div><strong>Fautes / 90 min:</strong> ${d.foulsPer90}</div>
+        <div><strong>Carton rouge:</strong> ${d.redCard}</div>
+        <div><strong>Carton jaune:</strong> ${d.yellowCard}</div>
+        </div>
       `;
     });
 }

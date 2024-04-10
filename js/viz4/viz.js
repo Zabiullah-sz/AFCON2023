@@ -4,6 +4,7 @@ import d3Tip from 'd3-tip';
 export function createScatterPlot(data, playerData, width, height) {
 
   d3.select('#viz').select('svg').remove();
+  d3.select('.d3-tip').remove();
 
   const svg = d3.select('#viz').append('svg')
     .attr('width', width)
@@ -46,7 +47,7 @@ export function createScatterPlot(data, playerData, width, height) {
     .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
 
     const tip = d3Tip()
-    .attr('class', 'd3-tip-viz4')
+    .attr('class', 'd3-tip-viz4 d3-tip')
     .html(d => {
       const country = d.Pays;
       const goalkeepers = playerData.filter(player => player.Pays === country);
