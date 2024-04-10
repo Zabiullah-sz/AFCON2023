@@ -8,7 +8,7 @@ export function drawLegend (g, data) {
     .data(data)
     .enter().append('g')
     .attr('class', 'legendItem')
-    .attr('transform', (d, i) => `translate(${i * 150}, 0)`)
+    .attr('transform', (d, i) => `translate(${i * 150}, -75)`)
 
     legendItems.append('rect')
     .attr('width', 18)
