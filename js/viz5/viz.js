@@ -120,7 +120,7 @@ export function createScatterPlot(data, width, height) {
     .data(legendData)
     .enter().append('g')
     .attr('class', 'legend-item')
-    .attr('transform', (d, i) => `translate(${i * 150}, 20)`);
+    .attr('transform', (d, i) => `translate(${i * 175}, 20)`);
 
   legendItem.append('rect')
     .attr('x', 0)
@@ -133,7 +133,7 @@ export function createScatterPlot(data, width, height) {
     .attr('x', 15)
     .attr('y', 10)
     .text(d => d)
-    .style('font-size', '12px');
+    .style('font-size', '14px');
 
 
   // Average
