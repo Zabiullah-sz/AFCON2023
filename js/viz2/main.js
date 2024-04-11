@@ -19,30 +19,18 @@ export function initializeVisualization2() {
     // Load your data.
     
     d3.csv(teamsData).then(function(data) {
-        const button = d3.select('#viz')
-            .append('button')
-            .style('position', 'absolute')
-            .style('top', '26px')
-            .style('left', '50px')
-            .style('background-color', 'pink')
-            .text('Trier par buts alloués')
+        viz.drawGoalsAllowedButton()
             .on('click', function() {
                 const sortedTeams = preprocess.sortByGoalsConceded(data);
                 viz.updateYScale(yScale, sortedTeams, height);
                 viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
             });
-        const button2 = d3.select('#viz')
-        .append('button')
-        .style('position', 'absolute')
-        .style('top', '50px')
-        .style('left', '50px')
-        .style('background-color', 'lightgreen')
-        .text('Trier par buts marqués')
-        .on('click', function() {
-            const sortedTeams = preprocess.sortByGoalsScored(data);
-            viz.updateYScale(yScale, sortedTeams, height);
-            viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
-        });
+        viz.drawGoalsScoredButton()
+            .on('click', function() {
+                const sortedTeams = preprocess.sortByGoalsScored(data);
+                viz.updateYScale(yScale, sortedTeams, height);
+                viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
+            });
         const sortedTeams = preprocess.sortByGoalsScored(data)
 
         const svg = helper.generateG(width + margin.left + margin.right, height + 200, margin)

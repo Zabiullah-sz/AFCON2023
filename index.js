@@ -1,9 +1,3 @@
-/**
- * app.js
- * ======
- * Main file of the application. This file is used to initialize the scroller and imports the visualizations used.
- */
-
 'use strict';
 
 import './css/main.scss';
@@ -23,9 +17,7 @@ let elements = [];
   elements = elements.concat(Array.from(document.querySelectorAll(selector)));
 });
 stickyBits(elements, { stickyBitStickyOffset: 0 });
-console.log("jello")
 // Initializes the scroller and the visualizations.
-
 scroller([[
   () => initializeVisualization1Goals(),
   () => initializeVisualization1Assists(),

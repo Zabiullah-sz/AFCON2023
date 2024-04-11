@@ -26,13 +26,41 @@ export function updateYScale (scale, data, height) {
     scale.domain(data.map(d => d.Pays))
 }
 
+/**
+ * Draws the goals allowed button
+ *
+ */
+export function drawGoalsAllowedButton () {
+  return d3.select('#viz')
+    .append('button')
+    .style('position', 'absolute')
+    .style('top', '26px')
+    .style('left', '50px')
+    .style('background-color', 'pink')
+    .text('Trier par buts alloués')
+}
+
+/**
+ * Draws the goals scored button
+ *
+ */
+export function drawGoalsScoredButton () {
+  return d3.select('#viz')
+    .append('button')
+    .style('position', 'absolute')
+    .style('top', '50px')
+    .style('left', '50px')
+    .style('background-color', 'lightgreen')
+    .text('Trier par buts marqués')
+}
+
  /**
    * Draws the bars inside the groups
    *
    * @param {*} g The d3 Selection of the graph's g SVG element
    * @param {*} x The graph's x scale
    * @param {*} y The graph's y scale
-   * @param {string[]} players The names of the players, each corresponding to a bar
+   * @param {object[]} teams The names of the teams, each corresponding to a bar
    * @param {*} tip The tooltip to show when each bar is hovered and hide when it's not
    */
  export function drawBars (g, x, y, teams, tip) {
@@ -78,7 +106,7 @@ export function updateYScale (scale, data, height) {
     .attr('class', 'label')
     .attr('x', d => 0 - 20)
     .attr('y', d => y(d.Pays) + y.bandwidth() / 2)
-    .attr('font-size', 24)
+    .attr('font-size', 20)
     .style('text-anchor', 'end')
     .text(d => d.Pays)
     .attr('dy', '0.35em')
@@ -92,7 +120,7 @@ export function updateYScale (scale, data, height) {
     .attr('y', d => y(d.Pays) + y.bandwidth() / 2)
     .attr('dx', 10)
     .attr('dy', '0.35em')
-    .attr('font-size', 22)
+    .attr('font-size', 20)
     .style('fill', 'white')
     .text(d => d.Buts_alloues)
 
@@ -105,7 +133,7 @@ export function updateYScale (scale, data, height) {
     .attr('y', d => y(d.Pays) + y.bandwidth() / 2)
     .attr('dx', -20)
     .attr('dy', '0.35em')
-    .attr('font-size', 22)
+    .attr('font-size', 20)
     .style('fill', 'white')
     .text(d => d.Buts_marques)
   }
