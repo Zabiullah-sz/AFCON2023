@@ -73,7 +73,7 @@ export function positionLabels (width, height, margin) {
   d3.select('.y.axis-text.goals-assists')
     .attr('transform', 'rotate(-90)')
     .attr('x', -margin.left - 120)
-    .attr('y', -margin.left + 20)
+    .attr('y', -margin.left + 10)
 }
 
 /**

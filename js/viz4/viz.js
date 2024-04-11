@@ -151,7 +151,7 @@ d3.select('#viz').select('button').remove();
     .data(legendData)
     .enter().append('g')
     .attr('class', 'legend-item')
-    .attr('transform', (d, i) => `translate(${i * 150}, 0)`);
+    .attr('transform', (d, i) => `translate(${i * 150}, 20)`);
 
   legendItem.append('rect')
     .attr('x', 0)
@@ -177,7 +177,7 @@ d3.select('#viz').select('button').remove();
   // Axis titles
   svg.append('text')
     .attr('x', width / 2)
-    .attr('y', height - margin.bottom / 2+5)
+    .attr('y', height - margin.bottom / 2 + 10)
     .attr('text-anchor', 'middle')
     .style('font-size', '14px')
     .text('Tirs reçus');

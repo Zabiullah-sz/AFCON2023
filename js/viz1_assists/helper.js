@@ -61,7 +61,7 @@ export function appendGraphLabels (g) {
  */
 export function positionLabels (width, height, margin) {
   d3.select('.assists.title')
-    .attr('x', margin.left - 40)
+    .attr('x', margin.left - 60)
     .attr('y', -20)
 
   d3.select('.x.axis-text.assists')
@@ -70,7 +70,7 @@ export function positionLabels (width, height, margin) {
 
   d3.select('.y.axis-text.assists')
     .attr('transform', 'rotate(-90)')
-    .attr('x', -margin.left - 120)
+    .attr('x', -margin.left - 110)
     .attr('y', -margin.left + 20)
 }
 

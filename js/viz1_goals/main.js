@@ -8,7 +8,7 @@ import * as helper from './helper.js';
 import * as tooltip from '../common/tooltip.js';
 
 export function initializeVisualization1Goals() {
-  const margin = { top: 70, right: 35, bottom: 50, left: 150 };
+  const margin = { top: 70, right: 35, bottom: 50, left: 160 };
   const width = 800 - margin.left - margin.right;
   const height = 600 - margin.top - margin.bottom;
 
