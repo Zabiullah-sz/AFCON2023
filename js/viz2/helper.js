@@ -49,8 +49,8 @@ export function appendGraphLabels (g) {
  */
 export function positionLabels () {
     d3.select('.title')
-      .attr('x', 500)
-      .attr('y', -125)
+      .attr('x', 100)
+      .attr('y', -100)
 }
 
 /**
