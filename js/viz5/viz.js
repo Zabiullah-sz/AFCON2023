@@ -52,7 +52,7 @@ export function createScatterPlot(data, width, height) {
     .attr('class', 'd3-tip-viz5 d3-tip')
     .html(d => {
   
-      let tooltipContent = `<strong>${d.Pays}</strong><br>Tirs effectués: ${d.Tirs}<br>Buts marqués: ${d.Buts}<br>% D'efficacité: ${d.Ratio}<br>`;
+      let tooltipContent = `<strong>${d.Pays}</strong><br>Tirs effectués: ${d.Tirs}<br>Buts marqués: ${d.Buts}<br>% D'efficacité: ${(d.Ratio * 100).toFixed(1)}<br>`;
   
       return tooltipContent;
     })
