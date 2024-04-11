@@ -13,20 +13,23 @@ export function initializeVisualization2() {
     const margin = { top: 125, right: 75, bottom: 35, left: 230 };
     const width = 900 - margin.left - margin.right;
     const height = 700 - margin.top - margin.bottom;
-
     d3.select('#viz').select('svg').remove();
     d3.select('.d3-tip').remove();
-    // Load your data.
+
     
     d3.csv(teamsData).then(function(data) {
         viz.drawGoalsAllowedButton()
             .on('click', function() {
+                d3.selectAll('.bar').remove();
                 const sortedTeams = preprocess.sortByGoalsAllowed(data);
                 viz.updateYScale(yScale, sortedTeams, height);
                 viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
+                
             });
         viz.drawGoalsScoredButton()
             .on('click', function() {
+                d3.selectAll('.bar').remove();
+                d3.selectAll('.y-axis').remove();
                 const sortedTeams = preprocess.sortByGoalsScored(data);
                 viz.updateYScale(yScale, sortedTeams, height);
                 viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
