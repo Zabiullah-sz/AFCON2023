@@ -1,9 +1,9 @@
 /**
- * Get allowed goals for each team
+ * Get scored goals for each team
  *
  * 
  * @param {object[]} data The teams dataset
- * @returns {object[]} The allowed goals per team dataset
+ * @returns {object[]} The scored goals per team dataset
  */
 export function sortByGoalsScored (data) {
   return data.sort((teamA, teamB) => {
@@ -13,7 +13,14 @@ export function sortByGoalsScored (data) {
   })
 }
 
-export function sortByGoalsConceded (data) {
+/**
+ * Get allowed goals for each team
+ *
+ * 
+ * @param {object[]} data The teams dataset
+ * @returns {object[]} The allowed goals per team dataset
+ */
+export function sortByGoalsAllowed (data) {
   return data.sort((teamA, teamB) => {
     if (teamA.Buts_alloues < teamB.Buts_alloues) return -1;
     if (teamA.Buts_alloues > teamB.Buts_alloues) return 1;

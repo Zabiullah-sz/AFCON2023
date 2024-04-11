@@ -21,7 +21,7 @@ export function initializeVisualization2() {
     d3.csv(teamsData).then(function(data) {
         viz.drawGoalsAllowedButton()
             .on('click', function() {
-                const sortedTeams = preprocess.sortByGoalsConceded(data);
+                const sortedTeams = preprocess.sortByGoalsAllowed(data);
                 viz.updateYScale(yScale, sortedTeams, height);
                 viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
             });
