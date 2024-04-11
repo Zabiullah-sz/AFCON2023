@@ -76,9 +76,11 @@ export function drawGoalsScoredButton () {
     .attr('fill', 'green')
     .on('mouseover', function (event, d) {
       tip.show(d, this)
+      selectTicks(d.Pays)
     })
     .on('mouseout', function () {
       tip.hide()
+      unselectTicks()
     })
     
     // Goals allowed
@@ -93,9 +95,11 @@ export function drawGoalsScoredButton () {
     .attr('fill', 'red')
     .on('mouseover', function (event, d) {
       tip.show(d, this)
+      selectTicks(d.Pays)
     })
     .on('mouseout', function () {
       tip.hide()
+      unselectTicks()
     })
 
     // Add labels
@@ -136,4 +140,22 @@ export function drawGoalsScoredButton () {
     .attr('font-size', 20)
     .style('fill', 'white')
     .text(d => d.Buts_marques)
-  }
+}
+
+/**
+ * Makes the font weight of the ticks texts with the given name and year bold.
+ *
+ * @param {string} name The name of the team associated with the tick text to make bold
+ */
+export function selectTicks (name) {
+  d3.selectAll('.label')
+    .style('font-weight', d => d.Pays === name ? 'bold' : null)
+}
+
+/**
+ * Returns the font weight of all ticks to normal.
+ */
+export function unselectTicks () {
+  d3.selectAll('.label')
+    .style('font-weight', null)
+}
