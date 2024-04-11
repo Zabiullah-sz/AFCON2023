@@ -8,6 +8,8 @@ import { drawLegend } from './legend.js';
 
 
 export function initializeVisualization3() {
+  d3.select('#viz').select('button').remove();
+  d3.select('#viz').select('button').remove();
   const config = {
     height: 500,
     margin: {

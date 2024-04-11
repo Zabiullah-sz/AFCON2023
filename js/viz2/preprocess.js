@@ -12,3 +12,11 @@ export function sortByGoalsScored (data) {
     return (teamB.Pays.toString()).localeCompare(teamA.Pays.toString());
   })
 }
+
+export function sortByGoalsConceded (data) {
+  return data.sort((teamA, teamB) => {
+    if (teamA.Buts_alloues < teamB.Buts_alloues) return -1;
+    if (teamA.Buts_alloues > teamB.Buts_alloues) return 1;
+    return (teamB.Pays.toString()).localeCompare(teamA.Pays.toString());
+  })
+}

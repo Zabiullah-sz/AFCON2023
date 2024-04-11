@@ -4,7 +4,7 @@ import { initializeVisualization5 } from '../viz5/main.js';
 import { initializeVisualization4 } from '../viz4/main.js';
 
 export function createScatterPlot(data, playerData, width, height) {
-
+d3.select('#viz').select('button').remove();
     const button = d3.select('#viz').append('button')
       .text('Statistiques offensives')
       .style('position', 'absolute')
@@ -22,7 +22,7 @@ export function createScatterPlot(data, playerData, width, height) {
       .style('background-color', 'lightblue')
       .on('click', initializeVisualization4);
   
-    d3.select('#viz').select('svg').remove();
+  d3.select('#viz').select('svg').remove();
   d3.select('.d3-tip').remove();
 
   const svg = d3.select('#viz').append('svg')

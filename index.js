@@ -16,7 +16,6 @@ import { initializeVisualization1GoalsAndAssists } from './js/viz1_goals_assists
 import { initializeVisualization2 } from './js/viz2/main.js';
 import { initializeVisualization3 } from './js/viz3/main';
 import { initializeVisualization4 } from './js/viz4/main';
-import { initializeVisualization5 } from './js/viz5/main';
 
 // Fallback for old browsers to support sticky positioning.
 let elements = [];
@@ -34,5 +33,4 @@ scroller([[
   () => initializeVisualization2(),
   () => initializeVisualization3(),
   () => initializeVisualization4(),
-  () => initializeVisualization5()
 ]]).initialize();
