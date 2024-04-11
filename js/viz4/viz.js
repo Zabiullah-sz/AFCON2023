@@ -5,8 +5,9 @@ import { initializeVisualization4 } from '../viz4/main.js';
 
 export function createScatterPlot(data, playerData, width, height) {
 d3.select('#viz').select('button').remove();
-    const button = d3.select('#viz').append('button')
-      .text('Statistiques offensives')
+    const button = d3.select('#viz')
+      .append('button')
+      .text('Afficher statistiques offensives')
       .style('position', 'absolute')
       .style('top', '50px')
       .style('left', '50px')
@@ -14,8 +15,9 @@ d3.select('#viz').select('button').remove();
       .on('click', initializeVisualization5);
       
 
-      const button2 = d3.select('#viz').append('button')
-      .text('Statistiques défensives')
+      const button2 = d3.select('#viz')
+      .append('button')
+      .text('Afficher statistiques défensives')
       .style('position', 'absolute')
       .style('top', '26px')
       .style('left', '50px')
