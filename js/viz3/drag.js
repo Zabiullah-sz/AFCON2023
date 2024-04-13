@@ -17,8 +17,8 @@ export function applyDrag(simulation) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
-    simulation.force('x', d3.forceX(simulation.force('center').x()).strength(0.004))
-              .force('y', d3.forceY(simulation.force('center').y()).strength(0.004));
+    simulation.force('x', d3.forceX(250).strength(0.004))
+              .force('y', d3.forceY(250).strength(0.004));
   }
 
   return d3.drag()

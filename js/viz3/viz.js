@@ -2,59 +2,83 @@
 import { createSizeScale, colorScale } from './scales.js';
 import { createTooltip } from './tooltip.js';
 import { applyDrag } from './drag.js';
-// import { getFlagUrl } from '../common/flags.js';
 import { createSimulation } from './simulation.js';
 
-
 export function colorDomain(color, data) {
-  console.log(data)
-  const types = Array.from(new Set(data.map(d => d.country)))
-  const sortedTypes = types.sort()
-  color.domain(sortedTypes)
+  let copyData = [...data].reverse() // i dont want to change the original list
 
+  const types = Array.from(new Set(copyData.map(d => d.country))).sort();
+  color.domain(types);
 }
 
 export function drawVisualization(svg, data, width, height) {
-  const sizeScale = createSizeScale(data);
-  const tip = createTooltip();
 
+  let copyData = [...data].reverse()   // i dont want to change the original list
+
+  const sizeScale = createSizeScale(copyData);
+  const tip = createTooltip();
   svg.call(tip);
 
-  // Create groups for each node (bubble + text)
-  let node = svg.selectAll('.node')
-    .data(data)
-    .enter()
+    // Update or add title
+    let title = svg.selectAll('.viz-title').data([data]);
+    title.enter()
+      .append('text')
+      .attr('class', 'viz-title')
+      .merge(title)
+      .attr('x', width / 2)
+      .attr('y', 30)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '16px')
+      .attr('fill', 'black')
+      .text(`Top ${data.length} joueurs par fautes commises toutes les 90 minutes`);
+
+  let nodes = svg.selectAll('.node')
+    .data(copyData, d => d.player); // Key function for object constancy
+
+  // Enter selection: new elements
+  let nodeEnter = nodes.enter()
     .append('g')
-    .attr('class', 'node');
+    .attr('class', 'node')
+    .attr('transform', `translate(${width / 2},${height / 2})`)
+    .each(function(d) {  // Manually set initial positions for simulation
+      d.x = width / 2;
+      d.y = height / 2;
+    });
 
     const simulation = createSimulation(width, height, sizeScale);
-    node.call(applyDrag(simulation));
-  
-  // Append circles to each group
-  node.append('circle')
+    nodeEnter.call(applyDrag(simulation));
+
+  nodeEnter.append('circle')
     .attr('r', d => sizeScale(d.foulsPer90))
     .style('fill', d => colorScale(d.country))
     .style('fill-opacity', 0.8)
     .attr('stroke', 'black')
     .style('stroke-width', 1)
-    .on('mouseover', (event, d) => {
-      tip.show(d, event.currentTarget.parentNode); // parentNode refers to the group
-    })
+    .on('mouseover', (event, d) => tip.show(d, event.currentTarget.parentNode))
     .on('mouseout', tip.hide);
 
-  // Append text to each group
-  node.append('text')
+  nodeEnter.append('text')
     .attr('dy', '.3em')
     .style('text-anchor', 'middle')
     .style('fill', 'black')
     .style('font-size', '10px')
     .text(d => d.player);
 
-  // Adjust the simulation setup
+  // Merge enter and update selections
+  nodes = nodeEnter.merge(nodes);
 
-  // Update positions on simulation tick
-  simulation.nodes(data).on('tick', () => {
-    // Here, we use 'transform' to update the position of the entire group
-    node.attr('transform', d => `translate(${d.x},${d.y})`);
+
+
+  // Apply the simulation to all nodes
+  simulation.nodes(copyData).on('tick', () => {
+    nodes.attr('transform', d => `translate(${d.x},${d.y})`);
   });
+
+}
+
+// Redraw function
+export function redraw(svg, currentData, width, height) {
+  // Clear the previous visualization before redrawing
+  svg.selectAll('.node').remove();
+  drawVisualization(svg, currentData, width, height);
 }

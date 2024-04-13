@@ -1,25 +1,30 @@
-import d3Legend from 'd3-svg-legend'
+import d3Legend from 'd3-svg-legend';
 
 /**
- * Draws the color legend.
+ * Draws or redraws the color legend.
  *
  * @param {*} colorScale The color scale used for the legend
- * @param {*} g The d3 Selection of the SVG g element containing the legend
+ * @param {*} svg The D3 Selection of the SVG element containing the visualization
  */
-export function drawLegend (colorScale, g) {
-  const legend = d3Legend.legendColor()
-    .shape('circle')
-    .scale(colorScale)
+export function drawLegend(colorScale, svg) {
 
-  g.append('g')
+  // Remove any existing legend
+  svg.selectAll('.legend').remove();
+  svg.selectAll('.legend-title').remove();
+
+  // Create the new legend
+  const legend = svg.append('g')
     .attr('class', 'legend')
     .attr('font-size', 16)
-    .attr('transform', 'translate(510, 150)')
-    .call(legend)
+    .attr('transform', 'translate(560, 80)')
+    .call(d3Legend.legendColor()
+      .shape('circle')
+      .scale(colorScale));
 
-  g.append('text')
+  // Add a title to the legend
+  svg.append('text')
     .attr('class', 'legend-title')
     .attr('font-size', 16)
-    .attr('transform', 'translate(500, 130)')
-    .text('Légende')
+    .attr('transform', 'translate(550, 60)')
+    .text('Légende');
 }

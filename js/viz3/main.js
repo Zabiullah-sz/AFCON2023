@@ -1,42 +1,70 @@
 // main.js
 import * as d3 from 'd3';
 import { drawVisualization, colorDomain } from './viz.js';
-import { summarizeData, getTop } from './preprocess.js';
+import { summarizeData, sortData, getTop } from './preprocess.js';
 import playersData from '../../assets/data/players.csv';
 import { colorScale } from './scales.js';
 import { drawLegend } from './legend.js';
 
-
 export function initializeVisualization3() {
-  d3.select('#viz').select('button').remove();
-  d3.select('#viz').select('button').remove();
   const config = {
     height: 500,
-    margin: {
-      bottom: 0,
-      left: 100,
-      right: 100,
-      top: 0
-    },
+    margin: { bottom: 0, left: 100, right: 100, top: 0 },
     width: 500
-  }
+  };
   const fullWidth = config.margin.left + config.width + config.margin.right;
   const fullHeight = config.margin.top + config.height + config.margin.bottom;
 
-  d3.select('#viz').select('svg').remove();
-  d3.select('.d3-tip').remove();
+  const vizContainer = d3.select('#viz');
+  vizContainer.selectAll('*').remove(); // Clear the visualization container
 
-  const svg = d3.select('#viz')
-    .append('svg')
+  const svg = vizContainer.append('svg')
     .attr('viewBox', `0 0 ${fullWidth} ${fullHeight}`);
 
+  // Fetch and process the data, then draw the visualization
+  d3.csv(playersData, d3.autoType).then(function (rawData) {
+    let allData = summarizeData(rawData); // Process data
+    let sortedData = sortData(allData); // Sort data
+    let currentData = getTop(sortedData); // Get the top players for initial display
+    console.log("Data init:", JSON.parse(JSON.stringify(currentData)));
 
 
-  d3.csv(playersData, d3.autoType).then(function (fullData) {
-    let data = getTop(summarizeData(fullData));
-    colorDomain(colorScale, data)
+    colorDomain(colorScale, currentData);
     drawLegend(colorScale, svg);
-    drawVisualization(svg, data, config.width, config.height);
+    drawVisualization(svg, currentData, config.width, config.height);
+
+    // Redraw function to update visualization with current data
+    function redraw() {
+      svg.selectAll('.node').remove(); // Clear existing nodes
+      drawVisualization(svg, currentData, config.width, config.height);
+      colorDomain(colorScale, currentData);
+      drawLegend(colorScale, svg); // Update the legend with the current color scale
+    }
+
+    // Add the "+" button
+    vizContainer.append('button')
+      .attr('id', 'addPlayer')
+      .attr('style', 'position: absolute; top: 10px; left: 10px;')
+      .text('Ajouter joueur')
+      .on('click', () => {
+        if (allData.length > currentData.length) {
+          currentData.push(allData[currentData.length]); // Add the next player from allData
+          currentData = getTop(sortData(currentData), currentData.length + 1); // Re-sort and get the top
+          redraw();
+        }
+      });
+
+    // Add the "-" button
+    vizContainer.append('button')
+      .attr('id', 'removePlayer')
+      .attr('style', 'position: absolute; top: 10px; left: 200px;')
+      .text('Enlever joueur')
+      .on('click', () => {
+        if (currentData.length > 10) { // Ensuring at least 10 players remain
+          console.log("Data before sorting:", JSON.parse(JSON.stringify(currentData)));
+          currentData.pop(); // Remove the last player from the current list
+          redraw();
+        }
+      });
   });
 }
-
