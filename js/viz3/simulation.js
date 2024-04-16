@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
 function getPositionForCountry(country, index, totalCountries, width, height) {
-  const b = 0.585;
+  const b = 0.385;
   const base = 15 ** b
     const angle = (index / totalCountries) * 2 * Math.PI;
     const radius = (totalCountries ** b / base) * (Math.max(width, height) / 4);

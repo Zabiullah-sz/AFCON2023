@@ -4,7 +4,7 @@ import * as helper from './helper.js';
 
 export function createScatterPlot(data, width, height) {
 
-  d3.select('#viz').select('svg').remove();
+  d3.select('#viz').selectAll('*').remove();
   d3.select('.d3-tip').remove();
 
   const svg = d3.select('#viz').append('svg')

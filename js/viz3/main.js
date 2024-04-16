@@ -1,4 +1,3 @@
-// main.js
 import * as d3 from 'd3';
 import { drawVisualization, colorDomain } from './viz.js';
 import { summarizeData, sortData, getTop } from './preprocess.js';
@@ -23,51 +22,54 @@ export function initializeVisualization3() {
 
   // Fetch and process the data, then draw the visualization
   d3.csv(playersData, d3.autoType).then(function (rawData) {
-    const countries = Array.from(new Set(rawData.map(d => d.country))); // Unique set of countries
-    let allData = summarizeData(rawData); // Process data
-    let sortedData = sortData(allData); // Sort data
-    let currentData = getTop(sortedData); // Get the top players for initial display
-    console.log("Data init:", JSON.parse(JSON.stringify(currentData)));
-
+    const countries = Array.from(new Set(rawData.map(d => d.country)));
+    let allData = summarizeData(rawData);
+    let sortedData = sortData(allData);
+    let currentData = getTop(sortedData);
 
     const colorScale = createColorScale(countries);
     colorDomain(colorScale, currentData);
     drawLegend(colorScale, svg);
     drawVisualization(svg, currentData, config.width, config.height, colorScale);
 
-    // Redraw function to update visualization with current data
     function redraw() {
-      const colorScale = createColorScale(countries);
-      svg.selectAll('.node').remove(); // Clear existing nodes
+      svg.selectAll('.node').remove();
       drawVisualization(svg, currentData, config.width, config.height, colorScale);
       colorDomain(colorScale, currentData);
-      drawLegend(colorScale, svg); // Update the legend with the current color scale
+      drawLegend(colorScale, svg);
+      updateButtonStates();
     }
 
-    // Add the "+" button
+    function updateButtonStates() {
+      d3.select('#addPlayer').attr('disabled', currentData.length >= 30 ? true : null)
+                             .style('background-color', currentData.length >= 30 ? '#ccc' : '#4CAF50');
+      d3.select('#removePlayer').attr('disabled', currentData.length <= 10 ? true : null)
+                                .style('background-color', currentData.length <= 10 ? '#ccc' : '#f44336');
+    }
+
     vizContainer.append('button')
       .attr('id', 'addPlayer')
-      .attr('style', 'position: absolute; top: 10px; left: 10px;')
+      .attr('style', 'position: absolute; top: 10px; left: 10px; padding: 8px; background-color: #4CAF50; color: white; border: none; cursor: pointer;')
       .text('Ajouter joueur')
       .on('click', () => {
         if (allData.length > currentData.length) {
-          currentData.push(allData[currentData.length]); // Add the next player from allData
-          currentData = getTop(sortData(currentData), currentData.length + 1); // Re-sort and get the top
+          currentData.push(allData[currentData.length]);
+          currentData = getTop(sortData(currentData), currentData.length + 1);
           redraw();
         }
       });
 
-    // Add the "-" button
     vizContainer.append('button')
       .attr('id', 'removePlayer')
-      .attr('style', 'position: absolute; top: 10px; left: 200px;')
+      .attr('style', 'position: absolute; top: 10px; left: 200px; padding: 8px; background-color: #f44336; color: white; border: none; cursor: pointer;')
       .text('Enlever joueur')
       .on('click', () => {
-        if (currentData.length > 10) { // Ensuring at least 10 players remain
-          console.log("Data before sorting:", JSON.parse(JSON.stringify(currentData)));
-          currentData.pop(); // Remove the last player from the current list
+        if (currentData.length > 10) {
+          currentData.pop();
           redraw();
         }
       });
+
+    updateButtonStates(); // Initial state check
   });
 }
