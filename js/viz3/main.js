@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import { drawVisualization, colorDomain } from './viz.js';
 import { summarizeData, sortData, getTop } from './preprocess.js';
 import playersData from '../../assets/data/players.csv';
-import { colorScale } from './scales.js';
+import { createColorScale } from './scales.js';
 import { drawLegend } from './legend.js';
 
 export function initializeVisualization3() {
@@ -23,20 +23,23 @@ export function initializeVisualization3() {
 
   // Fetch and process the data, then draw the visualization
   d3.csv(playersData, d3.autoType).then(function (rawData) {
+    const countries = Array.from(new Set(rawData.map(d => d.country))); // Unique set of countries
     let allData = summarizeData(rawData); // Process data
     let sortedData = sortData(allData); // Sort data
     let currentData = getTop(sortedData); // Get the top players for initial display
     console.log("Data init:", JSON.parse(JSON.stringify(currentData)));
 
 
+    const colorScale = createColorScale(countries);
     colorDomain(colorScale, currentData);
     drawLegend(colorScale, svg);
-    drawVisualization(svg, currentData, config.width, config.height);
+    drawVisualization(svg, currentData, config.width, config.height, colorScale);
 
     // Redraw function to update visualization with current data
     function redraw() {
+      const colorScale = createColorScale(countries);
       svg.selectAll('.node').remove(); // Clear existing nodes
-      drawVisualization(svg, currentData, config.width, config.height);
+      drawVisualization(svg, currentData, config.width, config.height, colorScale);
       colorDomain(colorScale, currentData);
       drawLegend(colorScale, svg); // Update the legend with the current color scale
     }

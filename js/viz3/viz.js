@@ -1,5 +1,5 @@
 // viz.js
-import { createSizeScale, colorScale } from './scales.js';
+import { createSizeScale, createColorScale } from './scales.js';
 import { createTooltip } from './tooltip.js';
 import { applyDrag } from './drag.js';
 import { createSimulation } from './simulation.js';
@@ -11,7 +11,7 @@ export function colorDomain(color, data) {
   color.domain(types);
 }
 
-export function drawVisualization(svg, data, width, height) {
+export function drawVisualization(svg, data, width, height, colorScale) {
 
   let copyData = [...data].reverse()   // i dont want to change the original list
 
