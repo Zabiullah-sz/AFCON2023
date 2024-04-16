@@ -1,8 +1,10 @@
 import * as d3 from 'd3';
 
 function getPositionForCountry(country, index, totalCountries, width, height) {
+  const b = 0.585;
+  const base = 15 ** b
     const angle = (index / totalCountries) * 2 * Math.PI;
-    const radius = (totalCountries/14)*(Math.max(width, height) / 4); // Adjust radius for better spread
+    const radius = (totalCountries ** b / base) * (Math.max(width, height) / 4);
     const x = width / 2 + radius * Math.cos(angle);
     const y = height / 2 + radius * Math.sin(angle);
     return { x, y };
@@ -14,8 +16,8 @@ export function createSimulation(nodes, width, height, sizeScale) {
         getPositionForCountry(country, i, countries.length, width, height)
     );
 
-    let forceX = d3.forceX(d => countryPositions[countries.indexOf(d.country)].x).strength(1);
-    let forceY = d3.forceY(d => countryPositions[countries.indexOf(d.country)].y).strength(1);
+    let forceX = d3.forceX(d => countryPositions[countries.indexOf(d.country)].x).strength(5);
+    let forceY = d3.forceY(d => countryPositions[countries.indexOf(d.country)].y).strength(5);
 
     const simulation = d3.forceSimulation(nodes)
     .force('center', d3.forceCenter(width / 2, height / 2))
