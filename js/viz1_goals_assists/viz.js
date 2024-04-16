@@ -38,9 +38,16 @@ export function drawBars (g, x, y, players, tip) {
   .attr('class', 'bar')
   .attr('x', 0)
   .attr('y', d => y(d.Player))
-  .attr('width', d => x(d.GoalsAndAssists))
+  .attr('width', 0)
   .attr('height', y.bandwidth())
   .attr('fill', 'blue')
+  .merge(g.selectAll('.bar').data(players))
+  .transition()
+  .duration(1000)
+  .attr('width', d => x(d.GoalsAndAssists))
+
+  g.selectAll('.bar')
+  .data(players)
   .on('mouseover', function (event, d) {
     tip.show(d, this)
     selectTicks(d.Player)
@@ -50,17 +57,26 @@ export function drawBars (g, x, y, players, tip) {
     unselectTicks()
   })
 
-  g.selectAll('.assist-label')
+  g.selectAll('.goal-assist-label')
   .data(players)
   .enter()
   .append('text')
-  .attr('class', 'assist-label')
-  .attr('x', d => x(d.GoalsAndAssists))
+  .attr('class', 'goal-assist-label')
+  .attr('x', 0)
   .attr('y', d => y(d.Player) + y.bandwidth() / 2)
   .attr('dx', -20)
   .attr('dy', '0.35em')
   .style('fill', 'white')
-  .text(d => d.GoalsAndAssists)
+  .merge(g.selectAll('.goal-assist-label').data(players))
+  .transition()
+  .duration(1000)
+  .attr('x', d => x(d.GoalsAndAssists))
+  .tween('text', function(d) {
+    const i = d3.interpolateNumber(0, d.GoalsAndAssists)
+    return function(t) {
+        d3.select(this).text(Math.round(i(t)))
+    }
+  })
 }
 
 /**

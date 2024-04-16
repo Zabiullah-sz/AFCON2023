@@ -1,5 +1,6 @@
 import * as d3 from 'd3';
 import d3Tip from 'd3-tip';
+import * as helper from './helper.js';
 
 export function createScatterPlot(data, width, height) {
 
@@ -95,26 +96,17 @@ export function createScatterPlot(data, width, height) {
     .call(d3.axisBottom(xScale))
     .style('font-size', 12);
 
-  // Title
   svg.append('g')
     .attr('transform', `translate(${margin.left}, 0)`)
     .call(d3.axisLeft(yScale))
     .style('font-size', 12);
-
-  svg.append('text')
-    .attr('x', width / 2)
-    .attr('y', margin.top / 2)
-    .attr('text-anchor', 'middle')
-    .style('font-size', '24px')
-    .text('Buts marqués et tirs effectués par chaque équipe dans le tournoi');
-    const legend = svg.append('g')
-    .attr('class', 'legend')
-    .attr('transform', `translate(${margin.left}, ${height - margin.bottom + 35})`);
-
-
   
   // Legend
   const legendData = ['Carré d\'as', 'Quart de finales', 'Huitièmes de finales', 'Phase de groupes'];
+
+  const legend = svg.append('g')
+    .attr('class', 'legend')
+    .attr('transform', `translate(${margin.left}, ${height - margin.bottom + 35})`);
 
   const legendItem = legend.selectAll('.legend-item')
     .data(legendData)
@@ -135,11 +127,6 @@ export function createScatterPlot(data, width, height) {
     .text(d => d)
     .style('font-size', '14px');
 
-
-  // Average
-  const avgTirs = d3.mean(data, d => +d['Tirs']);
-  const avgButs = d3.mean(data, d => +d['Buts']);
-
   svg.append('line')
     .attr('x1', xScale(0))
     .attr('y1', yScale(0))
@@ -149,18 +136,7 @@ export function createScatterPlot(data, width, height) {
     .style('stroke', 'red')
     .style('stroke-width', 3);
 
-  // Axis titles
-  svg.append('text')
-    .attr('x', width / 2)
-    .attr('y', height - margin.bottom / 2 + 10)
-    .attr('text-anchor', 'middle')
-    .style('font-size', '14px')
-    .text('Tirs effectués');
-  svg.append('text')
-    .attr('transform', 'rotate(-90)')
-    .attr('x', -height / 2)
-    .attr('y', margin.left / 2)
-    .attr('text-anchor', 'middle')
-    .style('font-size', '14px')
-    .text('Buts marqués');
+  helper.appendAxes(svg);
+  helper.appendGraphLabels(svg);
+  helper.positionLabels(width, height, margin);
 }
