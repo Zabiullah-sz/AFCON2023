@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 export function applyDrag(simulation) {
   function dragstarted(event, d) {
-    if (!event.active) simulation.alphaTarget(0.3).restart();
+    if (!event.active) simulation.alphaTarget(0.1).restart();
     d.fx = d.x;
     d.fy = d.y;
   }
@@ -14,11 +14,11 @@ export function applyDrag(simulation) {
   }
 
   function dragended(event, d) {
-    if (!event.active) simulation.alphaTarget(0);
+    // if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
-    simulation.force('x', d3.forceX(250).strength(0.004))
-              .force('y', d3.forceY(250).strength(0.004));
+    simulation.force('x', d3.forceX(simulation.force('center').x()).strength(0.008))
+              .force('y', d3.forceY(simulation.force('center').y()).strength(0.008));
   }
 
   return d3.drag()

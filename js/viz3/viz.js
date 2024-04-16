@@ -45,7 +45,7 @@ export function drawVisualization(svg, data, width, height, colorScale) {
       d.y = height / 2;
     });
 
-    const simulation = createSimulation(width, height, sizeScale);
+    const simulation = createSimulation(copyData, width, height, sizeScale);
     nodeEnter.call(applyDrag(simulation));
 
   nodeEnter.append('circle')
