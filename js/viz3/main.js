@@ -16,6 +16,7 @@ export function initializeVisualization3() {
 
   const vizContainer = d3.select('#viz');
   vizContainer.selectAll('*').remove(); // Clear the visualization container
+  d3.select('.d3-tip').remove();
 
   const svg = vizContainer.append('svg')
     .attr('viewBox', `0 0 ${fullWidth} ${fullHeight}`);
