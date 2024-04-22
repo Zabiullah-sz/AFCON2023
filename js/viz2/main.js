@@ -17,38 +17,50 @@ export function initializeVisualization2() {
 
     
     d3.csv(teamsData).then(function(data) {
+        const sortedTeams = preprocess.sortByGoalsScored(data)
+
+        const svg = helper.generateG(width + margin.left + margin.right, height + 200, margin)
+
+        // x,y Axis
+        svg.append('g')
+        .attr('class', 'x axis')
+        var yAxis = svg.append('g')
+        .attr('class', 'y axis')
+        .style('font-size', "16px")
+        const xScale = d3.scaleLinear().range([0, width]);
+        const yScale = d3.scaleBand().range([height, 0]).padding(0.2);
+
+        // Title
+        helper.appendGraphLabels(svg)
+        helper.positionLabels()
+
+        // Buttons
         viz.drawGoalsAllowedButton()
             .on('click', function() {
-                d3.selectAll('.bar').remove();
+                // Rewrite updated y axis
                 const sortedTeams = preprocess.sortByGoalsAllowed(data);
                 viz.updateYScale(yScale, sortedTeams, height);
+                yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
+                // Redraw updated bars
+                d3.selectAll('.bar').remove();
                 viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
                 
             });
         viz.drawGoalsScoredButton()
             .on('click', function() {
-                d3.selectAll('.bar').remove();
-                d3.selectAll('.y-axis').remove();
+                // Rewrite updated y axis
                 const sortedTeams = preprocess.sortByGoalsScored(data);
                 viz.updateYScale(yScale, sortedTeams, height);
+                yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
+                // Redraw updated bars
+                d3.selectAll('.bar').remove();
                 viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
             });
-        const sortedTeams = preprocess.sortByGoalsScored(data)
-
-        const svg = helper.generateG(width + margin.left + margin.right, height + 200, margin)
-
-        helper.appendAxes(svg)
-
-        //Title
-        helper.appendGraphLabels(svg)
-        helper.positionLabels()
-
-        const xScale = d3.scaleLinear().range([0, width]);
-        const yScale = d3.scaleBand().range([height, 0]).padding(0.2);
 
         viz.updateXScale(xScale, sortedTeams, width);
         viz.updateYScale(yScale, sortedTeams, height);
-
+        // Initialize y axis labels
+        yAxis.call(d3.axisLeft(yScale));
 
         // Add x axis on top and bottom
         const xAxisBottomGen = d3.axisBottom(xScale)

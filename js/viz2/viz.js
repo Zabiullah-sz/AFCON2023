@@ -109,18 +109,7 @@ export function drawGoalsScoredButton () {
     .attr('width', d => Math.abs(x(-d.Buts_alloues) - x(0)))
     
 
-    // Add labels
-    g.selectAll('.label')
-    .data(teams)
-    .enter()
-    .append('text')
-    .attr('class', 'label')
-    .attr('x', d => 0 - 20)
-    .attr('y', d => y(d.Pays) + y.bandwidth() / 2)
-    .attr('font-size', 20)
-    .style('text-anchor', 'end')
-    .text(d => d.Pays)
-    .attr('dy', '0.35em')
+    // Add goal labels
 
     g.selectAll('.goal-allowed')
     .data(teams)
