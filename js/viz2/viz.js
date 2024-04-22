@@ -34,7 +34,7 @@ export function drawGoalsAllowedButton () {
   return d3.select('#viz')
     .append('button')
     .style('position', 'absolute')
-    .style('top', '26px')
+    .style('top', '25px')
     .style('left', '50px')
     .style('background-color', 'pink')
     .text('Trier par buts alloués')
@@ -71,7 +71,7 @@ export function drawGoalsScoredButton () {
     .attr('class', 'bar')
     .attr('x', x(0))
     .attr('y', d => y(d.Pays))
-    .attr('width', d => Math.abs(x(d.Buts_marques) - x(0)))
+    .attr('width', 0)
     .attr('height', y.bandwidth())
     .attr('fill', 'green')
     .on('mouseover', function (event, d) {
@@ -82,15 +82,17 @@ export function drawGoalsScoredButton () {
       tip.hide()
       unselectTicks()
     })
+    .transition()
+    .duration(1000)
+    .attr('width', d => Math.abs(x(d.Buts_marques) - x(0)))
     
     // Goals allowed
     g.selectAll('.neg')
     .data(teams)
     .join('rect')
     .attr('class', 'bar')
-    .attr('x', d => x(-d.Buts_alloues))
+    .attr('x', d => 300)
     .attr('y', d => y(d.Pays))
-    .attr('width', d => Math.abs(x(-d.Buts_alloues) - x(0)))
     .attr('height', y.bandwidth())
     .attr('fill', 'red')
     .on('mouseover', function (event, d) {
@@ -101,6 +103,11 @@ export function drawGoalsScoredButton () {
       tip.hide()
       unselectTicks()
     })
+    .transition()
+    .duration(1000)
+    .attr('x', d => x(-d.Buts_alloues))
+    .attr('width', d => Math.abs(x(-d.Buts_alloues) - x(0)))
+    
 
     // Add labels
     g.selectAll('.label')
