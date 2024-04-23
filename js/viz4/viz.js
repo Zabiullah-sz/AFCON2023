@@ -4,26 +4,44 @@ import * as helper from './helper.js';
 import { initializeVisualization5 } from '../viz5/main.js';
 import { initializeVisualization4 } from '../viz4/main.js';
 
-export function createScatterPlot(data, playerData, width, height) {
-d3.select('#viz').selectAll('*').remove();
-    const button = d3.select('#viz')
-      .append('button')
-      .text('Afficher statistiques offensives')
-      .style('position', 'absolute')
-      .style('top', '50px')
-      .style('left', '50px')
-      .style('background-color', 'lightgreen')
-      .on('click', initializeVisualization5);
-      
 
-      const button2 = d3.select('#viz')
-      .append('button')
-      .text('Afficher statistiques défensives')
-      .style('position', 'absolute')
-      .style('top', '26px')
-      .style('left', '50px')
-      .style('background-color', 'lightblue')
-      .on('click', initializeVisualization4);
+
+export function createScatterPlot(data, playerData, width, height) {
+var offense = false
+var defense = true
+
+
+d3.select('#viz').selectAll('*').remove();
+const button = d3.select('#viz')
+  .append('button')
+  .text('Afficher statistiques offensives')
+  .style('position', 'absolute')
+  .style('top', '50px')
+  .style('left', '50px')
+  .style('background-color', 'lightgreen')
+  .on('click', function() {
+    if (defense == true) {
+      initializeVisualization5();
+      defense = false
+      offense = true
+    }
+  });
+
+  const button2 = d3.select('#viz')
+    .append('button')
+    .text('Afficher statistiques défensives')
+    .style('position', 'absolute')
+    .style('top', '26px')
+    .style('left', '50px')
+    .style('background-color', 'lightblue')
+    .on('click', function() {
+      if (offense == true) {
+        initializeVisualization4();
+        offense = false
+        defense = true
+      }
+    })
+    .classed('disabled', false);
   
   d3.select('.d3-tip').remove();
 
@@ -97,26 +115,35 @@ d3.select('#viz').selectAll('*').remove();
 
 
   // Append circles for data points
-  svg.selectAll('circle')
-    .data(data)
-    .enter().append('circle')
-      .attr('cx', d => xScale(+d['Tirs_reçus']))
-      .attr('cy', d => yScale(+d['Buts_alloues']))
-      .attr('r', 12)
-      .style('fill', d => colorScale(d['Ronde']))
-      .style('opacity', 0.7)
-      .style('stroke', 'black')
-      .style('stroke-width', 1) 
-      .on('mouseover', (event, d) => {
-        const samePositionPoints = data.filter(point => +point['Tirs_reçus'] === +d['Tirs_reçus'] && +point['Buts_alloues'] === +d['Buts_alloues']);
-
-        // Show tooltip for each data point at the same position
-        samePositionPoints.forEach(point => {
-          console.log('duplicate')
-          tip.show(point, event.currentTarget);
-        });
-      })
-      .on('mouseout', tip.hide);
+  
+svg.selectAll('circle')
+  .data(data)
+  .enter().append('circle')
+    .attr('cx', d => xScale(0))
+    .attr('cy', d => yScale(+d['Buts_alloues']))
+    .attr('r', 12)
+    .style('fill', d => colorScale(d['Ronde']))
+    .style('opacity', 0.7)
+    .style('stroke', 'black')
+    .style('stroke-width', 1)
+    .style('cursor', 'pointer')
+    .transition()
+    .duration(1000)
+    .delay((d, i) => i * 100)
+    .attr('cx', d => xScale(+d['Tirs_reçus']))
+    .on('end', () => {
+      svg.selectAll('circle')
+        .on('mouseover', (event, d) => {
+          const samePositionPoints = data.filter(point => +point['Tirs_reçus'] === +d['Tirs_reçus'] && +point['Buts_alloues'] === +d['Buts_alloues']);
+          // Show tooltip for each data point at the same position
+          samePositionPoints.forEach(point => {
+            console.log('duplicate')
+            tip.show(point, event.currentTarget);
+          });
+        })
+        .on('mouseout', tip.hide);
+    });
+      
 
   // Append axes
   svg.append('g')

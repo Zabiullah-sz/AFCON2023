@@ -9,11 +9,14 @@ import * as legend from '../viz2/legend.js'
 import * as tooltip from '../common/tooltip.js'
 
 export function initializeVisualization2() {
+    var GoalsScored = true;
+    var GoalsAllowed = false;
     const margin = { top: 125, right: 75, bottom: 35, left: 230 };
     const width = 900 - margin.left - margin.right;
     const height = 700 - margin.top - margin.bottom;
     d3.select('#viz').selectAll('*').remove();
     d3.select('.d3-tip').remove();
+
 
     
     d3.csv(teamsData).then(function(data) {
@@ -37,24 +40,38 @@ export function initializeVisualization2() {
         // Buttons
         viz.drawGoalsAllowedButton()
             .on('click', function() {
-                // Rewrite updated y axis
-                const sortedTeams = preprocess.sortByGoalsAllowed(data);
-                viz.updateYScale(yScale, sortedTeams, height);
-                yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
-                // Redraw updated bars
-                d3.selectAll('.bar').remove();
-                viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
-                
+                if (GoalsAllowed == true) {
+                    // Rewrite updated y axis
+                    const sortedTeams = preprocess.sortByGoalsAllowed(data);
+                    viz.updateYScale(yScale, sortedTeams, height);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
+                    
+                    // Redraw updated bars
+                    d3.selectAll('.bar').remove();
+                    viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
+                    
+                    GoalsScored = true
+                    GoalsAllowed = false
+                }
+
             });
+
         viz.drawGoalsScoredButton()
             .on('click', function() {
-                // Rewrite updated y axis
-                const sortedTeams = preprocess.sortByGoalsScored(data);
-                viz.updateYScale(yScale, sortedTeams, height);
-                yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
-                // Redraw updated bars
-                d3.selectAll('.bar').remove();
-                viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
+                if (GoalsScored == true) {
+                    // Rewrite updated y axis
+                    const sortedTeams = preprocess.sortByGoalsScored(data);
+                    viz.updateYScale(yScale, sortedTeams, height);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
+                    
+                    // Redraw updated bars
+                    d3.selectAll('.bar').remove();
+                    viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
+                    
+                  
+                    GoalsScored = false
+                    GoalsAllowed = true
+                }
             });
 
         viz.updateXScale(xScale, sortedTeams, width);

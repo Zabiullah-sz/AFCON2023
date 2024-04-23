@@ -70,25 +70,32 @@ export function createScatterPlot(data, width, height) {
 
   // Append circles for data points
   svg.selectAll('circle')
-    .data(data)
-    .enter().append('circle')
-      .attr('cx', d => xScale(+d['Tirs']))
-      .attr('cy', d => yScale(+d['Buts']))
-      .attr('r', 12)
-      .style('fill', d => colorScale(d['Ronde'])) // Set color based on ronde value
-      .style('opacity', 0.7)
-      .style('stroke', 'black') // Add black contour
-      .style('stroke-width', 1) 
-      .on('mouseover', (event, d) => {
-        const samePositionPoints = data.filter(point => +point['Tirs'] === +d['Tirs'] && +point['Buts'] === +d['Buts']);
-
-        // Show tooltip for each data point at the same position
-        samePositionPoints.forEach(point => {
-          console.log('duplicate')
-          tip.show(point, event.currentTarget);
-        });
-      })
-      .on('mouseout', tip.hide);
+  .data(data)
+  .enter().append('circle')
+    .attr('cx', d => xScale(0))
+    .attr('cy', d => yScale(+d['Buts']))
+    .attr('r', 12)
+    .style('fill', d => colorScale(d['Ronde']))
+    .style('opacity', 0.7)
+    .style('stroke', 'black')
+    .style('stroke-width', 1)
+    .style('cursor', 'pointer')
+    .transition()
+    .duration(1000)
+    .delay((d, i) => i * 100)
+    .attr('cx', d => xScale(+d['Tirs']))
+    .on('end', () => {
+      svg.selectAll('circle')
+        .on('mouseover', (event, d) => {
+          const samePositionPoints = data.filter(point => +point['Tirs'] === +d['Tirs'] && +point['Buts'] === +d['Buts']);
+          // Show tooltip for each data point at the same position
+          samePositionPoints.forEach(point => {
+            console.log('duplicate')
+            tip.show(point, event.currentTarget);
+          });
+        })
+        .on('mouseout', tip.hide);
+    });
 
   // Append axes
   svg.append('g')
