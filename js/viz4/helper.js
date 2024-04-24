@@ -81,7 +81,7 @@ export function positionLabels (width, height, margin) {
 
   d3.select('.x.axis-text.shots-allowed')
     .attr('x', width / 2)
-    .attr('y', height - margin.bottom / 2+5)
+    .attr('y', height - margin.bottom / 2 + 10)
     .attr('text-anchor', 'middle')
 
   d3.select('.y.axis-text.goals-allowed')
