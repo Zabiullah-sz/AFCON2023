@@ -84,6 +84,7 @@ export function drawGoalsScoredButton () {
     })
     .transition()
     .duration(1000)
+    .style('cursor', 'pointer')
     .attr('width', d => Math.abs(x(d.Buts_marques) - x(0)))
     
     // Goals allowed
@@ -106,6 +107,7 @@ export function drawGoalsScoredButton () {
     .transition()
     .duration(1000)
     .attr('x', d => x(-d.Buts_alloues))
+    .style('cursor', 'pointer')
     .attr('width', d => Math.abs(x(-d.Buts_alloues) - x(0)))
     
 

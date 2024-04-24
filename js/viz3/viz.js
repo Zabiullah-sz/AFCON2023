@@ -54,6 +54,7 @@ export function drawVisualization(svg, data, width, height, colorScale) {
     .style('fill-opacity', 0.8)
     .attr('stroke', 'black')
     .style('stroke-width', 1)
+    .style('cursor', 'pointer')
     .on('mouseover', (event, d) => tip.show(d, event.currentTarget.parentNode))
     .on('mouseout', tip.hide);
 
