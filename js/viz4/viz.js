@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
-import d3Tip from 'd3-tip';
 import * as helper from './helper.js';
+import * as tooltip from './tooltip.js';
 import { initializeVisualization5 } from '../viz5/main.js';
 import { initializeVisualization4 } from '../viz4/main.js';
 
@@ -91,31 +91,7 @@ const button = drawOffensiveStatsButton()
   helper.drawXAxisGrid(svg, height, margin, xAxisGrid);
   helper.drawYAxisGrid(svg, margin, yAxisGrid);
 
-    const tip = d3Tip()
-    .attr('class', 'd3-tip-viz4 d3-tip')
-    .html(d => {
-      const country = d.Pays;
-      const goalkeepers = playerData.filter(player => player.Pays === country);
-  
-      let tooltipContent = `<strong>${d.Pays}</strong><br>Tirs reçus: ${d.Tirs_reçus}<br>Buts alloués: ${d.Buts_alloues}<br>`;
-  
-      if (goalkeepers.length > 0) {
-        const goalieLabel = goalkeepers.length > 1 ? 'Gardiens de but' : 'Gardien de but';
-        tooltipContent += `<strong>${goalieLabel}:</strong><br>`;
-        goalkeepers.forEach(goalie => {
-          tooltipContent += `- ${goalie.Gardien_de_but}<br>% Arrêts: ${goalie['%_Arrêts']}<br>Jeux Blancs: ${goalie.Jeux_blancs}<br>`;
-        });
-      }
-  
-      return tooltipContent;
-    })
-    .style('position', 'absolute')
-    .style('background-color', 'rgba(255, 255, 255, 0.9)')
-    .style('padding', '10px')
-    .style('border-radius', '5px')
-    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
-    .style('font-family', 'Arial, sans-serif')
-    .style('font-size', '12px');
+    const tip = tooltip.createTooltip(playerData);
     svg.call(tip);
 
 

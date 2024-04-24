@@ -8,7 +8,7 @@ import * as d3 from 'd3'
  * @param {number} width The width of the graph
  */
 export function updateXScale (scale, data, width) {
-    scale.domain([-d3.max(data, d => d.Buts_marques), d3.max(data, d => d.Buts_marques)]).rangeRound([0, width])
+  scale.domain([-d3.max(data, d => d.Buts_marques), d3.max(data, d => d.Buts_marques)]).rangeRound([0, width])
 }
   
 /**
@@ -18,12 +18,13 @@ export function updateXScale (scale, data, width) {
  * @param {object[]} data The data to be used
  */
 export function updateYScale (scale, data) {
-    scale.domain(data.map(d => d.Pays))
+  scale.domain(data.map(d => d.Pays))
 }
 
 /**
  * Draws the goals allowed button
  *
+ * @returns {*} The goals allowed button
  */
 export function drawGoalsAllowedButton () {
   return d3.select('#viz')
@@ -38,6 +39,7 @@ export function drawGoalsAllowedButton () {
 /**
  * Draws the goals scored button
  *
+ * @returns {*} The goals allowed button
  */
 export function drawGoalsScoredButton () {
   return d3.select('#viz')
@@ -107,7 +109,6 @@ export function drawGoalsScoredButton () {
     
 
     // Add goal labels
-
     g.selectAll('.goal-allowed')
     .data(teams)
     .enter()

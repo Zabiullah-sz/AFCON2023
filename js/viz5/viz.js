@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
-import d3Tip from 'd3-tip';
 import * as helper from './helper.js';
+import * as tooltip from './tooltip.js';
 
 export function createScatterPlot(data, width, height) {
 
@@ -37,22 +37,7 @@ export function createScatterPlot(data, width, height) {
   helper.drawXAxisGrid(svg, height, margin, xAxisGrid);
   helper.drawYAxisGrid(svg, margin, yAxisGrid);
 
-    const tip = d3Tip()
-    .attr('class', 'd3-tip-viz5 d3-tip')
-    .html(d => {
-  
-      let tooltipContent = `<strong>${d.Pays}</strong><br>Tirs effectués: ${d.Tirs}<br>Buts marqués: ${d.Buts}<br>% D'efficacité: ${(d.Ratio * 100).toFixed(1)}<br>`;
-  
-      return tooltipContent;
-    })
-
-    .style('position', 'absolute')
-    .style('background-color', 'rgba(255, 255, 255, 0.9)')
-    .style('padding', '10px')
-    .style('border-radius', '5px')
-    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
-    .style('font-family', 'Arial, sans-serif')
-    .style('font-size', '12px');
+    const tip = tooltip.createTooltip();
     svg.call(tip);
 
 
