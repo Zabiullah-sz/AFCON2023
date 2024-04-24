@@ -6,19 +6,41 @@ import { initializeVisualization4 } from '../viz4/main.js';
 
 
 
-export function createScatterPlot(data, playerData, width, height) {
-var offense = false
-var defense = true
-
-
-d3.select('#viz').selectAll('*').remove();
-const button = d3.select('#viz')
+/**
+ * Draws the offensive stats button
+ *
+ */
+export function drawOffensiveStatsButton () {
+  return d3.select('#viz')
   .append('button')
   .text('Afficher statistiques offensives')
   .style('position', 'absolute')
   .style('top', '50px')
   .style('left', '50px')
   .style('background-color', 'lightgreen')
+}
+
+/**
+ * Draws the defensive stats button
+ *
+ */
+export function drawDefensiveStatsButton () {
+  return d3.select('#viz')
+  .append('button')
+  .text('Afficher statistiques défensives')
+  .style('position', 'absolute')
+  .style('top', '26px')
+  .style('left', '50px')
+  .style('background-color', 'lightblue')
+}
+
+export function createScatterPlot(data, playerData, width, height) {
+var offense = false
+var defense = true
+
+
+d3.select('#viz').selectAll('*').remove();
+const button = drawOffensiveStatsButton()
   .on('click', function() {
     if (defense == true) {
       initializeVisualization5();
@@ -27,13 +49,7 @@ const button = d3.select('#viz')
     }
   });
 
-  const button2 = d3.select('#viz')
-    .append('button')
-    .text('Afficher statistiques défensives')
-    .style('position', 'absolute')
-    .style('top', '26px')
-    .style('left', '50px')
-    .style('background-color', 'lightblue')
+  const button2 = drawDefensiveStatsButton()
     .on('click', function() {
       if (offense == true) {
         initializeVisualization4();
@@ -72,19 +88,8 @@ const button = d3.select('#viz')
   const xAxisGrid = d3.axisBottom(xScale).ticks(numTicks).tickSize(-graphHeight).tickFormat('').tickSizeOuter(0);
   const yAxisGrid = d3.axisLeft(yScale).ticks(numTicks).tickSize(-graphWidth).tickFormat('').tickSizeOuter(0);
 
-  svg.append('g')
-    .attr('class', 'x-grid')
-    .attr('transform', `translate(0, ${height - margin.bottom})`)
-    .call(xAxisGrid)
-    .selectAll('line')
-    .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
-
-  svg.append('g')
-    .attr('class', 'y-grid')
-    .attr('transform', `translate(${margin.left}, 0)`)
-    .call(yAxisGrid)
-    .selectAll('line')
-    .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
+  helper.drawXAxisGrid(svg, height, margin, xAxisGrid);
+  helper.drawYAxisGrid(svg, margin, yAxisGrid);
 
     const tip = d3Tip()
     .attr('class', 'd3-tip-viz4 d3-tip')

@@ -2,6 +2,7 @@
  * Draws the legend.
  *
  * @param {*} g The d3 Selection of the graph's g SVG element
+ * @param {object[]} data The legend data
  */
 export function drawLegend (g, data) {
     const legendItems = g.selectAll('legendItem')

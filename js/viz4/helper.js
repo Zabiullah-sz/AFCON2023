@@ -1,6 +1,39 @@
 import * as d3 from 'd3'
 
 /**
+ * Draws the grid for the x axis.
+ *
+ * @param {*} g The d3 Selection of the graph's g SVG element
+ * @param {number} height The height of the graph
+ * @param {object} margin The desired margins around the graph
+ * @param {*} xAxisGrid The grid for the x axis
+ */
+export function drawXAxisGrid (g, height, margin, xAxisGrid) {
+  g.append('g')
+  .attr('class', 'x-grid')
+  .attr('transform', `translate(0, ${height - margin.bottom})`)
+  .call(xAxisGrid)
+  .selectAll('line')
+  .style('stroke', 'rgba(0, 0, 0, 0.1)') // Adjust opacity for faded effect
+}
+
+/**
+ * Draws the grid for the y axis.
+ *
+ * @param {*} g The d3 Selection of the graph's g SVG element
+ * @param {object} margin The desired margins around the graph
+ * @param {*} xAxisGrid The grid for the x axis
+ */
+export function drawYAxisGrid (g, margin, yAxisGrid) {
+  g.append('g')
+    .attr('class', 'y-grid')
+    .attr('transform', `translate(${margin.left}, 0)`)
+    .call(yAxisGrid)
+    .selectAll('line')
+    .style('stroke', 'rgba(0, 0, 0, 0.1)') // Adjust opacity for faded effect
+}
+
+/**
  * Appends an SVG g element which will contain the y axis.
  *
  * @param {*} g The d3 Selection of the graph's g SVG element
