@@ -34,20 +34,8 @@ export function createScatterPlot(data, width, height) {
   const xAxisGrid = d3.axisBottom(xScale).ticks(numTicks).tickSize(-graphHeight).tickFormat('').tickSizeOuter(0);
   const yAxisGrid = d3.axisLeft(yScale).ticks(numTicks).tickSize(-graphWidth).tickFormat('').tickSizeOuter(0);
 
-  svg.append('g')
-    .attr('class', 'x-grid')
-    .attr('transform', `translate(0, ${height - margin.bottom})`)
-    .call(xAxisGrid)
-    .selectAll('line')
-    .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
-
-  svg.append('g')
-    .attr('class', 'y-grid')
-    .attr('transform', `translate(${margin.left}, 0)`)
-    .call(yAxisGrid)
-    .selectAll('line')
-    .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
-
+  helper.drawXAxisGrid(svg, height, margin, xAxisGrid);
+  helper.drawYAxisGrid(svg, margin, yAxisGrid);
 
     const tip = d3Tip()
     .attr('class', 'd3-tip-viz5 d3-tip')
