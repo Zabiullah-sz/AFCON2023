@@ -8,9 +8,6 @@ import * as d3 from 'd3'
  * @param {number} width The width of the graph
  */
 export function updateXScale (scale, data, width) {
-    //scale.domain([0, d3.max(data, d => parseInt(d.Buts_alloues) + parseInt(d.Buts_marques))]).range([0, width])
-    //scale.domain([-d3.max(data, d => d.Buts_marques), d3.max(data, d => d.Buts_marques)]).range([0, width / 2]);
-    //scale.domain([0, d3.max(data, d => Math.max(d.Buts_marques, d.Buts_alloues))]).rangeRound([0, width / 2]);
     scale.domain([-d3.max(data, d => d.Buts_marques), d3.max(data, d => d.Buts_marques)]).rangeRound([0, width])
 }
   
@@ -19,10 +16,8 @@ export function updateXScale (scale, data, width) {
  *
  * @param {*} scale The Y scale
  * @param {object[]} data The data to be used
- * @param {number} height The height of the graph
  */
-export function updateYScale (scale, data, height) {
-    //scale.domain(data.map(d => d.Pays)).range([height, 0])
+export function updateYScale (scale, data) {
     scale.domain(data.map(d => d.Pays))
 }
 

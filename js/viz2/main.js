@@ -75,7 +75,7 @@ export function initializeVisualization2() {
             });
 
         viz.updateXScale(xScale, sortedTeams, width);
-        viz.updateYScale(yScale, sortedTeams, height);
+        viz.updateYScale(yScale, sortedTeams);
         // Initialize y axis labels
         yAxis.call(d3.axisLeft(yScale));
 
