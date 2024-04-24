@@ -37,8 +37,8 @@ export function createScatterPlot(data, width, height) {
   helper.drawXAxisGrid(svg, height, margin, xAxisGrid);
   helper.drawYAxisGrid(svg, margin, yAxisGrid);
 
-    const tip = tooltip.createTooltip();
-    svg.call(tip);
+  const tip = tooltip.createTooltip();
+  svg.call(tip);
 
 
   // Append circles for data points

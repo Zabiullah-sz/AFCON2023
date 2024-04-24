@@ -35,13 +35,12 @@ export function drawDefensiveStatsButton () {
 }
 
 export function createScatterPlot(data, playerData, width, height) {
-var offense = false
-var defense = true
+  var offense = false
+  var defense = true
 
 
-d3.select('#viz').selectAll('*').remove();
-const button = drawOffensiveStatsButton()
-  .on('click', function() {
+  d3.select('#viz').selectAll('*').remove();
+  drawOffensiveStatsButton().on('click', function() {
     if (defense == true) {
       initializeVisualization5();
       defense = false
@@ -49,15 +48,13 @@ const button = drawOffensiveStatsButton()
     }
   });
 
-  const button2 = drawDefensiveStatsButton()
-    .on('click', function() {
-      if (offense == true) {
-        initializeVisualization4();
-        offense = false
-        defense = true
-      }
-    })
-    .classed('disabled', false);
+  drawDefensiveStatsButton().on('click', function() {
+    if (offense == true) {
+      initializeVisualization4();
+      offense = false
+      defense = true
+    }
+  }).classed('disabled', false);
   
   d3.select('.d3-tip').remove();
 
@@ -91,13 +88,11 @@ const button = drawOffensiveStatsButton()
   helper.drawXAxisGrid(svg, height, margin, xAxisGrid);
   helper.drawYAxisGrid(svg, margin, yAxisGrid);
 
-    const tip = tooltip.createTooltip(playerData);
-    svg.call(tip);
-
+  const tip = tooltip.createTooltip(playerData);
+  svg.call(tip);
 
   // Append circles for data points
-  
-svg.selectAll('circle')
+  svg.selectAll('circle')
   .data(data)
   .enter().append('circle')
     .attr('cx', d => xScale(0))
@@ -124,7 +119,6 @@ svg.selectAll('circle')
         })
         .on('mouseout', tip.hide);
     });
-      
 
   // Append axes
   svg.append('g')
@@ -172,7 +166,7 @@ svg.selectAll('circle')
     .text(d => d)
     .style('font-size', '14px');
 
-    helper.appendAxes(svg);
-    helper.appendGraphLabels(svg);
-    helper.positionLabels(width, height, margin);
+  helper.appendAxes(svg);
+  helper.appendGraphLabels(svg);
+  helper.positionLabels(width, height, margin);
 }
