@@ -8,6 +8,7 @@ import d3Tip from 'd3-tip'
 export function createTooltip (playerData) {
   return d3Tip()
     .attr('class', 'd3-tip-viz3 d3-tip')
+    .direction('s')
     .html(d => {
         const country = d.Pays
         const goalkeepers = playerData.filter(player => player.Pays === country)
