@@ -40,10 +40,7 @@ export function initializeVisualization2() {
         // Buttons
         viz.drawGoalsAllowedButton()
             .on('click', function() {
-                if (!GoalsAllowed && GoalsScored) {
-                    GoalsScored = false
-                    GoalsAllowed = true
-
+                if (GoalsAllowed == true) {
                     // Rewrite updated y axis
                     const sortedTeams = preprocess.sortByGoalsAllowed(data);
                     viz.updateYScale(yScale, sortedTeams, height);
@@ -62,10 +59,7 @@ export function initializeVisualization2() {
 
         viz.drawGoalsScoredButton()
             .on('click', function() {
-                if (!GoalsScored && GoalsAllowed) {
-                    GoalsScored = true
-                    GoalsAllowed = false
-
+                if (GoalsScored == true) {
                     // Rewrite updated y axis
                     const sortedTeams = preprocess.sortByGoalsScored(data);
                     viz.updateYScale(yScale, sortedTeams, height);
