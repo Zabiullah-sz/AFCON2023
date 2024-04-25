@@ -52,6 +52,7 @@ export function initializeVisualization2() {
                     
                     GoalsScored = true
                     GoalsAllowed = false
+                    viz.updateButtonStates(GoalsScored, GoalsAllowed);
                 }
 
             });
@@ -71,9 +72,12 @@ export function initializeVisualization2() {
                   
                     GoalsScored = false
                     GoalsAllowed = true
+                    viz.updateButtonStates(GoalsScored, GoalsAllowed);
+
                 }
             });
-
+        viz.updateButtonStates(GoalsScored, GoalsAllowed);
+        
         viz.updateXScale(xScale, sortedTeams, width);
         viz.updateYScale(yScale, sortedTeams);
         // Initialize y axis labels

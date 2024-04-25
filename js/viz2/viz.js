@@ -21,19 +21,31 @@ export function updateYScale (scale, data) {
   scale.domain(data.map(d => d.Pays))
 }
 
+
+function drawButton(selector, text, bgColor, id) {
+  return d3.select(selector)
+    .append('button')
+    .text(text)
+    .attr('id',id)
+    .style('padding', '10px 20px')
+    .style('margin-right', '10px')
+    .style('background-color', bgColor)
+    .style('color', 'black')
+    .style('border', 'none')
+    .style('border-radius', '5px')
+    .style('cursor', 'pointer');
+}
+
 /**
  * Draws the goals allowed button
  *
  * @returns {*} The goals allowed button
  */
-export function drawGoalsAllowedButton () {
-  return d3.select('#viz')
-    .append('button')
+ export function drawGoalsAllowedButton() {
+  return drawButton('#viz', 'Trier par buts alloués', 'pink', 'allowed')
     .style('position', 'absolute')
-    .style('top', '25px')
-    .style('left', '50px')
-    .style('background-color', 'pink')
-    .text('Trier par buts alloués')
+    .style('top', '50px')
+    .style('left', '330px');
 }
 
 /**
@@ -41,14 +53,23 @@ export function drawGoalsAllowedButton () {
  *
  * @returns {*} The goals allowed button
  */
-export function drawGoalsScoredButton () {
-  return d3.select('#viz')
-    .append('button')
+ export function drawGoalsScoredButton() {
+  return drawButton('#viz', 'Trier par buts marqués', 'lightgreen', 'scored')
     .style('position', 'absolute')
     .style('top', '50px')
-    .style('left', '50px')
-    .style('background-color', 'lightgreen')
-    .text('Trier par buts marqués')
+    .style('left', '535px');
+}
+
+export function updateButtonStates(scored, allowed) {
+  d3.select('#allowed')
+                        .style('outline', scored ? '2px solid black' : 'none')
+                        .style('background-color', scored ? '#ff0404' : 'pink')
+                         .classed('disabled', scored);
+
+  d3.select('#scored')
+  .style('outline', allowed ? '2px solid black' : 'none')
+  .style('background-color', allowed ? '#088404' : 'lightgreen')
+                            .classed('disabled', allowed);
 }
 
  /**
