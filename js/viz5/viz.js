@@ -65,8 +65,12 @@ export function createScatterPlot(data, width, height) {
     });
 
   // Draw axes
+  helper.appendAxes(svg);
+  helper.appendGraphLabels(svg);
+  helper.positionLabels(width, height, margin);
   helper.drawXAxis(svg, xScale, height, margin);
   helper.drawYAxis(svg, yScale, margin);
+  helper.drawLine(svg, data, xScale, yScale);
   
   // Legend
   const legendData = ['Carré d\'as', 'Quart de finales', 'Huitièmes de finales', 'Phase de groupes'];
@@ -93,17 +97,4 @@ export function createScatterPlot(data, width, height) {
     .attr('y', 10)
     .text(d => d)
     .style('font-size', '14px');
-
-  svg.append('line')
-    .attr('x1', xScale(0))
-    .attr('y1', yScale(0))
-    .attr('x2', xScale(d3.max(data, d => +d['Tirs'])))
-    .attr('y2', yScale(d3.max(data, d => +d['Buts'])))
-    .style('stroke-dasharray', ('10,5'))
-    .style('stroke', 'red')
-    .style('stroke-width', 3);
-
-  helper.appendAxes(svg);
-  helper.appendGraphLabels(svg);
-  helper.positionLabels(width, height, margin);
 }

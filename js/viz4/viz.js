@@ -112,17 +112,12 @@ export function createScatterPlot(data, playerData, width, height) {
     });
 
   // Draw axes
+  helper.appendAxes(svg);
+  helper.appendGraphLabels(svg);
+  helper.positionLabels(width, height, margin);
   helper.drawXAxis(svg, xScale, height, margin);
   helper.drawYAxis(svg, yScale, margin);
-
-  svg.append('line')
-    .attr('x1', xScale(0))
-    .attr('y1', yScale(0))
-    .attr('x2', xScale(d3.max(data, d => +d['Tirs_reçus'])))
-    .attr('y2', yScale(d3.max(data, d => +d['Buts_alloues'])))
-    .style('stroke-dasharray', ('10,5'))
-    .style('stroke', 'red')
-    .style('stroke-width', 3);
+  helper.drawLine(svg, data, xScale, yScale);
 
   // Legend
   const legend = svg.append('g')
@@ -149,8 +144,4 @@ export function createScatterPlot(data, playerData, width, height) {
     .attr('y', 10)
     .text(d => d)
     .style('font-size', '14px');
-
-  helper.appendAxes(svg);
-  helper.appendGraphLabels(svg);
-  helper.positionLabels(width, height, margin);
 }

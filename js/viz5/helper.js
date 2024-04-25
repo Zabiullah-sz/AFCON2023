@@ -136,3 +136,22 @@ export function drawYAxis (g, yScale, margin) {
     .call(d3.axisLeft(yScale))
     .style('font-size', 12)
 }
+
+/**
+ * Draws the line representing the average.
+ *
+ * @param {*} g The d3 Selection of the graph's g SVG element
+ * @param {object[]} data The data to be used
+ * @param {*} xScale The scale to use for the x axis
+ * @param {*} yScale The scale to use for the y axis
+ */
+export function drawLine (g, data, xScale, yScale) {
+  g.append('line')
+    .attr('x1', xScale(0))
+    .attr('y1', yScale(0))
+    .attr('x2', xScale(d3.max(data, d => +d['Tirs'])))
+    .attr('y2', yScale(d3.max(data, d => +d['Buts'])))
+    .style('stroke-dasharray', ('10,5'))
+    .style('stroke', 'red')
+    .style('stroke-width', 3)
+}
