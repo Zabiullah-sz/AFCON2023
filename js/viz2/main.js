@@ -40,7 +40,10 @@ export function initializeVisualization2() {
         // Buttons
         viz.drawGoalsAllowedButton()
             .on('click', function() {
-                if (GoalsAllowed == true) {
+                if (!GoalsAllowed && GoalsScored) {
+                    GoalsScored = false
+                    GoalsAllowed = true
+
                     // Rewrite updated y axis
                     const sortedTeams = preprocess.sortByGoalsAllowed(data);
                     viz.updateYScale(yScale, sortedTeams, height);
@@ -49,16 +52,16 @@ export function initializeVisualization2() {
                     // Redraw updated bars
                     d3.selectAll('.bar').remove();
                     viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
-                    
-                    GoalsScored = true
-                    GoalsAllowed = false
                 }
 
             });
 
         viz.drawGoalsScoredButton()
             .on('click', function() {
-                if (GoalsScored == true) {
+                if (!GoalsScored && GoalsAllowed) {
+                    GoalsScored = true
+                    GoalsAllowed = false
+
                     // Rewrite updated y axis
                     const sortedTeams = preprocess.sortByGoalsScored(data);
                     viz.updateYScale(yScale, sortedTeams, height);
@@ -67,10 +70,6 @@ export function initializeVisualization2() {
                     // Redraw updated bars
                     d3.selectAll('.bar').remove();
                     viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
-                    
-                  
-                    GoalsScored = false
-                    GoalsAllowed = true
                 }
             });
 
