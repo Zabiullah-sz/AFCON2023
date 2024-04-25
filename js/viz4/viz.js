@@ -38,8 +38,8 @@ export function createScatterPlot(data, playerData, width, height) {
   var offense = false
   var defense = true
 
-
-  d3.select('#viz').selectAll('*').remove();
+  const svg = helper.generateG(width, height);
+  
   drawOffensiveStatsButton().on('click', function() {
     if (defense == true) {
       initializeVisualization5();
@@ -55,13 +55,6 @@ export function createScatterPlot(data, playerData, width, height) {
       defense = true
     }
   }).classed('disabled', false);
-  
-  d3.select('.d3-tip').remove();
-
-  const svg = d3.select('#viz').append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .attr('transform', 'translate(0, 100)');
 
   const margin = { top: 50, right: 50, bottom: 50, left: 50 };
   const graphWidth = width - margin.left - margin.right;

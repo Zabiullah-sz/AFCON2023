@@ -4,13 +4,7 @@ import * as tooltip from './tooltip.js';
 
 export function createScatterPlot(data, width, height) {
 
-  d3.select('#viz').select('svg').remove();
-  d3.select('.d3-tip').remove();
-
-  const svg = d3.select('#viz').append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .attr('transform', 'translate(0, 100)');
+  const svg = helper.generateG(width, height);
 
   const margin = { top: 50, right: 50, bottom: 50, left: 50 };
   const graphWidth = width - margin.left - margin.right;

@@ -1,6 +1,23 @@
 import * as d3 from 'd3'
 
 /**
+ * Generates the SVG element g which will contain the data visualization.
+ *
+ * @param {number} width The width of the graph
+ * @param {number} height The height of the graph
+ * @returns {*} The d3 Selection for the created g element
+ */
+export function generateG (width, height) {
+  d3.select('#viz').select('svg').remove();
+  d3.select('.d3-tip').remove();
+  return d3.select('#viz')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .attr('transform', `translate(0, 100)`)
+}
+
+/**
  * Draws the grid for the x axis.
  *
  * @param {*} g The d3 Selection of the graph's g SVG element
@@ -10,11 +27,11 @@ import * as d3 from 'd3'
  */
 export function drawXAxisGrid (g, height, margin, xAxisGrid) {
   g.append('g')
-  .attr('class', 'x-grid')
-  .attr('transform', `translate(0, ${height - margin.bottom})`)
-  .call(xAxisGrid)
-  .selectAll('line')
-  .style('stroke', 'rgba(0, 0, 0, 0.1)') // Adjust opacity for faded effect
+    .attr('class', 'x-grid')
+    .attr('transform', `translate(0, ${height - margin.bottom})`)
+    .call(xAxisGrid)
+    .selectAll('line')
+    .style('stroke', 'rgba(0, 0, 0, 0.1)') // Adjust opacity for faded effect
 }
 
 /**

@@ -1,6 +1,24 @@
 import * as d3 from 'd3'
 
 /**
+ * Generates the SVG element g which will contain the data visualization.
+ *
+ * @param {number} width The width of the graph
+ * @param {number} height The height of the graph
+ * @returns {*} The d3 Selection for the created g element
+ */
+export function generateG (width, height) {
+  d3.select('#viz').selectAll('*').remove()
+  d3.select('.d3-tip').remove()
+  return d3.select('#viz')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', `translate(0, 100)`)
+}
+
+/**
  * Draws the grid for the x axis.
  *
  * @param {*} g The d3 Selection of the graph's g SVG element
