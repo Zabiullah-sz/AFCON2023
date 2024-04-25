@@ -1,16 +1,10 @@
 import * as d3 from 'd3';
-import d3Tip from 'd3-tip';
 import * as helper from './helper.js';
+import * as tooltip from './tooltip.js';
 
 export function createScatterPlot(data, width, height) {
 
-  d3.select('#viz').select('svg').remove();
-  d3.select('.d3-tip').remove();
-
-  const svg = d3.select('#viz').append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .attr('transform', 'translate(0, 100)');
+  const svg = helper.generateG(width, height);
 
   const margin = { top: 50, right: 50, bottom: 50, left: 50 };
   const graphWidth = width - margin.left - margin.right;
@@ -34,72 +28,49 @@ export function createScatterPlot(data, width, height) {
   const xAxisGrid = d3.axisBottom(xScale).ticks(numTicks).tickSize(-graphHeight).tickFormat('').tickSizeOuter(0);
   const yAxisGrid = d3.axisLeft(yScale).ticks(numTicks).tickSize(-graphWidth).tickFormat('').tickSizeOuter(0);
 
-  svg.append('g')
-    .attr('class', 'x-grid')
-    .attr('transform', `translate(0, ${height - margin.bottom})`)
-    .call(xAxisGrid)
-    .selectAll('line')
-    .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
+  helper.drawXAxisGrid(svg, height, margin, xAxisGrid);
+  helper.drawYAxisGrid(svg, margin, yAxisGrid);
 
-  svg.append('g')
-    .attr('class', 'y-grid')
-    .attr('transform', `translate(${margin.left}, 0)`)
-    .call(yAxisGrid)
-    .selectAll('line')
-    .style('stroke', 'rgba(0, 0, 0, 0.1)'); // Adjust opacity for faded effect
-
-
-    const tip = d3Tip()
-    .attr('class', 'd3-tip-viz5 d3-tip')
-    .html(d => {
-  
-      let tooltipContent = `<strong>${d.Pays}</strong><br>Tirs effectués: ${d.Tirs}<br>Buts marqués: ${d.Buts}<br>% D'efficacité: ${(d.Ratio * 100).toFixed(1)}<br>`;
-  
-      return tooltipContent;
-    })
-
-    .style('position', 'absolute')
-    .style('background-color', 'rgba(255, 255, 255, 0.9)')
-    .style('padding', '10px')
-    .style('border-radius', '5px')
-    .style('box-shadow', '0 0 10px rgba(0, 0, 0, 0.3)')
-    .style('font-family', 'Arial, sans-serif')
-    .style('font-size', '12px');
-    svg.call(tip);
+  const tip = tooltip.createTooltip();
+  svg.call(tip);
 
 
   // Append circles for data points
   svg.selectAll('circle')
-    .data(data)
-    .enter().append('circle')
-      .attr('cx', d => xScale(+d['Tirs']))
-      .attr('cy', d => yScale(+d['Buts']))
-      .attr('r', 12)
-      .style('fill', d => colorScale(d['Ronde'])) // Set color based on ronde value
-      .style('opacity', 0.7)
-      .style('stroke', 'black') // Add black contour
-      .style('stroke-width', 1) 
-      .on('mouseover', (event, d) => {
-        const samePositionPoints = data.filter(point => +point['Tirs'] === +d['Tirs'] && +point['Buts'] === +d['Buts']);
+  .data(data)
+  .enter().append('circle')
+    .attr('cx', d => xScale(0))
+    .attr('cy', d => yScale(+d['Buts']))
+    .attr('r', 12)
+    .style('fill', d => colorScale(d['Ronde']))
+    .style('opacity', 0.7)
+    .style('stroke', 'black')
+    .style('stroke-width', 1)
+    .style('cursor', 'pointer')
+    .transition()
+    .duration(1000)
+    .delay((d, i) => i * 100)
+    .attr('cx', d => xScale(+d['Tirs']))
+    .on('end', () => {
+      svg.selectAll('circle')
+        .on('mouseover', (event, d) => {
+          const samePositionPoints = data.filter(point => +point['Tirs'] === +d['Tirs'] && +point['Buts'] === +d['Buts']);
+          // Show tooltip for each data point at the same position
+          samePositionPoints.forEach(point => {
+            console.log('duplicate')
+            tip.show(point, event.currentTarget);
+          });
+        })
+        .on('mouseout', tip.hide);
+    });
 
-        // Show tooltip for each data point at the same position
-        samePositionPoints.forEach(point => {
-          console.log('duplicate')
-          tip.show(point, event.currentTarget);
-        });
-      })
-      .on('mouseout', tip.hide);
-
-  // Append axes
-  svg.append('g')
-    .attr('transform', `translate(0, ${height - margin.bottom})`)
-    .call(d3.axisBottom(xScale))
-    .style('font-size', 12);
-
-  svg.append('g')
-    .attr('transform', `translate(${margin.left}, 0)`)
-    .call(d3.axisLeft(yScale))
-    .style('font-size', 12);
+  // Draw axes
+  helper.appendAxes(svg);
+  helper.appendGraphLabels(svg);
+  helper.positionLabels(width, height, margin);
+  helper.drawXAxis(svg, xScale, height, margin);
+  helper.drawYAxis(svg, yScale, margin);
+  helper.drawLine(svg, data, xScale, yScale);
   
   // Legend
   const legendData = ['Carré d\'as', 'Quart de finales', 'Huitièmes de finales', 'Phase de groupes'];
@@ -126,17 +97,4 @@ export function createScatterPlot(data, width, height) {
     .attr('y', 10)
     .text(d => d)
     .style('font-size', '14px');
-
-  svg.append('line')
-    .attr('x1', xScale(0))
-    .attr('y1', yScale(0))
-    .attr('x2', xScale(d3.max(data, d => +d['Tirs'])))
-    .attr('y2', yScale(d3.max(data, d => +d['Buts'])))
-    .style("stroke-dasharray", ("10,5"))
-    .style('stroke', 'red')
-    .style('stroke-width', 3);
-
-  helper.appendAxes(svg);
-  helper.appendGraphLabels(svg);
-  helper.positionLabels(width, height, margin);
 }

@@ -9,46 +9,75 @@ import * as legend from '../viz2/legend.js'
 import * as tooltip from '../common/tooltip.js'
 
 export function initializeVisualization2() {
+    var GoalsScored = true;
+    var GoalsAllowed = false;
     const margin = { top: 125, right: 75, bottom: 35, left: 230 };
     const width = 900 - margin.left - margin.right;
     const height = 700 - margin.top - margin.bottom;
     d3.select('#viz').selectAll('*').remove();
     d3.select('.d3-tip').remove();
 
+
     
     d3.csv(teamsData).then(function(data) {
-        viz.drawGoalsAllowedButton()
-            .on('click', function() {
-                d3.selectAll('.bar').remove();
-                const sortedTeams = preprocess.sortByGoalsAllowed(data);
-                viz.updateYScale(yScale, sortedTeams, height);
-                viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
-                
-            });
-        viz.drawGoalsScoredButton()
-            .on('click', function() {
-                d3.selectAll('.bar').remove();
-                d3.selectAll('.y-axis').remove();
-                const sortedTeams = preprocess.sortByGoalsScored(data);
-                viz.updateYScale(yScale, sortedTeams, height);
-                viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
-            });
         const sortedTeams = preprocess.sortByGoalsScored(data)
 
         const svg = helper.generateG(width + margin.left + margin.right, height + 200, margin)
 
-        helper.appendAxes(svg)
-
-        //Title
-        helper.appendGraphLabels(svg)
-        helper.positionLabels()
-
+        // x,y Axis
+        svg.append('g')
+        .attr('class', 'x axis')
+        var yAxis = svg.append('g')
+        .attr('class', 'y axis')
+        .style('font-size', "16px")
         const xScale = d3.scaleLinear().range([0, width]);
         const yScale = d3.scaleBand().range([height, 0]).padding(0.2);
 
-        viz.updateXScale(xScale, sortedTeams, width);
-        viz.updateYScale(yScale, sortedTeams, height);
+        // Title
+        helper.appendGraphLabels(svg)
+        helper.positionLabels()
 
+        // Buttons
+        viz.drawGoalsAllowedButton()
+            .on('click', function() {
+                if (GoalsAllowed == true) {
+                    // Rewrite updated y axis
+                    const sortedTeams = preprocess.sortByGoalsAllowed(data);
+                    viz.updateYScale(yScale, sortedTeams, height);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
+                    
+                    // Redraw updated bars
+                    d3.selectAll('.bar').remove();
+                    viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
+                    
+                    GoalsScored = true
+                    GoalsAllowed = false
+                }
+
+            });
+
+        viz.drawGoalsScoredButton()
+            .on('click', function() {
+                if (GoalsScored == true) {
+                    // Rewrite updated y axis
+                    const sortedTeams = preprocess.sortByGoalsScored(data);
+                    viz.updateYScale(yScale, sortedTeams, height);
+                    yAxis.transition().duration(1000).call(d3.axisLeft(yScale));
+                    
+                    // Redraw updated bars
+                    d3.selectAll('.bar').remove();
+                    viz.drawBars(svg, xScale, yScale, sortedTeams, tip);
+                    
+                  
+                    GoalsScored = false
+                    GoalsAllowed = true
+                }
+            });
+
+        viz.updateXScale(xScale, sortedTeams, width);
+        viz.updateYScale(yScale, sortedTeams);
+        // Initialize y axis labels
+        yAxis.call(d3.axisLeft(yScale));
 
         // Add x axis on top and bottom
         const xAxisBottomGen = d3.axisBottom(xScale)

@@ -44,6 +44,7 @@ export function drawBars (g, x, y, players, tip) {
   .merge(g.selectAll('.bar').data(players))
   .transition()
   .duration(1000)
+  .style('cursor', 'pointer')
   .attr('width', d => x(d.Assists))
 
   g.selectAll('.bar')

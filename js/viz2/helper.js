@@ -9,8 +9,6 @@ import * as d3 from 'd3'
  * @returns {*} The d3 Selection for the created g element
  */
 export function generateG (width, height, margin) {
-    d3.select('#viz').selectAll('*').remove();
-;
     return d3.select('#viz')
     .append('svg')
     .attr('width', width)
