@@ -4,8 +4,6 @@ import * as tooltip from './tooltip.js';
 import { initializeVisualization5 } from '../viz5/main.js';
 import { initializeVisualization4 } from '../viz4/main.js';
 
-
-
 /**
  * Draws the offensive stats button
  *
@@ -113,23 +111,16 @@ export function createScatterPlot(data, playerData, width, height) {
         .on('mouseout', tip.hide);
     });
 
-  // Append axes
-  svg.append('g')
-    .attr('transform', `translate(0, ${height - margin.bottom})`)
-    .call(d3.axisBottom(xScale))
-    .style('font-size', 12);
-
-  svg.append('g')
-    .attr('transform', `translate(${margin.left}, 0)`)
-    .call(d3.axisLeft(yScale))
-    .style('font-size', 12);
+  // Draw axes
+  helper.drawXAxis(svg, xScale, height, margin);
+  helper.drawYAxis(svg, yScale, margin);
 
   svg.append('line')
     .attr('x1', xScale(0))
     .attr('y1', yScale(0))
     .attr('x2', xScale(d3.max(data, d => +d['Tirs_reçus'])))
     .attr('y2', yScale(d3.max(data, d => +d['Buts_alloues'])))
-    .style("stroke-dasharray", ("10,5"))
+    .style('stroke-dasharray', ('10,5'))
     .style('stroke', 'red')
     .style('stroke-width', 3);
 

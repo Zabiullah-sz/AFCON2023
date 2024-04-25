@@ -107,3 +107,32 @@ export function positionLabels (width, height, margin) {
     .attr('y', margin.left / 2)
     .attr('text-anchor', 'middle')
 }
+
+/**
+ * Draws the x axis at the bottom of the plot.
+ *
+ * @param {*} g The d3 Selection of the graph's g SVG element
+ * @param {*} xScale The scale to use for the x axis
+ * @param {number} height The height of the graph
+ * @param {object} margin The desired margins around the graph
+ */
+export function drawXAxis (g, xScale, height, margin) {
+  g.append('g')
+    .attr('transform', `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale))
+    .style('font-size', 12)
+}
+
+/**
+ * Draws the y axis at the left of the plot.
+ *
+ * @param {*} g The d3 Selection of the graph's g SVG element
+ * @param {*} yScale The scale to use for the y axis
+ * @param {object} margin The desired margins around the graph
+ */
+export function drawYAxis (g, yScale, margin) {
+  g.append('g')
+    .attr('transform', `translate(${margin.left}, 0)`)
+    .call(d3.axisLeft(yScale))
+    .style('font-size', 12)
+}
