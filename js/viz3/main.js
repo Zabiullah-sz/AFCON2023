@@ -36,8 +36,8 @@ export function initializeVisualization3() {
     function redraw() {
       svg.selectAll('.node').remove();
       drawVisualization(svg, currentData, config.width, config.height, colorScale);
-      colorDomain(colorScale, currentData);
       drawLegend(colorScale, svg);
+      colorDomain(colorScale, currentData);
       updateButtonStates();
     }
 
