@@ -42,8 +42,8 @@ export function initializeVisualization3() {
     }
 
     function updateButtonStates() {
-      d3.select('#addPlayer').attr('disabled', currentData.length >= 30 ? true : null)
-                             .style('background-color', currentData.length >= 30 ? '#ccc' : '#4CAF50');
+      d3.select('#addPlayer').attr('disabled', currentData.length >= 25 ? true : null)
+                             .style('background-color', currentData.length >= 25 ? '#ccc' : '#4CAF50');
       d3.select('#removePlayer').attr('disabled', currentData.length <= 10 ? true : null)
                                 .style('background-color', currentData.length <= 10 ? '#ccc' : '#f44336');
     }

@@ -46,7 +46,7 @@ export function drawVisualization(svg, data, width, height, colorScale) {
     });
 
     const simulation = createSimulation(copyData, width, height, sizeScale);
-    nodeEnter.call(applyDrag(simulation));
+    nodeEnter.call(applyDrag(simulation, width, height));
 
   nodeEnter.append('circle')
     .attr('r', d => sizeScale(d.foulsPer90))

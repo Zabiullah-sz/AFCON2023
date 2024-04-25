@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
 function getPositionForCountry(country, index, totalCountries, width, height) {
-  const b = 0.385;
+  const b = 0.385; // decrementer le b pour avoir un circonference plus
   const base = 15 ** b
     const angle = (index / totalCountries) * 2 * Math.PI;
     const radius = (totalCountries ** b / base) * (Math.max(width, height) / 4);
@@ -16,11 +16,11 @@ export function createSimulation(nodes, width, height, sizeScale) {
         getPositionForCountry(country, i, countries.length, width, height)
     );
 
-    let forceX = d3.forceX(d => countryPositions[countries.indexOf(d.country)].x).strength(5);
-    let forceY = d3.forceY(d => countryPositions[countries.indexOf(d.country)].y).strength(5);
+    let forceX = d3.forceX(d => countryPositions[countries.indexOf(d.country)].x).strength(1);
+    let forceY = d3.forceY(d => countryPositions[countries.indexOf(d.country)].y).strength(1);
 
     const simulation = d3.forceSimulation(nodes)
-    .force('center', d3.forceCenter(width / 2, height / 2))
+    // .force('center', d3.forceCenter(width / 2, height / 2))
         .force('charge', d3.forceManyBody().strength(0.1))
         .force('collide', d3.forceCollide().strength(0.2).radius(d => sizeScale(d.foulsPer90) + 2).iterations(1))
         .force('x', forceX)
