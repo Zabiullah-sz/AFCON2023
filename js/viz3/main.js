@@ -50,7 +50,7 @@ export function initializeVisualization3() {
 
     vizContainer.append('button')
       .attr('id', 'addPlayer')
-      .attr('style', 'position: absolute; top: 10px; left: 10px; padding: 8px; background-color: #4CAF50; color: white; border: none; cursor: pointer;')
+      .attr('style', 'position: absolute; top: 50px; left: 50px; padding: 8px; background-color: #4CAF50; color: white; border: none; cursor: pointer;')
       .text('Ajouter joueur')
       .on('click', () => {
         if (allData.length > currentData.length) {
@@ -62,7 +62,7 @@ export function initializeVisualization3() {
 
     vizContainer.append('button')
       .attr('id', 'removePlayer')
-      .attr('style', 'position: absolute; top: 10px; left: 200px; padding: 8px; background-color: #f44336; color: white; border: none; cursor: pointer;')
+      .attr('style', 'position: absolute; top: 50px; left: 250px; padding: 8px; background-color: #f44336; color: white; border: none; cursor: pointer;')
       .text('Enlever joueur')
       .on('click', () => {
         if (currentData.length > 10) {
